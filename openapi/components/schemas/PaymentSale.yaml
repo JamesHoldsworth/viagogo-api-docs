@@ -1,0 +1,26 @@
+type: object
+additionalProperties: false
+properties:
+  proceeds:
+    type: array
+    nullable: true
+    items:
+      $ref: ./ChargeDetail.yaml
+  charges:
+    type: array
+    nullable: true
+    items:
+      $ref: ./ChargeDetail.yaml
+  credits:
+    type: array
+    nullable: true
+    items:
+      $ref: ./ChargeDetail.yaml
+  _links:
+    nullable: true
+    oneOf:
+      - $ref: ./PaymentSaleLinks.yaml
+  _embedded:
+    nullable: true
+    oneOf:
+      - $ref: ./PaymentSaleEmbeddedResources.yaml

@@ -1,0 +1,23 @@
+type: object
+additionalProperties: false
+properties:
+  section:
+    type: string
+    description: The section of the ticket(s).
+    nullable: true
+  row:
+    type: string
+    description: The row of the ticket(s).
+    nullable: true
+  seat_from:
+    type: string
+    description: >-
+      The first in a contiguous block of seats to which the tickets have been
+      allocated.
+    nullable: true
+  seat_to:
+    type: string
+    description: >-
+      The last in a contiguous block of seats to which the tickets have been
+      allocated.
+    nullable: true

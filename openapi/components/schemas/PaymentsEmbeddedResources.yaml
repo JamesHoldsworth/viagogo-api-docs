@@ -1,0 +1,8 @@
+title: PaymentsEmbeddedResources
+type: object
+properties:
+  items:
+    type: array
+    nullable: true
+    items:
+      $ref: ./Payment.yaml

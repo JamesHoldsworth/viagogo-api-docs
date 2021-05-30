@@ -1,0 +1,10 @@
+type: object
+additionalProperties: false
+properties:
+  amount:
+    nullable: true
+    oneOf:
+      - $ref: ./Money.yaml
+  reason_description:
+    type: string
+    nullable: true

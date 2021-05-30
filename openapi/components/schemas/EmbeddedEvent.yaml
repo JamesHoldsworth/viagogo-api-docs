@@ -1,0 +1,37 @@
+type: object
+additionalProperties: false
+properties:
+  id:
+    type: integer
+    description: The event identifier.
+    format: int32
+    nullable: true
+  name:
+    type: string
+    description: The name of the event.
+    nullable: true
+  start_date:
+    type: string
+    description: The date when the event starts.
+    format: date-time
+    nullable: true
+  end_date:
+    type: string
+    description: The date when the event ends.
+    format: date-time
+    nullable: true
+  on_sale_date:
+    type: string
+    description: The date when tickets for the event will go onsale.
+    format: date-time
+    nullable: true
+  date_confirmed:
+    type: boolean
+    description: >-
+      True if the event start and end date have been confirmed; Otherwise,
+      false.
+    nullable: true
+  _links:
+    nullable: true
+    oneOf:
+      - $ref: ./EmbeddedEventLinks.yaml

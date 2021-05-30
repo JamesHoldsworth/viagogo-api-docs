@@ -1,0 +1,5 @@
+in: query
+description: >-
+  Optional embedded resources are only included in a resource when your
+  application includes the embedded property name(s) as a comma-separated value
+  in the embed parameter.

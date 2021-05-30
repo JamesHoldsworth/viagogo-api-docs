@@ -1,0 +1,11 @@
+type: object
+additionalProperties: false
+properties:
+  href:
+    type: string
+    nullable: true
+  title:
+    type: string
+    nullable: true
+  templated:
+    type: boolean

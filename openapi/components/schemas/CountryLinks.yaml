@@ -1,0 +1,16 @@
+title: CountryLinks
+type: object
+properties:
+  self:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'country:events':
+    description: The events taking place in a country.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'country:localwebpage':
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml

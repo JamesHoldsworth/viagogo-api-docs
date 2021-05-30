@@ -1,0 +1,16 @@
+type: object
+additionalProperties: false
+properties:
+  code:
+    type: string
+    nullable: true
+  message:
+    type: string
+    nullable: true
+  errors:
+    type: object
+    nullable: true
+    additionalProperties:
+      type: array
+      items:
+        type: string

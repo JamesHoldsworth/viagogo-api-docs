@@ -1,0 +1,9 @@
+description: >-
+  The request data is not valid. errors will contain an object with a localized
+  message that describes the validation error for each property of the data.
+content:
+  application/hal+json:
+    schema:
+      nullable: true
+      oneOf:
+        - $ref: ../schemas/Error.yaml
