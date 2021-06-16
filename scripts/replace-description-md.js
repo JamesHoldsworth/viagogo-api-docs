@@ -2,7 +2,7 @@ let fs = require('fs');
 
 console.log('Referencing description.md ...');
 
-let filePath = 'dist/openapi/openapi.yaml';
+let filePath = 'dist/openapi/definition/openapi.yaml';
 fs.readFile(filePath, 'utf-8', function(err, data) {
     if (err) {
         throw err;
