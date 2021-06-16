@@ -1,0 +1,11 @@
+type: object
+additionalProperties: false
+properties:
+  details:
+    type: string
+    description: The obfuscated details of the payment method
+    nullable: true
+  _links:
+    nullable: true
+    oneOf:
+      - $ref: ./EmbeddedPaymentMethodLinks.yaml

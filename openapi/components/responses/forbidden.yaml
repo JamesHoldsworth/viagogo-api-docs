@@ -1,0 +1,9 @@
+description: >-
+  The request is understood, but it has been refused or access is not allowed.
+  An accompanying error message will explain why.
+content:
+  application/hal+json:
+    schema:
+      nullable: true
+      oneOf:
+        - $ref: ../schemas/Error.yaml

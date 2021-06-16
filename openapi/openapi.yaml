@@ -1,0 +1,59 @@
+openapi: 3.0.0
+info:
+  title: viagogo API v2
+  description:
+    $ref: ../custom-docs/description.md
+  version: 2.249.0.0
+servers:
+  - url: 'https://api.viagogo.net/v2'
+    description: Production
+  - url: 'https://sandbox.api.viagogo.net/v2'
+    description: Sandbox
+paths:
+  /payments:
+    $ref: paths/payments.yaml
+  '/payments/{paymentId}':
+    $ref: 'paths/payments@{paymentId}.yaml'
+  /payments/next:
+    $ref: paths/payments@next.yaml
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        implicit:
+          scopes:
+            (no scope): >-
+              Grants read-only access to public information like events,
+              listings.
+            'read:user': >-
+              Grants read-only access to the user's account information,
+              addresses, payment methods, purchases and sales.
+            'write:user': >-
+              Grants write access to the user’s account information, addresses,
+              payment methods and sales.
+            'write:purchases': >-
+              Grants write access to the user’s purchases. This allows users to
+              use your application to purchase listings.
+            'read:sellerlistings': Grants read access to the user’s listings.
+            'write:sellerlistings': >-
+              Grants write access to the user’s listings. This allows users to
+              use your application to create and update listings.
+            'read:webhooks': Grants read access to the user’s webhooks.
+            'write:webhooks': Grants write access to the user’s webhooks.
+            'write:requestedevents': >-
+              Grants write access to the user’s requested events. This allows
+              users to use your application to request an event to be added to
+              the viagogo platform.
+            'read:payment': Grants read-only access to the user's payments
+            'read:sales': Grants read-only access to the user's sales.
+            'write:sales': >-
+              Grants write access to the user's sales. This allows users to use
+              your application to confirm and fulfill sales.
+tags:
+  - name: Sales Management
+    description: View your sales details and fulfill your sales.
+  - name: Inventory Management
+    description: >-
+      List tickets, update your listings, search your inventory and upload
+      tickets to your listings.

@@ -1,0 +1,19 @@
+type: object
+description: >-
+  Returned for monetary values, such as ticket prices, fees charged and tax
+  amounts.
+additionalProperties: false
+properties:
+  amount:
+    type: number
+    description: The decimal amount of the money.
+    format: decimal
+    nullable: true
+  currency_code:
+    type: string
+    description: The ISO 4217 currency code that the monetary value is represented in.
+    nullable: true
+  display:
+    type: string
+    description: A user-friendly string representing the monetary value.
+    nullable: true

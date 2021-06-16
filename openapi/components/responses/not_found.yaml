@@ -1,0 +1,9 @@
+description: >-
+  The URI requested is invalid or the resource requested, such as an event, does
+  not exist.
+content:
+  application/hal+json:
+    schema:
+      nullable: true
+      oneOf:
+        - $ref: ../schemas/Error.yaml

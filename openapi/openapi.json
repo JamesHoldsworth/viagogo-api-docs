@@ -1,0 +1,1015 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "viagogo API v2",
+    "description": "viagogo's v2 REST API",
+    "version": "2.249.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.viagogo.net/v2",
+      "description": "Production"
+    },
+    {
+      "url": "https://sandbox.api.viagogo.net/v2",
+      "description": "Sandbox"
+    }
+  ],
+  "paths": {
+    "/payments": {
+      "get": {
+        "tags": [
+          "Sales Management"
+        ],
+        "summary": "Lists Payments for the currently authenticated user",
+        "operationId": "Payments_GetPayments",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "nullable": true,
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/Payments"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "$ref": "#/components/responses/forbidden",
+            "description": null
+          },
+          "401": {
+            "$ref": "#/components/responses/requires_authentication",
+            "description": null
+          },
+          "500": {
+            "$ref": "#/components/responses/internal_server_error",
+            "description": null
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "read:user",
+              "read:payment"
+            ]
+          }
+        ]
+      }
+    },
+    "/payments/{paymentId}": {
+      "get": {
+        "tags": [
+          "Sales Management"
+        ],
+        "summary": "Get a payment",
+        "operationId": "Payments_Get",
+        "parameters": [
+          {
+            "name": "paymentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Payment"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/not_found",
+            "description": null
+          },
+          "403": {
+            "$ref": "#/components/responses/forbidden",
+            "description": null
+          },
+          "401": {
+            "$ref": "#/components/responses/requires_authentication",
+            "description": null
+          },
+          "500": {
+            "$ref": "#/components/responses/internal_server_error",
+            "description": null
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "read:user",
+              "read:payment"
+            ]
+          }
+        ]
+      }
+    },
+    "/payments/next": {
+      "get": {
+        "tags": [
+          "Sales Management"
+        ],
+        "summary": "Get the next Payment for the currently authenticated user",
+        "operationId": "Payments_GetNextPayment",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Payment"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/not_found",
+            "description": null
+          },
+          "403": {
+            "$ref": "#/components/responses/forbidden",
+            "description": null
+          },
+          "401": {
+            "$ref": "#/components/responses/requires_authentication",
+            "description": null
+          },
+          "500": {
+            "$ref": "#/components/responses/internal_server_error",
+            "description": null
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "read:user",
+              "read:payment"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Payments": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "total_items": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "page": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "page_size": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "_links": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/PaymentsLinks"
+              }
+            ]
+          },
+          "_embedded": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/PaymentsEmbeddedResources"
+              }
+            ]
+          }
+        }
+      },
+      "PaymentsLinks": {
+        "title": "PaymentsLinks",
+        "type": "object",
+        "properties": {
+          "self": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "first": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "last": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "next": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "prev": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          }
+        }
+      },
+      "Link": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "href": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "templated": {
+            "type": "boolean"
+          }
+        }
+      },
+      "PaymentsEmbeddedResources": {
+        "title": "PaymentsEmbeddedResources",
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/Payment"
+            }
+          }
+        }
+      },
+      "Payment": {
+        "type": "object",
+        "description": "A payment on the viagogo marketplace that belongs to the currently authenticated user",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The payment identifier",
+            "format": "int32",
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The date when the payment was created.",
+            "format": "date-time",
+            "nullable": true
+          },
+          "number_of_sales": {
+            "type": "integer",
+            "description": "The total number of sales associated to the payment",
+            "format": "int32"
+          },
+          "payment_amount": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Money"
+              }
+            ]
+          },
+          "credits": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Money"
+              }
+            ]
+          },
+          "charges": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Money"
+              }
+            ]
+          },
+          "proceeds": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Money"
+              }
+            ]
+          },
+          "_links": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/PaymentLinks"
+              }
+            ]
+          },
+          "_embedded": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/PaymentEmbeddedResources"
+              }
+            ]
+          }
+        }
+      },
+      "Money": {
+        "type": "object",
+        "description": "Returned for monetary values, such as ticket prices, fees charged and tax amounts.",
+        "additionalProperties": false,
+        "properties": {
+          "amount": {
+            "type": "number",
+            "description": "The decimal amount of the money.",
+            "format": "decimal",
+            "nullable": true
+          },
+          "currency_code": {
+            "type": "string",
+            "description": "The ISO 4217 currency code that the monetary value is represented in.",
+            "nullable": true
+          },
+          "display": {
+            "type": "string",
+            "description": "A user-friendly string representing the monetary value.",
+            "nullable": true
+          }
+        }
+      },
+      "PaymentLinks": {
+        "title": "PaymentLinks",
+        "type": "object",
+        "properties": {
+          "self": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "payment:webpage": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          }
+        }
+      },
+      "PaymentEmbeddedResources": {
+        "title": "PaymentEmbeddedResources",
+        "type": "object",
+        "properties": {
+          "payment_method": {
+            "description": "The payment method that will be used for the payments or charges.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/EmbeddedPaymentMethod"
+              }
+            ]
+          },
+          "sales": {
+            "type": "array",
+            "description": "The sales associated with the payment.",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/PaymentSale"
+            }
+          }
+        }
+      },
+      "EmbeddedPaymentMethod": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "details": {
+            "type": "string",
+            "description": "The obfuscated details of the payment method",
+            "nullable": true
+          },
+          "_links": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/EmbeddedPaymentMethodLinks"
+              }
+            ]
+          }
+        }
+      },
+      "EmbeddedPaymentMethodLinks": {
+        "title": "EmbeddedPaymentMethodLinks",
+        "type": "object",
+        "properties": {
+          "self": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          }
+        }
+      },
+      "PaymentSale": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "proceeds": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/ChargeDetail"
+            }
+          },
+          "charges": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/ChargeDetail"
+            }
+          },
+          "credits": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/ChargeDetail"
+            }
+          },
+          "_links": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/PaymentSaleLinks"
+              }
+            ]
+          },
+          "_embedded": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/PaymentSaleEmbeddedResources"
+              }
+            ]
+          }
+        }
+      },
+      "ChargeDetail": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "amount": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Money"
+              }
+            ]
+          },
+          "reason_description": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "PaymentSaleLinks": {
+        "title": "PaymentSaleLinks",
+        "type": "object",
+        "properties": {
+          "self": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          }
+        }
+      },
+      "PaymentSaleEmbeddedResources": {
+        "title": "PaymentSaleEmbeddedResources",
+        "type": "object",
+        "properties": {
+          "event": {
+            "description": "The event for this sale.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/EmbeddedEvent"
+              }
+            ]
+          },
+          "sale": {
+            "description": "A sale associated with a payment.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/EmbeddedSale"
+              }
+            ]
+          },
+          "venue": {
+            "description": "The venue where the event is taking place.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/EmbeddedVenue"
+              }
+            ]
+          }
+        }
+      },
+      "EmbeddedEvent": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The event identifier.",
+            "format": "int32",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the event.",
+            "nullable": true
+          },
+          "start_date": {
+            "type": "string",
+            "description": "The date when the event starts.",
+            "format": "date-time",
+            "nullable": true
+          },
+          "end_date": {
+            "type": "string",
+            "description": "The date when the event ends.",
+            "format": "date-time",
+            "nullable": true
+          },
+          "on_sale_date": {
+            "type": "string",
+            "description": "The date when tickets for the event will go onsale.",
+            "format": "date-time",
+            "nullable": true
+          },
+          "date_confirmed": {
+            "type": "boolean",
+            "description": "True if the event start and end date have been confirmed; Otherwise, false.",
+            "nullable": true
+          },
+          "_links": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/EmbeddedEventLinks"
+              }
+            ]
+          }
+        }
+      },
+      "EmbeddedEventLinks": {
+        "title": "EmbeddedEventLinks",
+        "type": "object",
+        "properties": {
+          "self": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          }
+        }
+      },
+      "EmbeddedSale": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The sale identifier.",
+            "format": "int32",
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The date when the sale was created.",
+            "format": "date-time",
+            "nullable": true
+          },
+          "seating": {
+            "description": "The seating information for the ticket(s) that have been sold.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Seating"
+              }
+            ]
+          },
+          "proceeds": {
+            "description": "The total amount that the seller will receive for the sale.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Money"
+              }
+            ]
+          },
+          "number_of_tickets": {
+            "type": "integer",
+            "description": "The number of tickets that have been sold.",
+            "format": "int32",
+            "nullable": true
+          },
+          "_links": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/EmbeddedSaleLinks"
+              }
+            ]
+          }
+        }
+      },
+      "Seating": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "section": {
+            "type": "string",
+            "description": "The section of the ticket(s).",
+            "nullable": true
+          },
+          "row": {
+            "type": "string",
+            "description": "The row of the ticket(s).",
+            "nullable": true
+          },
+          "seat_from": {
+            "type": "string",
+            "description": "The first in a contiguous block of seats to which the tickets have been allocated.",
+            "nullable": true
+          },
+          "seat_to": {
+            "type": "string",
+            "description": "The last in a contiguous block of seats to which the tickets have been allocated.",
+            "nullable": true
+          }
+        }
+      },
+      "EmbeddedSaleLinks": {
+        "title": "EmbeddedSaleLinks",
+        "type": "object",
+        "properties": {
+          "self": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          }
+        }
+      },
+      "EmbeddedVenue": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The venue identifier.",
+            "format": "int32",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the venue.",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "description": "The name of the city where the venue is located.",
+            "nullable": true
+          },
+          "state_province": {
+            "type": "string",
+            "description": "The name of the State or Province where the venue is located.",
+            "nullable": true
+          },
+          "latitude": {
+            "type": "number",
+            "description": "The latitude for the venue.",
+            "format": "double",
+            "nullable": true
+          },
+          "longitude": {
+            "type": "number",
+            "description": "The longitude for the venue.",
+            "format": "double",
+            "nullable": true
+          },
+          "_links": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/EmbeddedVenueLinks"
+              }
+            ]
+          },
+          "_embedded": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/EmbeddedVenueEmbeddedResources"
+              }
+            ]
+          }
+        }
+      },
+      "EmbeddedVenueLinks": {
+        "title": "EmbeddedVenueLinks",
+        "type": "object",
+        "properties": {
+          "self": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          }
+        }
+      },
+      "EmbeddedVenueEmbeddedResources": {
+        "title": "EmbeddedVenueEmbeddedResources",
+        "type": "object",
+        "properties": {
+          "country": {
+            "description": "The Country where the venue is located.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Country"
+              }
+            ]
+          }
+        }
+      },
+      "Country": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "The two-letter ISO 3166 code for the country.",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the country.",
+            "nullable": true
+          },
+          "_links": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/CountryLinks"
+              }
+            ]
+          }
+        }
+      },
+      "CountryLinks": {
+        "title": "CountryLinks",
+        "type": "object",
+        "properties": {
+          "self": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "country:events": {
+            "description": "The events taking place in a country.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "country:localwebpage": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "errors": {
+            "type": "object",
+            "nullable": true,
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "requires_authentication": {
+        "description": "Authentication credentials were missing or incorrect.",
+        "content": {
+          "application/hal+json": {
+            "schema": {
+              "nullable": true,
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/Error"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "not_found": {
+        "description": "The URI requested is invalid or the resource requested, such as an event, does not exist.",
+        "content": {
+          "application/hal+json": {
+            "schema": {
+              "nullable": true,
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/Error"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "forbidden": {
+        "description": "The request is understood, but it has been refused or access is not allowed. An accompanying error message will explain why.",
+        "content": {
+          "application/hal+json": {
+            "schema": {
+              "nullable": true,
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/Error"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "internal_server_error": {
+        "description": "Internal server error",
+        "content": {
+          "application/hal+json": {
+            "schema": {
+              "nullable": true,
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/Error"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "validation_failed": {
+        "description": "The request data is not valid. errors will contain an object with a localized message that describes the validation error for each property of the data.",
+        "content": {
+          "application/hal+json": {
+            "schema": {
+              "nullable": true,
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/Error"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "parameters": {
+      "fields": {
+        "in": "query",
+        "description": "A comma-separated list of the name(s) of the field(s) to be returned."
+      },
+      "embed": {
+        "in": "query",
+        "description": "Optional embedded resources are only included in a resource when your application includes the embedded property name(s) as a comma-separated value in the embed parameter."
+      }
+    },
+    "headers": {
+      "Content-Language": {
+        "schema": {
+          "type": "string"
+        },
+        "example": "en-US"
+      },
+      "Content-Type": {
+        "schema": {
+          "type": "string"
+        },
+        "example": "application/hal+json"
+      }
+    },
+    "securitySchemes": {
+      "OAuth2": {
+        "type": "oauth2",
+        "flows": {
+          "implicit": {
+            "scopes": {
+              "(no scope)": "Grants read-only access to public information like events, listings.",
+              "read:user": "Grants read-only access to the user's account information, addresses, payment methods, purchases and sales.",
+              "write:user": "Grants write access to the user’s account information, addresses, payment methods and sales.",
+              "write:purchases": "Grants write access to the user’s purchases. This allows users to use your application to purchase listings.",
+              "read:sellerlistings": "Grants read access to the user’s listings.",
+              "write:sellerlistings": "Grants write access to the user’s listings. This allows users to use your application to create and update listings.",
+              "read:webhooks": "Grants read access to the user’s webhooks.",
+              "write:webhooks": "Grants write access to the user’s webhooks.",
+              "write:requestedevents": "Grants write access to the user’s requested events. This allows users to use your application to request an event to be added to the viagogo platform.",
+              "read:payment": "Grants read-only access to the user's payments",
+              "read:sales": "Grants read-only access to the user's sales.",
+              "write:sales": "Grants write access to the user's sales. This allows users to use your application to confirm and fulfill sales."
+            }
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Sales Management",
+      "description": "View your sales details and fulfill your sales."
+    },
+    {
+      "name": "Inventory Management",
+      "description": "List tickets, update your listings, search your inventory and upload tickets to your listings."
+    }
+  ]
+}

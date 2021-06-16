@@ -1,0 +1,18 @@
+title: PaymentSaleEmbeddedResources
+type: object
+properties:
+  event:
+    description: The event for this sale.
+    nullable: true
+    oneOf:
+      - $ref: ./EmbeddedEvent.yaml
+  sale:
+    description: A sale associated with a payment.
+    nullable: true
+    oneOf:
+      - $ref: ./EmbeddedSale.yaml
+  venue:
+    description: The venue where the event is taking place.
+    nullable: true
+    oneOf:
+      - $ref: ./EmbeddedVenue.yaml

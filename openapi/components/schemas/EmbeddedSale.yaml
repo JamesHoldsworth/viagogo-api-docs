@@ -1,0 +1,32 @@
+type: object
+additionalProperties: false
+properties:
+  id:
+    type: integer
+    description: The sale identifier.
+    format: int32
+    nullable: true
+  created_at:
+    type: string
+    description: The date when the sale was created.
+    format: date-time
+    nullable: true
+  seating:
+    description: The seating information for the ticket(s) that have been sold.
+    nullable: true
+    oneOf:
+      - $ref: ./Seating.yaml
+  proceeds:
+    description: The total amount that the seller will receive for the sale.
+    nullable: true
+    oneOf:
+      - $ref: ./Money.yaml
+  number_of_tickets:
+    type: integer
+    description: The number of tickets that have been sold.
+    format: int32
+    nullable: true
+  _links:
+    nullable: true
+    oneOf:
+      - $ref: ./EmbeddedSaleLinks.yaml
