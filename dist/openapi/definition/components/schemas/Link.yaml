@@ -7,3 +7,5 @@ properties:
   title:
     type: string
     nullable: true
+  templated:
+    type: boolean

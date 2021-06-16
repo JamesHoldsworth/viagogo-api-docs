@@ -6,7 +6,7 @@
   },
   "private": true,
   "scripts": {
-    "sync-definition": "node scripts/download-openapi-json.js;openapi split dist/openapi/openapi.json --outDir dist/openapi;node scripts/replace-description-md.js",
+    "sync-definition": "node scripts/download-openapi-json.js;rm -rf dist/openapi/definition;openapi split dist/openapi/openapi.json --outDir dist/openapi/definition;node scripts/replace-description-md.js",
     "start": "openapi preview-docs",
     "test": "openapi lint"
   }
