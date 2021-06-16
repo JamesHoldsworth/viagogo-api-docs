@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   title: viagogo API v2
   description:
-    $ref: ../custom-docs/description.md
+    $ref: ../../custom-docs/description.md
   version: 2.249.0.0
 servers:
   - url: 'https://api.viagogo.net/v2'
