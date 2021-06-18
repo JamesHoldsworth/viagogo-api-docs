@@ -27,6 +27,22 @@ You're going to need:
 
 You can now see the docs at <http://localhost:8080>. Whoa! That was fast!
 
+### Folder Structure
+
+    .
+    ├── dist                   # All of the files that will serve via GitHub pages
+    │   ├── custom-docs
+    |   |   └── description.md # Markdown file containing custom documentation for the API
+    │   ├── openapi
+    |   |   ├── definition     # **Auto-generated** YAML files for the OpenAPI definition
+    |   |   └── openapi.json   # JSON OpenAPI definition that is just used to generate the YAML definitions
+    │   ├── favicon.ico
+    │   └── index.html         # HTML page for the site on GitHub pages (not used locally)
+    ├── scripts                # NPM scripts
+    ├── .redocly.yaml          # Redocly configuration file
+    ├── LICENSE
+    └── README.md
+
 ## Need Help? Found a bug?
 
 Just [submit a issue](https://github.com/viagogo/viagogo-api-docs/issues) if you need any help. And, of course, feel free to submit pull requests with bug fixes or changes.
