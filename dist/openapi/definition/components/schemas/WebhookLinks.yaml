@@ -1,0 +1,22 @@
+title: WebhookLinks
+type: object
+properties:
+  self:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'webhook:delete':
+    description: Delete a webhook.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'webhook:ping':
+    description: Ping a webhook.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'webhook:update':
+    description: Update the details of a webhook.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml

@@ -1,0 +1,45 @@
+type: object
+additionalProperties: false
+properties:
+  confirmed:
+    type: boolean
+    nullable: true
+  eticket_ids:
+    type: array
+    nullable: true
+    items:
+      type: integer
+      format: int32
+  transfer_confirmation_number:
+    type: string
+    nullable: true
+  eticket_urls:
+    type: array
+    nullable: true
+    items:
+      $ref: ./ETicketUrlRequest.yaml
+  change_paper_ticket_to_eticket:
+    type: boolean
+    nullable: true
+  confirm_same_day_shipment:
+    type: boolean
+    nullable: true
+  eticket_type:
+    type: string
+    nullable: true
+  tracking_number:
+    type: string
+    nullable: true
+  reservation:
+    nullable: true
+    oneOf:
+      - $ref: ./Reservation.yaml
+  barcodes:
+    type: array
+    nullable: true
+    items:
+      $ref: ./BarcodeInformation.yaml
+  alternative_offer:
+    nullable: true
+    oneOf:
+      - $ref: ./PostAlternativeOfferRequest.yaml

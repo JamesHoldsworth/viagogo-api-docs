@@ -1,0 +1,28 @@
+type: object
+description: |-
+  The Shipments resource is a collection resource that contains zero or
+  more references to a set of shipments, and links that guide you on ways
+  to interact with the shipments. The collection offers a paginated view
+  of shipments.
+additionalProperties: false
+properties:
+  total_items:
+    type: integer
+    format: int32
+    nullable: true
+  page:
+    type: integer
+    format: int32
+    nullable: true
+  page_size:
+    type: integer
+    format: int32
+    nullable: true
+  _links:
+    nullable: true
+    oneOf:
+      - $ref: ./ShipmentsLinks.yaml
+  _embedded:
+    nullable: true
+    oneOf:
+      - $ref: ./ShipmentsEmbeddedResources.yaml

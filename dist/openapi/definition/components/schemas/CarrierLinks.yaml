@@ -1,0 +1,12 @@
+title: CarrierLinks
+type: object
+properties:
+  self:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'carrier:createpickup':
+    description: Creates a new pickup for the ticket(s).
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml

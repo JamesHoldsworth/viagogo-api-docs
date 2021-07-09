@@ -1,0 +1,79 @@
+get:
+  tags:
+    - E-Tickets (Inventory)
+  summary: List e-tickets for a seller listing
+  operationId: ETicket_GetListingETickets
+  parameters:
+    - name: listingId
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    '200':
+      description: ''
+      content:
+        application/hal+json:
+          schema:
+            $ref: ../components/schemas/ETickets2.yaml
+    '401':
+      $ref: ../components/responses/requires_authentication.yaml
+      description: null
+    '403':
+      $ref: ../components/responses/forbidden.yaml
+      description: null
+    '404':
+      $ref: ../components/responses/not_found.yaml
+      description: null
+    '500':
+      $ref: ../components/responses/internal_server_error.yaml
+      description: null
+  security:
+    - OAuth2:
+        - 'read:sellerlistings'
+patch:
+  tags:
+    - E-Tickets (Inventory)
+  summary: Mark-back e-tickets from a seller listing
+  description: >-
+    Removes a certain number of e-tickets that you no longer wish to sell from
+    your listing.
+  operationId: ETicket_MarkBackETickets
+  parameters:
+    - name: listingId
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: int64
+  requestBody:
+    x-name: body
+    content:
+      application/json:
+        schema:
+          nullable: true
+          oneOf:
+            - $ref: ../components/schemas/PostMarkBackETicketsRequest.yaml
+  responses:
+    '200':
+      description: ''
+      content:
+        application/hal+json:
+          schema:
+            $ref: ../components/schemas/ETickets2.yaml
+    '400':
+      $ref: ../components/responses/validation_failed.yaml
+      description: null
+    '401':
+      $ref: ../components/responses/requires_authentication.yaml
+      description: null
+    '403':
+      $ref: ../components/responses/forbidden.yaml
+      description: null
+    '500':
+      $ref: ../components/responses/internal_server_error.yaml
+      description: null
+  security:
+    - OAuth2:
+        - 'write:sellerlistings'

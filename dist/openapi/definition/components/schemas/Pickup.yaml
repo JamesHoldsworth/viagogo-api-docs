@@ -1,0 +1,29 @@
+type: object
+description: A scheduled courier pickup for a package.
+additionalProperties: false
+properties:
+  id:
+    type: integer
+    description: The pickup identifier.
+    format: int32
+  start_date:
+    type: string
+    description: The earliest date that the courier will pickup the package.
+    format: date-time
+  end_date:
+    type: string
+    description: The latest date that the courier will pickup the package.
+    format: date-time
+  address:
+    description: The address where the courier will pickup the package.
+    nullable: true
+    oneOf:
+      - $ref: ./Address.yaml
+  _links:
+    nullable: true
+    oneOf:
+      - $ref: ./PickupLinks.yaml
+  _embedded:
+    nullable: true
+    oneOf:
+      - $ref: ./PickupEmbeddedResources.yaml

@@ -1,0 +1,20 @@
+title: ShipmentEmbeddedResources
+type: object
+properties:
+  delivery_method:
+    description: The delivery method for the ticket(s).
+    nullable: true
+    oneOf:
+      - $ref: ./EmbeddedDeliveryMethod.yaml
+  pickup_addresses:
+    type: array
+    description: The addresses where courier pickups could be arranged.
+    nullable: true
+    items:
+      $ref: ./Address2.yaml
+  pickups:
+    type: array
+    description: The courier pickups that have been scheduled.
+    nullable: true
+    items:
+      $ref: ./Pickup.yaml

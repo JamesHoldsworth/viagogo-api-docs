@@ -1,0 +1,51 @@
+type: object
+description: >-
+  An address is a delivery, pickup or billing address associated with the
+  current user.
+additionalProperties: false
+properties:
+  id:
+    type: integer
+    description: The address identifier.
+    format: int32
+    nullable: true
+  full_name:
+    type: string
+    description: The full name of the recipient.
+    nullable: true
+  default:
+    type: boolean
+    description: 'True if the address is the user’s default address; Otherwise, false.'
+    nullable: true
+  address_1:
+    type: string
+    description: The first line of the address.
+    nullable: true
+  address_2:
+    type: string
+    description: The second line of the address.
+    nullable: true
+  address_3:
+    type: string
+    description: The third line of the address.
+    nullable: true
+  city:
+    type: string
+    description: The name of the city where the address is located.
+    nullable: true
+  state_province:
+    type: string
+    description: The name of the State or Province where the address is located.
+    nullable: true
+  postal_code:
+    type: string
+    description: The postal code for the address.
+    nullable: true
+  _links:
+    nullable: true
+    oneOf:
+      - $ref: ./AddressLinks.yaml
+  _embedded:
+    nullable: true
+    oneOf:
+      - $ref: ./AddressEmbeddedResources.yaml

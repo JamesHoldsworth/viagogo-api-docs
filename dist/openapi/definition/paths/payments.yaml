@@ -1,7 +1,8 @@
 get:
   tags:
-    - Sales Management
-  summary: Lists Payments for the currently authenticated user
+    - Payments
+  summary: List payments
+  description: Lists payments for the authenticated user.
   operationId: Payments_GetPayments
   responses:
     '200':

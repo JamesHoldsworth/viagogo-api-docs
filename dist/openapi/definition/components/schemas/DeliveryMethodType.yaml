@@ -1,0 +1,12 @@
+type: integer
+description: ''
+x-enumNames:
+  - Other
+  - Post
+  - Pickup
+  - ETicket
+enum:
+  - 0
+  - 1
+  - 2
+  - 3

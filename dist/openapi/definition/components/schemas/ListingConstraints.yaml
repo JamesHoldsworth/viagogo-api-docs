@@ -1,0 +1,56 @@
+type: object
+description: >-
+  The constraints applied to a listing for a particular event on the viagogo
+  marketplace.
+additionalProperties: false
+properties:
+  min_ticket_price:
+    nullable: true
+    oneOf:
+      - $ref: ./Money.yaml
+  max_ticket_price:
+    nullable: true
+    oneOf:
+      - $ref: ./Money.yaml
+  min_number_of_tickets:
+    type: integer
+    description: The minimum number of tickets available for purchase.
+    format: int32
+    nullable: true
+  max_number_of_tickets:
+    type: integer
+    description: The maximum number of tickets available for purchase.
+    format: int32
+    nullable: true
+  ticket_location_required:
+    type: boolean
+    description: 'True if a ticket location is required for tickets; Otherwise, false.'
+    nullable: true
+  seats_required:
+    type: boolean
+    description: >-
+      True if seat-level information (seat_to and seat_from) is required;
+      Otherwise, false.
+    nullable: true
+  sections:
+    type: array
+    description: >-
+      The valid section and row information. If no sections are specified then
+      any text will be accepted for section and row.
+    nullable: true
+    items:
+      $ref: ./Section.yaml
+  primary_order_id_required:
+    type: boolean
+    nullable: true
+  home_or_away_required:
+    type: boolean
+    nullable: true
+  _links:
+    nullable: true
+    oneOf:
+      - $ref: ./ListingConstraintsLinks.yaml
+  _embedded:
+    nullable: true
+    oneOf:
+      - $ref: ./ListingConstraintsEmbeddedResources.yaml

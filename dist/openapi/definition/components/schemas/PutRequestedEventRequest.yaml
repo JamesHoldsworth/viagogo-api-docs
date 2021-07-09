@@ -1,0 +1,19 @@
+type: object
+additionalProperties: false
+properties:
+  event:
+    nullable: true
+    oneOf:
+      - $ref: ./EventRequest.yaml
+  venue:
+    nullable: true
+    oneOf:
+      - $ref: ./EmbeddedVenue.yaml
+  country:
+    nullable: true
+    oneOf:
+      - $ref: ./Country.yaml
+  external_details:
+    type: object
+    nullable: true
+    additionalProperties: {}

@@ -1,0 +1,8 @@
+title: WebhooksEmbeddedResources
+type: object
+properties:
+  items:
+    type: array
+    nullable: true
+    items:
+      $ref: ./Webhook.yaml

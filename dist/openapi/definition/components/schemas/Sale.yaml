@@ -1,0 +1,74 @@
+type: object
+description: >-
+  A sale on the viagogo marketplace that belongs to the currently authenticated
+  user.
+additionalProperties: false
+properties:
+  id:
+    type: integer
+    description: The sale identifier.
+    format: int32
+    nullable: true
+  created_at:
+    type: string
+    description: The date when the sale was created.
+    format: date-time
+    nullable: true
+  seating:
+    description: The seating information for the ticket(s) that have been sold.
+    nullable: true
+    oneOf:
+      - $ref: ./Seating.yaml
+  proceeds:
+    description: The total amount that the seller will receive for the sale.
+    nullable: true
+    oneOf:
+      - $ref: ./Money.yaml
+  number_of_tickets:
+    type: integer
+    description: The number of tickets that have been sold.
+    format: int32
+    nullable: true
+  status:
+    type: string
+    description: A short localised string describing the current status of the sale.
+    nullable: true
+  status_description:
+    type: string
+    description: A localised in-depth description of the current status of the sale.
+    nullable: true
+  display_proceeds:
+    description: The total amount that the seller will receive for the sale.
+    nullable: true
+    oneOf:
+      - $ref: ./Money.yaml
+  confirm_by:
+    type: string
+    description: The date by which the seller must confirm the sale.
+    format: date-time
+    nullable: true
+  ship_by:
+    type: string
+    description: The date by which the seller must ship the tickets.
+    format: date-time
+    nullable: true
+  external_listing_id:
+    type: string
+    description: >-
+      The listing identifier assigned by an external system, typically generated
+      by the seller's inventory management software.
+    nullable: true
+  barcodes:
+    type: array
+    description: The barcode(s) for the ticket(s).
+    nullable: true
+    items:
+      $ref: ./BarcodeInformation.yaml
+  _links:
+    nullable: true
+    oneOf:
+      - $ref: ./SaleLinks.yaml
+  _embedded:
+    nullable: true
+    oneOf:
+      - $ref: ./SaleEmbeddedResources.yaml

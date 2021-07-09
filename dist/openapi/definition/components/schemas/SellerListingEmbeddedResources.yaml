@@ -1,0 +1,34 @@
+title: SellerListingEmbeddedResources
+type: object
+properties:
+  constraints:
+    description: The constraints applied to this listing.
+    nullable: true
+    oneOf:
+      - $ref: ./ListingConstraints.yaml
+  event:
+    description: The event for this listing.
+    nullable: true
+    oneOf:
+      - $ref: ./EmbeddedEvent.yaml
+  listing_notes:
+    type: array
+    description: The notes for this listing.
+    nullable: true
+    items:
+      $ref: ./ListingNote.yaml
+  split_type:
+    description: The way that the ticket(s) are allowed to be split up when sold.
+    nullable: true
+    oneOf:
+      - $ref: ./SplitType.yaml
+  ticket_type:
+    description: The type of ticket(s) in this listing.
+    nullable: true
+    oneOf:
+      - $ref: ./TicketType.yaml
+  venue:
+    description: The venue where the event is taking place.
+    nullable: true
+    oneOf:
+      - $ref: ./EmbeddedVenue.yaml

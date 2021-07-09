@@ -1,0 +1,144 @@
+type: object
+additionalProperties: false
+properties:
+  ticket_price:
+    description: The price of each ticket in the listing.
+    nullable: true
+    oneOf:
+      - $ref: ./Money.yaml
+  ticket_proceeds:
+    description: The amount that the seller will receive for each ticket sold.
+    nullable: true
+    oneOf:
+      - $ref: ./Money.yaml
+  seating:
+    description: The seating information for the ticket(s) in this listing.
+    nullable: true
+    oneOf:
+      - $ref: ./Seating.yaml
+  face_value:
+    description: 'The price printed on the ticket, not including any booking fees.'
+    nullable: true
+    oneOf:
+      - $ref: ./Money.yaml
+  ticket_type:
+    type: string
+    description: The type of ticket(s) in this listing.
+    nullable: true
+  split_type:
+    type: string
+    description: The way that the ticket(s) are allowed to be split up when sold.
+    nullable: true
+  number_of_tickets:
+    type: integer
+    description: The number of tickets available for purchase.
+    format: int32
+    nullable: true
+  display_number_of_tickets:
+    type: integer
+    description: >-
+      The number of tickets that should be displayed to buyers as available for
+      purchase.
+    format: int32
+    nullable: true
+  guarantee_payment_method_id:
+    type: integer
+    description: >-
+      The identifier of the credit card that should be used to guarantee your
+      tickets.
+    format: int32
+    nullable: true
+  ticket_location_address_id:
+    type: integer
+    description: The identifier of the address where the ticket(s) are located.
+    format: int32
+    nullable: true
+  listing_note_ids:
+    type: array
+    description: >-
+      An array of listing note identifiers that provides additional notes on the
+      listing
+    nullable: true
+    items:
+      type: integer
+      format: int32
+  in_hand_at:
+    type: string
+    description: The date when the seller will have the tickets in hand.
+    format: date-time
+    nullable: true
+  external_id:
+    type: string
+    description: >-
+      An identifier that has been assigned to the listing in an external
+      inventory management system.
+    nullable: true
+  external_information:
+    type: string
+    nullable: true
+  notes:
+    type: string
+    description: A comma-separated string of additional notes about the listing
+    nullable: true
+  instant_delivery:
+    type: boolean
+    nullable: true
+  published:
+    type: boolean
+    description: 'True when the listing should be published; Otherwise, false.'
+    nullable: true
+  lms_optin:
+    type: boolean
+    description: >-
+      True when the listing should be opted into Last Minute Sales; Otherwise,
+      false.
+    nullable: true
+  eticket_ids:
+    type: array
+    description: A array of the identifiers of the E-Tickets to be assigned to the listing.
+    nullable: true
+    items:
+      type: integer
+      format: int32
+  relist_tranasction_id:
+    type: integer
+    format: int32
+    nullable: true
+  reservation_details:
+    nullable: true
+    oneOf:
+      - $ref: ./Reservation.yaml
+  is_post_upload_reservation:
+    type: boolean
+  additional_information:
+    nullable: true
+    oneOf:
+      - $ref: ./SellerListingAdditionalInfo.yaml
+  external_event_information:
+    type: array
+    description: Information about the listing's event on other platforms.
+    nullable: true
+    items:
+      $ref: ./SellerListingExternalEventInformation.yaml
+  purchase_price_per_ticket:
+    description: The purchase price paid by the seller for each ticket in the listing.
+    nullable: true
+    oneOf:
+      - $ref: ./Money.yaml
+  total_purchase_price:
+    description: The total purchase price paid by the seller.
+    nullable: true
+    oneOf:
+      - $ref: ./Money.yaml
+  sales_tax_paid:
+    type: boolean
+    description: >-
+      True if the seller already paid sales tax for the ticket(s); otherwise,
+      false.
+    nullable: true
+  barcodes:
+    type: array
+    description: Barcode(s) for the ticket(s) in this listing.
+    nullable: true
+    items:
+      $ref: ./BarcodeInformation.yaml

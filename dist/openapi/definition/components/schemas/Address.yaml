@@ -1,0 +1,30 @@
+type: object
+additionalProperties: false
+properties:
+  full_name:
+    type: string
+    nullable: true
+  address_1:
+    type: string
+    nullable: true
+  address_2:
+    type: string
+    nullable: true
+  address_3:
+    type: string
+    nullable: true
+  city:
+    type: string
+    nullable: true
+  state_province:
+    type: string
+    nullable: true
+  postal_code:
+    type: string
+    nullable: true
+  country_code:
+    type: string
+    nullable: true
+  country:
+    type: string
+    nullable: true

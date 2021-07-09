@@ -1,0 +1,12 @@
+title: PickupLinks
+type: object
+properties:
+  self:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'pickup:delete':
+    description: Delete/Cancel a courier pickup
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml

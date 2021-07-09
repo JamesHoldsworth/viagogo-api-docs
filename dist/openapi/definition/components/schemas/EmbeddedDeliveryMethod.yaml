@@ -1,0 +1,33 @@
+type: object
+additionalProperties: false
+properties:
+  id:
+    type: integer
+    description: The delivery method identifier.
+    format: int32
+  type:
+    description: 'The type of delivery method. Can be ETicket, Post or Pickup.'
+    oneOf:
+      - $ref: ./DeliveryMethodType.yaml
+  name:
+    type: string
+    description: The localised name of the delivery method.
+    nullable: true
+  description:
+    type: string
+    description: The localised description of the delivery method.
+    nullable: true
+  carrier_id:
+    type: integer
+    format: int32
+    nullable: true
+  is_international:
+    type: boolean
+    nullable: true
+  internal_type:
+    type: string
+    nullable: true
+  _links:
+    nullable: true
+    oneOf:
+      - $ref: ./EmbeddedDeliveryMethodLinks.yaml

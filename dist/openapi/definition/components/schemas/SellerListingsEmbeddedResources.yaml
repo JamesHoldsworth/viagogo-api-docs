@@ -1,0 +1,8 @@
+title: SellerListingsEmbeddedResources
+type: object
+properties:
+  items:
+    type: array
+    nullable: true
+    items:
+      $ref: ./SellerListing.yaml

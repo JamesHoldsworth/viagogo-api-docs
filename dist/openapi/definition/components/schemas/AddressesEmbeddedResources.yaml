@@ -1,0 +1,8 @@
+title: AddressesEmbeddedResources
+type: object
+properties:
+  items:
+    type: array
+    nullable: true
+    items:
+      $ref: ./Address2.yaml

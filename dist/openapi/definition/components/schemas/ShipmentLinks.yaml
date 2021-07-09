@@ -1,0 +1,16 @@
+title: ShipmentLinks
+type: object
+properties:
+  self:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'shipment:entertrackingnumber':
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'shipment:label':
+    description: A courier shipping label.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml

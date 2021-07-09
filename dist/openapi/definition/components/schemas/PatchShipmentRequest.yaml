@@ -1,0 +1,6 @@
+type: object
+additionalProperties: false
+properties:
+  tracking_number:
+    type: string
+    nullable: true

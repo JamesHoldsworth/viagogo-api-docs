@@ -5,7 +5,3 @@ properties:
     nullable: true
     oneOf:
       - $ref: ./Link.yaml
-  'payment:webpage':
-    nullable: true
-    oneOf:
-      - $ref: ./Link.yaml

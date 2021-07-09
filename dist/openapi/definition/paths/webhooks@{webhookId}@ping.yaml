@@ -1,0 +1,37 @@
+post:
+  tags:
+    - Webhooks
+  summary: Ping a webhook
+  description: >-
+    Triggers a request to be sent to your webhook. Call this endpoint to test
+    your webhook.
+  operationId: Webhooks_PingWebhook
+  parameters:
+    - name: webhookId
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: int32
+  responses:
+    '202':
+      description: ''
+      content:
+        application/hal+json:
+          schema:
+            $ref: ../components/schemas/Webhook.yaml
+    '400':
+      $ref: ../components/responses/validation_failed.yaml
+      description: null
+    '401':
+      $ref: ../components/responses/requires_authentication.yaml
+      description: null
+    '403':
+      $ref: ../components/responses/forbidden.yaml
+      description: null
+    '500':
+      $ref: ../components/responses/internal_server_error.yaml
+      description: null
+  security:
+    - OAuth2:
+        - 'write:webhooks'

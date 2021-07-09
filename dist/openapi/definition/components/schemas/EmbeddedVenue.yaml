@@ -1,4 +1,5 @@
 type: object
+description: A venue is a location where an event takes place.
 additionalProperties: false
 properties:
   id:

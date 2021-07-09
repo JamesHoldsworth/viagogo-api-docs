@@ -1,0 +1,23 @@
+type: object
+additionalProperties: false
+properties:
+  total_items:
+    type: integer
+    format: int32
+    nullable: true
+  page:
+    type: integer
+    format: int32
+    nullable: true
+  page_size:
+    type: integer
+    format: int32
+    nullable: true
+  _links:
+    nullable: true
+    oneOf:
+      - $ref: ./SellerListingsLinks.yaml
+  _embedded:
+    nullable: true
+    oneOf:
+      - $ref: ./SellerListingsEmbeddedResources.yaml

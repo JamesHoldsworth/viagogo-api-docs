@@ -1,0 +1,8 @@
+title: PickupEmbeddedResources
+type: object
+properties:
+  carrier:
+    description: A carrier (e.g. UPS) that will collect tickets that are to be delivered.
+    nullable: true
+    oneOf:
+      - $ref: ./Carrier.yaml

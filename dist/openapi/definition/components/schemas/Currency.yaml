@@ -1,0 +1,20 @@
+type: object
+additionalProperties: false
+properties:
+  code:
+    type: string
+    nullable: true
+  name:
+    type: string
+    nullable: true
+  symbol:
+    type: string
+    nullable: true
+  decimal_places:
+    type: integer
+    format: int32
+    nullable: true
+  _links:
+    nullable: true
+    oneOf:
+      - $ref: ./CurrencyLinks.yaml

@@ -1,0 +1,17 @@
+type: object
+additionalProperties: false
+properties:
+  name:
+    type: string
+    nullable: true
+  url:
+    type: string
+    nullable: true
+  authorization_header:
+    type: string
+    nullable: true
+  topics:
+    type: array
+    nullable: true
+    items:
+      type: string

@@ -1,0 +1,7 @@
+title: ListingNoteLinks
+type: object
+properties:
+  self:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml

@@ -1,6 +1,6 @@
 get:
   tags:
-    - Sales Management
+    - Payments
   summary: Get a payment
   operationId: Payments_Get
   parameters:
@@ -10,7 +10,6 @@ get:
       schema:
         type: integer
         format: int32
-      x-position: 1
   responses:
     '200':
       description: ''

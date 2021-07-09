@@ -1,0 +1,28 @@
+get:
+  tags:
+    - ListingConstraints
+  summary: List listing constraints for an event
+  operationId: ListingConstraints_GetEventListingConstraints
+  parameters:
+    - name: eventId
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: int32
+  responses:
+    '200':
+      description: ''
+      content:
+        application/hal+json:
+          schema:
+            $ref: ../components/schemas/ListingConstraints.yaml
+    '401':
+      $ref: ../components/responses/requires_authentication.yaml
+      description: null
+    '404':
+      $ref: ../components/responses/not_found.yaml
+      description: null
+    '500':
+      $ref: ../components/responses/internal_server_error.yaml
+      description: null

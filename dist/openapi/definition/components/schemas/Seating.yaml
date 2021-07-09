@@ -1,4 +1,5 @@
 type: object
+description: Represents the seating information for a ticket(s) in a Venue.
 additionalProperties: false
 properties:
   section:

@@ -1,0 +1,28 @@
+type: object
+description: |-
+  The PaymentMethods resource is a collection resource that contains zero
+  or more references to a set of payment methods, and links that guide you
+  on ways to interact with the payment methods. The collection offers a
+  paginated view of payment methods.
+additionalProperties: false
+properties:
+  total_items:
+    type: integer
+    format: int32
+    nullable: true
+  page:
+    type: integer
+    format: int32
+    nullable: true
+  page_size:
+    type: integer
+    format: int32
+    nullable: true
+  _links:
+    nullable: true
+    oneOf:
+      - $ref: ./PaymentMethodsLinks.yaml
+  _embedded:
+    nullable: true
+    oneOf:
+      - $ref: ./PaymentMethodsEmbeddedResources.yaml

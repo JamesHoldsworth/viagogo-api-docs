@@ -1,0 +1,22 @@
+type: object
+description: Reservation details of a sale or a listing.
+additionalProperties: false
+properties:
+  code:
+    type: string
+    nullable: true
+  store:
+    nullable: true
+    oneOf:
+      - $ref: ./ReservationStore.yaml
+  expiry_date:
+    type: string
+    format: date-time
+    nullable: true
+  release_date:
+    type: string
+    format: date-time
+    nullable: true
+  pin:
+    type: string
+    nullable: true

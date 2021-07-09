@@ -1,0 +1,53 @@
+type: object
+description: A method to send or receive payment.
+additionalProperties: false
+properties:
+  id:
+    type: integer
+    description: The payment method identifier.
+    format: int32
+    nullable: true
+  details:
+    type: string
+    description: The obfuscated details of the payment method.
+    nullable: true
+  type:
+    type: string
+    description: The type of the payment method.
+    nullable: true
+  type_description:
+    type: string
+    description: A localised string describing the type of payment method.
+    nullable: true
+  buyer_method:
+    type: boolean
+    description: >-
+      True if the payment method can be used for purchasing listings; otherwise,
+      false.
+    nullable: true
+  default_buyer_method:
+    type: boolean
+    description: >-
+      True if the payment method is the user’s default payment method for
+      purchasing listings.
+    nullable: true
+  seller_method:
+    type: boolean
+    description: >-
+      True if the payment method can be used for receiving payments; otherwise,
+      false.
+    nullable: true
+  default_seller_method:
+    type: boolean
+    description: >-
+      True if the payment method is the user’s default payment method for
+      receiving payments.
+    nullable: true
+  _links:
+    nullable: true
+    oneOf:
+      - $ref: ./PaymentMethodLinks.yaml
+  _embedded:
+    nullable: true
+    oneOf:
+      - $ref: ./PaymentMethodEmbeddedResources.yaml

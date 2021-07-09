@@ -1,0 +1,70 @@
+get:
+  tags:
+    - Shipments (Sales)
+  summary: List shipments for a sale
+  operationId: Shipments_GetSaleShipments
+  parameters:
+    - name: saleId
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: int32
+  responses:
+    '200':
+      description: ''
+      content:
+        application/hal+json:
+          schema:
+            $ref: ../components/schemas/Shipments.yaml
+    '401':
+      $ref: ../components/responses/requires_authentication.yaml
+      description: null
+    '403':
+      $ref: ../components/responses/forbidden.yaml
+      description: null
+    '404':
+      $ref: ../components/responses/not_found.yaml
+      description: null
+    '500':
+      $ref: ../components/responses/internal_server_error.yaml
+      description: null
+  security:
+    - OAuth2:
+        - 'read:user'
+        - 'read:sales'
+put:
+  tags:
+    - Shipments (Sales)
+  summary: Print a shipping label for a sale
+  operationId: Shipments_PutOrGetSaleShipmentLabel
+  parameters:
+    - name: saleId
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: int32
+  responses:
+    '200':
+      description: ''
+      content:
+        application/hal+json:
+          schema:
+            $ref: ../components/schemas/Shipment.yaml
+    '400':
+      $ref: ../components/responses/validation_failed.yaml
+      description: null
+    '401':
+      $ref: ../components/responses/requires_authentication.yaml
+      description: null
+    '403':
+      $ref: ../components/responses/forbidden.yaml
+      description: null
+    '500':
+      $ref: ../components/responses/internal_server_error.yaml
+      description: null
+  security:
+    - OAuth2:
+        - 'write:user'
+        - 'write:sales'

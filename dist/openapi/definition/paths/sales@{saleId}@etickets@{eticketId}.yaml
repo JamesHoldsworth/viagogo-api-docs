@@ -1,0 +1,34 @@
+delete:
+  tags:
+    - E-Tickets (Sales)
+  summary: Delete e-ticket from a sale
+  operationId: ETicket_DeleteSaleETicket
+  parameters:
+    - name: saleId
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: int32
+    - name: eticketId
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: int32
+  responses:
+    '204':
+      description: null
+    '401':
+      $ref: ../components/responses/requires_authentication.yaml
+      description: null
+    '403':
+      $ref: ../components/responses/forbidden.yaml
+      description: null
+    '500':
+      $ref: ../components/responses/internal_server_error.yaml
+      description: null
+  security:
+    - OAuth2:
+        - 'write:user'
+        - 'write:sales'

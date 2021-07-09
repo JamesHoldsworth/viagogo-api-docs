@@ -1,0 +1,23 @@
+type: object
+description: A set of barcodes for a seat.
+additionalProperties: false
+properties:
+  seat_ordinal:
+    type: integer
+    description: An ordinal number for a seat.
+    format: int32
+    nullable: true
+  seat:
+    type: string
+    description: Seat number.
+    nullable: true
+  row:
+    type: string
+    description: Row of ticket.
+    nullable: true
+  barcode_values:
+    type: array
+    description: Barcode(s) for this seat.
+    nullable: true
+    items:
+      type: string

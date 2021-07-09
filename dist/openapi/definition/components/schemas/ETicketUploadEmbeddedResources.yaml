@@ -1,0 +1,9 @@
+title: ETicketUploadEmbeddedResources
+type: object
+properties:
+  etickets:
+    type: array
+    description: An array of the individual E-Tickets contained in the uploaded files.
+    nullable: true
+    items:
+      $ref: ./ETicket.yaml

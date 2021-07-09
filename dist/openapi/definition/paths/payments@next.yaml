@@ -1,7 +1,10 @@
 get:
   tags:
-    - Sales Management
-  summary: Get the next Payment for the currently authenticated user
+    - Payments
+  summary: Preview next payment
+  description: >-
+    Previews the next payment for the authenticated user. The payment will not
+    have an `id` and is subject to changes.
   operationId: Payments_GetNextPayment
   responses:
     '200':

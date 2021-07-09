@@ -1,0 +1,33 @@
+title: PaymentMethodsLinks
+type: object
+properties:
+  self:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  first:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  last:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  next:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'paymentmethod:createcreditcard':
+    description: Adds a new credit card for the current user.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'paymentmethod:createpaypal':
+    description: Adds a new PayPal account for the current user.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  prev:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml

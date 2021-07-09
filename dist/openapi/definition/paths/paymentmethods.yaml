@@ -1,0 +1,38 @@
+get:
+  tags:
+    - PaymentMethods
+  summary: List payment methods
+  description: List payment methods for the authenticated user.
+  operationId: PaymentMethods_GetPaymentMethods
+  parameters:
+    - name: buyer_method
+      in: query
+      schema:
+        type: boolean
+        nullable: true
+    - name: seller_method
+      in: query
+      schema:
+        type: boolean
+        nullable: true
+  responses:
+    '200':
+      description: ''
+      content:
+        application/hal+json:
+          schema:
+            nullable: true
+            oneOf:
+              - $ref: ../components/schemas/PaymentMethods.yaml
+    '401':
+      $ref: ../components/responses/requires_authentication.yaml
+      description: null
+    '403':
+      $ref: ../components/responses/forbidden.yaml
+      description: null
+    '500':
+      $ref: ../components/responses/internal_server_error.yaml
+      description: null
+  security:
+    - OAuth2:
+        - 'read:user'

@@ -1,0 +1,22 @@
+title: AddressLinks
+type: object
+properties:
+  self:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'address:carrier':
+    description: The pickup windows available for Carrier collection.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'address:delete':
+    description: Delete the current user’s address.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'address:update':
+    description: Update the details of the current user’s address.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml

@@ -1,0 +1,17 @@
+type: object
+description: Provides additional notes on a listing
+additionalProperties: false
+properties:
+  id:
+    type: integer
+    description: The listing note identifier.
+    format: int32
+    nullable: true
+  note:
+    type: string
+    description: The localized note.
+    nullable: true
+  _links:
+    nullable: true
+    oneOf:
+      - $ref: ./ListingNoteLinks.yaml

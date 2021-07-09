@@ -1,0 +1,12 @@
+title: ETicketUploadLinks
+type: object
+properties:
+  self:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'eticketupload:document':
+    description: The original file that was uploaded.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml

@@ -1,0 +1,94 @@
+title: SaleLinks
+type: object
+properties:
+  self:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sale:autotrackshipment':
+    description: The webpage where a shipment of tickets can be tracked automatically.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sale:changepapertickettoeticket':
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sale:confirm':
+    description: Confirm the sale.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sale:contactuswebpage':
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sale:etickets':
+    description: >-
+      The uploaded E-Tickets that have been assigned to the tickets that have
+      been sold.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sale:eticketuploads':
+    description: >-
+      The uploaded files containing E-Tickets that have not been assigned to the
+      tickets that have been sold.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sale:listing':
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sale:reject':
+    description: Report a problem with the sale.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sale:saveetickets':
+    description: Assign uploaded E-Tickets to the tickets that have been sold.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sale:savetransferreceipts':
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sale:shipments':
+    description: The shipments related to a sale.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sale:ticketholders':
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sale:trackshipment':
+    description: >-
+      The webpage where a shipment of tickets can be tracked after entering the
+      tracking_number.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sale:transferreceiptuploads':
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sale:uploadetickets':
+    description: Upload a file containing E-Tickets.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sale:uploadeticketurls':
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sale:uploadtransferreceipts':
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sale:webpage':
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml

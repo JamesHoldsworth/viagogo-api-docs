@@ -1,0 +1,28 @@
+title: ShipmentsLinks
+type: object
+properties:
+  self:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  first:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  last:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  next:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  prev:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'shipment:create':
+    description: Creates a new shipment for the ticket(s).
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml

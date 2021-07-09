@@ -1,0 +1,15 @@
+type: object
+additionalProperties: false
+properties:
+  name:
+    type: string
+    nullable: true
+  free_text_row:
+    type: boolean
+  queue_number_row:
+    type: boolean
+  rows:
+    type: array
+    nullable: true
+    items:
+      $ref: ./Row.yaml

@@ -1,0 +1,42 @@
+title: ListingConstraintsEmbeddedResources
+type: object
+properties:
+  connected_seller_listing_notes:
+    type: array
+    nullable: true
+    items:
+      $ref: ./ListingNote.yaml
+  currencies:
+    type: array
+    description: The valid currencies for the listing ticket price.
+    nullable: true
+    items:
+      $ref: ./Currency.yaml
+  listing_notes:
+    type: array
+    description: The available notes for this listing.
+    nullable: true
+    items:
+      $ref: ./ListingNote.yaml
+  required_unique_listing_notes:
+    type: array
+    nullable: true
+    items:
+      $ref: ./ListingNote.yaml
+  restricted_on_use_listing_notes:
+    type: array
+    nullable: true
+    items:
+      $ref: ./ListingNote.yaml
+  split_types:
+    type: array
+    description: The way that tickets are allowed to be split up when sold.
+    nullable: true
+    items:
+      $ref: ./SplitType.yaml
+  ticket_types:
+    type: array
+    description: The valid types of tickets.
+    nullable: true
+    items:
+      $ref: ./TicketType.yaml

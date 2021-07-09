@@ -1,0 +1,26 @@
+type: object
+description: Information about the listing's event on other platforms.
+additionalProperties: false
+properties:
+  id:
+    type: integer
+    description: An identifier for the event on an external platform.
+    format: int32
+  platform:
+    type: string
+    description: The name of the external platform.
+    nullable: true
+  url:
+    type: string
+    description: The URL of the event on the external platform.
+    nullable: true
+  venue_id:
+    type: integer
+    description: An identifier for the event's venue on an external platform.
+    format: int32
+    nullable: true
+  performer_id:
+    type: integer
+    description: An identifier for the event's category on an external platform.
+    format: int32
+    nullable: true

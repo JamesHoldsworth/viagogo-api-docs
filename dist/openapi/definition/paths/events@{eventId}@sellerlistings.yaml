@@ -1,0 +1,42 @@
+post:
+  tags:
+    - SellerListings
+  summary: Create a seller listing
+  operationId: SellerListings_CreateListing
+  parameters:
+    - name: eventId
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: int32
+  requestBody:
+    x-name: body
+    content:
+      application/json:
+        schema:
+          nullable: true
+          oneOf:
+            - $ref: ../components/schemas/PostSellerListingRequest.yaml
+  responses:
+    '201':
+      description: ''
+      content:
+        application/hal+json:
+          schema:
+            $ref: ../components/schemas/SellerListing.yaml
+    '400':
+      $ref: ../components/responses/validation_failed.yaml
+      description: null
+    '401':
+      $ref: ../components/responses/requires_authentication.yaml
+      description: null
+    '403':
+      $ref: ../components/responses/forbidden.yaml
+      description: null
+    '500':
+      $ref: ../components/responses/internal_server_error.yaml
+      description: null
+  security:
+    - OAuth2:
+        - 'write:sellerlistings'
