@@ -7,8 +7,10 @@ lint:
   rules:
     no-unused-components: warn
     spec: warn
+    no-identical-paths: warn
+    path-parameters-defined: warn
 referenceDocs:
-  #htmlTemplate: ./docs/index.html
+  expandResponses: "200,201"
   theme:
     colors:
       primary:
