@@ -1,0 +1,10 @@
+type: integer
+description: ''
+x-enumNames:
+  - Unknown
+  - Home
+  - Away
+enum:
+  - 1
+  - 2
+  - 3

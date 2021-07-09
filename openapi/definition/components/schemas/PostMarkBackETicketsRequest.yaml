@@ -1,0 +1,6 @@
+type: object
+additionalProperties: false
+properties:
+  quantity:
+    type: integer
+    format: int32

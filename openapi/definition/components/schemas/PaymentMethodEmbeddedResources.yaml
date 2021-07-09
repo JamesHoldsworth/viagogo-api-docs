@@ -1,0 +1,13 @@
+title: PaymentMethodEmbeddedResources
+type: object
+properties:
+  billing_address:
+    description: The billing address for this payment method.
+    nullable: true
+    oneOf:
+      - $ref: ./Address2.yaml
+  type_details:
+    type: object
+    description: The type details for this payment method.
+    nullable: true
+    additionalProperties: {}

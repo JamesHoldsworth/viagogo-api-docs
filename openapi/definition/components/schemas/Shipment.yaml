@@ -1,0 +1,25 @@
+type: object
+description: A shipment of one or more tickets by a seller.
+additionalProperties: false
+properties:
+  id:
+    type: integer
+    description: The shipment identifier.
+    format: int32
+  tracking_number:
+    type: string
+    description: The identifier used to track the shipment of the ticket(s).
+    nullable: true
+  delivery_address:
+    description: The address that the seller must ship the tickets to.
+    nullable: true
+    oneOf:
+      - $ref: ./Address.yaml
+  _links:
+    nullable: true
+    oneOf:
+      - $ref: ./ShipmentLinks.yaml
+  _embedded:
+    nullable: true
+    oneOf:
+      - $ref: ./ShipmentEmbeddedResources.yaml

@@ -1,0 +1,51 @@
+type: object
+additionalProperties: false
+properties:
+  section:
+    type: string
+    nullable: true
+  row:
+    type: string
+    nullable: true
+  seat_from:
+    type: string
+    nullable: true
+  seat_to:
+    type: string
+    nullable: true
+  listing_note_ids:
+    type: array
+    nullable: true
+    items:
+      type: integer
+      format: int32
+  offered_compensation:
+    type: number
+    format: decimal
+    nullable: true
+  offered_compensation_currency_code:
+    type: string
+    nullable: true
+  venue_section_config_id:
+    type: integer
+    format: int32
+    nullable: true
+  venue_section_config_row_id:
+    type: integer
+    format: int32
+    nullable: true
+  quantity:
+    type: integer
+    format: int32
+  ticket_type:
+    type: integer
+    format: int32
+  other_notes:
+    type: string
+    nullable: true
+  alternative_offer_state_id:
+    type: integer
+    format: int32
+  message_body:
+    type: string
+    nullable: true

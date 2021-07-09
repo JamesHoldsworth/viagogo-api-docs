@@ -1,0 +1,12 @@
+type: object
+description: Represents a window of time when a courier pickup can be arranged.
+additionalProperties: false
+properties:
+  start_date:
+    type: string
+    description: The date when the window starts.
+    format: date-time
+  end_date:
+    type: string
+    description: The date when the window ends.
+    format: date-time

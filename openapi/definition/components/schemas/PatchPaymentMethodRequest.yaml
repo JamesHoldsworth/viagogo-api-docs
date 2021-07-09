@@ -1,0 +1,9 @@
+type: object
+additionalProperties: false
+properties:
+  default_buyer_method:
+    type: boolean
+    nullable: true
+  default_seller_method:
+    type: boolean
+    nullable: true

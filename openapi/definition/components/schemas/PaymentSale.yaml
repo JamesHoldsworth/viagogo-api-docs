@@ -1,0 +1,32 @@
+type: object
+description: A sale related to a payment that belongs to the currently authenticated user.
+additionalProperties: false
+properties:
+  proceeds:
+    type: array
+    description: Money owed to the user from this sale.
+    nullable: true
+    items:
+      $ref: ./ChargeDetail.yaml
+  charges:
+    type: array
+    description: 'Charges, related to this sale, that are applied to the user''s account.'
+    nullable: true
+    items:
+      $ref: ./ChargeDetail.yaml
+  credits:
+    type: array
+    description: >-
+      Non-proceeds credits, related to this sale, that are applied to the user's
+      account.
+    nullable: true
+    items:
+      $ref: ./ChargeDetail.yaml
+  _links:
+    nullable: true
+    oneOf:
+      - $ref: ./PaymentSaleLinks.yaml
+  _embedded:
+    nullable: true
+    oneOf:
+      - $ref: ./PaymentSaleEmbeddedResources.yaml

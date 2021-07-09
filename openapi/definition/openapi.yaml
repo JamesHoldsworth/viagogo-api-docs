@@ -1,0 +1,158 @@
+openapi: 3.0.0
+info:
+  title: viagogo API v2
+  description:
+    $ref: ../../custom-docs/description.md
+  version: 2.249.0.0
+  x-logo:
+    url: 'https://img.vggcdn.net/img/assets/logo/viagogo_logo_apidocs.png'
+servers:
+  - url: 'https://api.viagogo.net/v2'
+    description: Production
+  - url: 'https://sandbox.api.viagogo.net/v2'
+    description: Sandbox
+paths:
+  '/sellerlistings/{listingId}':
+    $ref: 'paths/sellerlistings@{listingId}.yaml'
+  /sellerlistings:
+    $ref: paths/sellerlistings.yaml
+  '/events/{eventId}/sellerlistingpreview':
+    $ref: 'paths/events@{eventId}@sellerlistingpreview.yaml'
+  '/sellerlistings/{listingId}/updatepreview':
+    $ref: 'paths/sellerlistings@{listingId}@updatepreview.yaml'
+  /sellerlistingpreview:
+    $ref: paths/sellerlistingpreview.yaml
+  '/events/{eventId}/sellerlistings':
+    $ref: 'paths/events@{eventId}@sellerlistings.yaml'
+  '/externalsellerlistings/{externallistingId}':
+    $ref: 'paths/externalsellerlistings@{externallistingId}.yaml'
+  '/externalsellerlistings/{externalId}':
+    $ref: 'paths/externalsellerlistings@{externalId}.yaml'
+  '/events/{eventId}/listingconstraints':
+    $ref: 'paths/events@{eventId}@listingconstraints.yaml'
+  '/sellerlistings/{listingId}/constraints':
+    $ref: 'paths/sellerlistings@{listingId}@constraints.yaml'
+  /listingconstraints:
+    $ref: paths/listingconstraints.yaml
+  '/sales/{saleId}/shipments/{shipmentId}/label':
+    $ref: 'paths/sales@{saleId}@shipments@{shipmentId}@label.yaml'
+  '/sales/{saleId}/shipments':
+    $ref: 'paths/sales@{saleId}@shipments.yaml'
+  '/sales/{saleId}/shipments/{shipmentId}':
+    $ref: 'paths/sales@{saleId}@shipments@{shipmentId}.yaml'
+  '/sellerlistings/{listingId}/shipments/{shipmentId}/label':
+    $ref: 'paths/sellerlistings@{listingId}@shipments@{shipmentId}@label.yaml'
+  '/sellerlistings/{listingId}/shipments':
+    $ref: 'paths/sellerlistings@{listingId}@shipments.yaml'
+  '/sellerlistings/{listingId}/shipments/{shipmentId}':
+    $ref: 'paths/sellerlistings@{listingId}@shipments@{shipmentId}.yaml'
+  '/sales/{saleId}/eticketuploads':
+    $ref: 'paths/sales@{saleId}@eticketuploads.yaml'
+  '/sales/{saleId}/etickets':
+    $ref: 'paths/sales@{saleId}@etickets.yaml'
+  '/sellerlistings/{listingId}/eticketuploads':
+    $ref: 'paths/sellerlistings@{listingId}@eticketuploads.yaml'
+  '/events/{eventId}/eticketuploads':
+    $ref: 'paths/events@{eventId}@eticketuploads.yaml'
+  '/sellerlistings/{listingId}/etickets':
+    $ref: 'paths/sellerlistings@{listingId}@etickets.yaml'
+  '/sales/{saleId}/etickets/{eticketId}':
+    $ref: 'paths/sales@{saleId}@etickets@{eticketId}.yaml'
+  '/sellerlistings/{listingId}/etickets/{ETicketId}':
+    $ref: 'paths/sellerlistings@{listingId}@etickets@{ETicketId}.yaml'
+  '/events/{eventId}/etickets/{eticketId}':
+    $ref: 'paths/events@{eventId}@etickets@{eticketId}.yaml'
+  /sales:
+    $ref: paths/sales.yaml
+  '/sales/{saleId}':
+    $ref: 'paths/sales@{saleId}.yaml'
+  /payments:
+    $ref: paths/payments.yaml
+  '/payments/{paymentId}':
+    $ref: 'paths/payments@{paymentId}.yaml'
+  /payments/next:
+    $ref: paths/payments@next.yaml
+  /webhooks:
+    $ref: paths/webhooks.yaml
+  '/webhooks/{webhookId}':
+    $ref: 'paths/webhooks@{webhookId}.yaml'
+  '/webhooks/{webhookId}/ping':
+    $ref: 'paths/webhooks@{webhookId}@ping.yaml'
+  /addresses:
+    $ref: paths/addresses.yaml
+  '/addresses/{addressId}':
+    $ref: 'paths/addresses@{addressId}.yaml'
+  /paymentmethods:
+    $ref: paths/paymentmethods.yaml
+  '/paymentmethods/{paymentMethodId}':
+    $ref: 'paths/paymentmethods@{paymentMethodId}.yaml'
+  '/listings/{listingId}/paymentmethods':
+    $ref: 'paths/listings@{listingId}@paymentmethods.yaml'
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        implicit:
+          scopes:
+            (no scope): >-
+              Grants read-only access to public information like events,
+              listings.
+            'read:user': >-
+              Grants read-only access to the user's account information,
+              addresses, payment methods, purchases and sales.
+            'write:user': >-
+              Grants write access to the user’s account information, addresses,
+              payment methods and sales.
+            'write:purchases': >-
+              Grants write access to the user’s purchases. This allows users to
+              use your application to purchase listings.
+            'read:sellerlistings': Grants read access to the user’s listings.
+            'write:sellerlistings': >-
+              Grants write access to the user’s listings. This allows users to
+              use your application to create and update listings.
+            'read:webhooks': Grants read access to the user’s webhooks.
+            'write:webhooks': Grants write access to the user’s webhooks.
+            'write:requestedevents': >-
+              Grants write access to the user’s requested events. This allows
+              users to use your application to request an event to be added to
+              the viagogo platform.
+            'read:payment': Grants read-only access to the user's payments
+            'read:sales': Grants read-only access to the user's sales.
+            'write:sales': >-
+              Grants write access to the user's sales. This allows users to use
+              your application to confirm and fulfill sales.
+tags:
+  - name: Addresses
+  - name: E-Tickets (Inventory)
+  - name: E-Tickets (Sales)
+  - name: ListingConstraints
+  - name: PaymentMethods
+  - name: Payments
+  - name: Sales
+    description: View your sales details and fulfill your sales.
+  - name: SellerListings
+    description: 'List tickets, update your listings and search your inventory.'
+  - name: Shipments (Inventory)
+  - name: Shipments (Sales)
+  - name: Webhooks
+x-tagGroups:
+  - name: Manage Inventory
+    tags:
+      - E-Tickets (Inventory)
+      - ListingConstraints
+      - SellerListings
+      - Shipments (Inventory)
+  - name: Manage Sales
+    tags:
+      - E-Tickets (Sales)
+      - Payments
+      - Sales
+      - Shipments (Sales)
+  - name: React To Changes
+    tags:
+      - Webhooks
+  - name: Manage Account
+    tags:
+      - Addresses
+      - PaymentMethods

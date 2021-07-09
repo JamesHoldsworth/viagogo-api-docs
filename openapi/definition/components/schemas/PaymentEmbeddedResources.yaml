@@ -1,0 +1,14 @@
+title: PaymentEmbeddedResources
+type: object
+properties:
+  payment_method:
+    description: Payment method that will be used for the payments or charges.
+    nullable: true
+    oneOf:
+      - $ref: ./EmbeddedPaymentMethod.yaml
+  sales:
+    type: array
+    description: Sales associated with the payment.
+    nullable: true
+    items:
+      $ref: ./PaymentSale.yaml

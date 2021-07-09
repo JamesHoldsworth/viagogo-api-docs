@@ -1,0 +1,27 @@
+title: WebhooksLinks
+type: object
+properties:
+  self:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  first:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  last:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  next:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  prev:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'webhook:create':
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml

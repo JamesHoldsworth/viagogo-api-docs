@@ -1,0 +1,8 @@
+title: AddressEmbeddedResources
+type: object
+properties:
+  country:
+    description: The Country where the address is located.
+    nullable: true
+    oneOf:
+      - $ref: ./Country.yaml

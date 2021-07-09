@@ -1,0 +1,79 @@
+get:
+  tags:
+    - SellerListings
+  summary: List seller listings
+  description: List seller listings for the authenticated user.
+  operationId: SellerListings_GetSellerListings
+  parameters:
+    - name: event_id
+      in: query
+      schema:
+        type: integer
+        format: int32
+        nullable: true
+    - name: requested_event_id
+      in: query
+      schema:
+        type: string
+        format: guid
+        nullable: true
+  responses:
+    '200':
+      description: ''
+      content:
+        application/hal+json:
+          schema:
+            $ref: ../components/schemas/SellerListings.yaml
+    '401':
+      $ref: ../components/responses/requires_authentication.yaml
+      description: null
+    '403':
+      $ref: ../components/responses/forbidden.yaml
+      description: null
+    '404':
+      $ref: ../components/responses/not_found.yaml
+      description: null
+    '500':
+      $ref: ../components/responses/internal_server_error.yaml
+      description: null
+  security:
+    - OAuth2:
+        - 'read:sellerlistings'
+post:
+  tags:
+    - SellerListings
+  summary: Create a seller listing for a requested event
+  description: Creates a seller listing for an event requested by the current user.
+  operationId: SellerListings_CreateListingForRequestedEvent
+  requestBody:
+    x-name: body
+    content:
+      application/json:
+        schema:
+          nullable: true
+          oneOf:
+            - $ref: >-
+                ../components/schemas/PostRequestedEventSellerListingRequest.yaml
+  responses:
+    '201':
+      description: ''
+      content:
+        application/hal+json:
+          schema:
+            $ref: ../components/schemas/SellerListing.yaml
+    '400':
+      $ref: ../components/responses/validation_failed.yaml
+      description: null
+    '401':
+      $ref: ../components/responses/requires_authentication.yaml
+      description: null
+    '403':
+      $ref: ../components/responses/forbidden.yaml
+      description: null
+    '500':
+      $ref: ../components/responses/internal_server_error.yaml
+      description: null
+  security:
+    - OAuth2:
+        - 'write:sellerlistings'
+        - 'write:requestedevents'

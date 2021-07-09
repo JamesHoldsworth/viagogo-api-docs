@@ -1,0 +1,15 @@
+type: object
+additionalProperties: false
+properties:
+  name:
+    type: string
+    nullable: true
+  start_date:
+    type: string
+    nullable: true
+  date_confirmed:
+    type: boolean
+    nullable: true
+  note:
+    type: string
+    nullable: true

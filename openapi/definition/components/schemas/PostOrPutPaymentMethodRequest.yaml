@@ -1,0 +1,41 @@
+type: object
+additionalProperties: false
+properties:
+  default_buyer_method:
+    type: boolean
+    nullable: true
+  default_seller_method:
+    type: boolean
+    nullable: true
+  full_name:
+    type: string
+    nullable: true
+  billing_address_id:
+    type: integer
+    format: int32
+    nullable: true
+  card_number:
+    type: string
+    nullable: true
+  expiry_month:
+    type: integer
+    format: int32
+    nullable: true
+  expiry_year:
+    type: integer
+    format: int32
+    nullable: true
+  start_month:
+    type: integer
+    format: int32
+    nullable: true
+  start_year:
+    type: integer
+    format: int32
+    nullable: true
+  issue_number:
+    type: string
+    nullable: true
+  email:
+    type: string
+    nullable: true

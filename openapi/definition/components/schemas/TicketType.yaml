@@ -1,0 +1,13 @@
+type: object
+additionalProperties: false
+properties:
+  type:
+    type: string
+    nullable: true
+  name:
+    type: string
+    nullable: true
+  _links:
+    nullable: true
+    oneOf:
+      - $ref: ./TicketTypeLinks.yaml

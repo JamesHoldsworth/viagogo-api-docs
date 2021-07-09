@@ -1,0 +1,111 @@
+type: object
+description: >-
+  A set of tickets for sale on the viagogo marketplace that belong to the
+  currently authenticated user.
+additionalProperties: false
+properties:
+  id:
+    type: integer
+    description: The listing identifier.
+    format: int64
+    nullable: true
+  created_at:
+    type: string
+    description: The date when the listing was created.
+    format: date-time
+    nullable: true
+  number_of_tickets:
+    type: integer
+    description: The number of tickets available for purchase.
+    format: int32
+    nullable: true
+  seating:
+    description: The seating information for the ticket(s) in this listing.
+    nullable: true
+    oneOf:
+      - $ref: ./Seating.yaml
+  display_seating:
+    description: >-
+      The seating information that will be displayed to buyers for the ticket(s)
+      in this listing.
+    nullable: true
+    oneOf:
+      - $ref: ./Seating.yaml
+  ticket_price:
+    description: The price of each ticket in the listing.
+    nullable: true
+    oneOf:
+      - $ref: ./Money.yaml
+  updated_at:
+    type: string
+    description: The date when the listing was last updated.
+    format: date-time
+    nullable: true
+  external_id:
+    type: string
+    description: >-
+      An identifier that has been assigned to the listing in an external
+      inventory management system.
+    nullable: true
+  expires_at:
+    type: string
+    description: >-
+      The date when the listing will be automatically unpublished from the
+      marketplace.
+    format: date-time
+    nullable: true
+  display_number_of_tickets:
+    type: integer
+    description: >-
+      The number of tickets that should be displayed to buyers as available for
+      purchase.
+    format: int32
+    nullable: true
+  face_value:
+    description: 'The price printed on the ticket, not including any booking fees.'
+    nullable: true
+    oneOf:
+      - $ref: ./Money.yaml
+  ticket_proceeds:
+    description: The amount that the seller will receive for each ticket sold.
+    nullable: true
+    oneOf:
+      - $ref: ./Money.yaml
+  in_hand_at:
+    type: string
+    description: The date when the seller will have the tickets in hand.
+    format: date-time
+    nullable: true
+  barcodes:
+    type: array
+    description: Barcode(s) for the ticket(s) in this listing.
+    nullable: true
+    items:
+      $ref: ./BarcodeInformation.yaml
+  instant_delivery:
+    type: boolean
+    nullable: true
+  purchase_price_per_ticket:
+    description: The purchase price paid by the seller for each ticket in the listing.
+    nullable: true
+    oneOf:
+      - $ref: ./Money.yaml
+  total_purchase_price:
+    description: The total purchase price paid by the seller.
+    nullable: true
+    oneOf:
+      - $ref: ./Money.yaml
+  sales_tax_paid:
+    type: boolean
+    description: >-
+      True if the seller already paid sales tax for the ticket(s); otherwise,
+      false.
+    nullable: true
+  _links:
+    nullable: true
+    oneOf:
+      - $ref: ./SellerListingLinks.yaml
+  _embedded:
+    nullable: true
+    oneOf:
+      - $ref: ./SellerListingEmbeddedResources.yaml

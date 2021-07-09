@@ -1,0 +1,12 @@
+title: EmbeddedDeliveryMethodLinks
+type: object
+properties:
+  self:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'deliverymethod:logo':
+    description: An image file containing the logo for the delivery method.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml

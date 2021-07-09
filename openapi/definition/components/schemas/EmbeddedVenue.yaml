@@ -1,0 +1,39 @@
+type: object
+description: A venue is a location where an event takes place.
+additionalProperties: false
+properties:
+  id:
+    type: integer
+    description: The venue identifier.
+    format: int32
+    nullable: true
+  name:
+    type: string
+    description: The name of the venue.
+    nullable: true
+  city:
+    type: string
+    description: The name of the city where the venue is located.
+    nullable: true
+  state_province:
+    type: string
+    description: The name of the State or Province where the venue is located.
+    nullable: true
+  latitude:
+    type: number
+    description: The latitude for the venue.
+    format: double
+    nullable: true
+  longitude:
+    type: number
+    description: The longitude for the venue.
+    format: double
+    nullable: true
+  _links:
+    nullable: true
+    oneOf:
+      - $ref: ./EmbeddedVenueLinks.yaml
+  _embedded:
+    nullable: true
+    oneOf:
+      - $ref: ./EmbeddedVenueEmbeddedResources.yaml

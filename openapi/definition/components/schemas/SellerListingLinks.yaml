@@ -1,0 +1,150 @@
+title: SellerListingLinks
+type: object
+properties:
+  self:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'event:createsellerlisting':
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sellerlisting:constraints':
+    description: The constraints applied to this listing.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sellerlisting:contactuswebpage':
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sellerlisting:delete':
+    description: Delete a listing.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sellerlisting:etickets':
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sellerlisting:eticketuploads':
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sellerlisting:lmsoptin':
+    description: Opt this listing into Last Minute Sales.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sellerlisting:lmsoptout':
+    description: Opt this listing out of Last Minute Sales.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sellerlisting:lmspickup':
+    description: The pickup instructions for Last Minute Sales.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sellerlisting:optionalverificationrequests':
+    description: |-
+      The VerificationRequests that can be resolved in order for the
+      listing to be published on some viagogo websites.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sellerlisting:pricing':
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sellerlisting:publish':
+    description: Make seller listing available for purchase.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sellerlisting:saveetickets':
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sellerlisting:shipments':
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sellerlisting:ticketlocation':
+    description: The address where the ticket(s) are located.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sellerlisting:unpublish':
+    description: Make the listing unavailable for purchase.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sellerlisting:updatedisplaynumberoftickets':
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sellerlisting:updatefacevalue':
+    description: Update face value for this listing.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sellerlisting:updateinhandat':
+    description: Update the date the seller will have tickets for this listing in hand.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sellerlisting:updatenotes':
+    description: Update notes for this listing.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sellerlisting:updatenumberoftickets':
+    description: Update number of tickets available for purchase.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sellerlisting:updatepreview':
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sellerlisting:updateseating':
+    description: Update the seating information for the ticket(s) in this listing.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sellerlisting:updatesplittype':
+    description: Update the way the ticket(s) are allowed to be split up when sold.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sellerlisting:updateticketlocation':
+    description: Update the address where the ticket(s) are located.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sellerlisting:updateticketprice':
+    description: Update the price of each ticket in this listing.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sellerlisting:updatetickettype':
+    description: Update the type of ticket(s) for this listing.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sellerlisting:uploadeticket':
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sellerlisting:verificationrequests':
+    description: |-
+      The VerificationRequests that must be resolved in order for the
+      listing to be published on all viagogo websites.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sellerlisting:webpage':
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml

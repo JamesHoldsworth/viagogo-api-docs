@@ -1,0 +1,23 @@
+type: object
+additionalProperties: false
+properties:
+  number_of_tickets:
+    type: integer
+    format: int32
+    nullable: true
+  delivery_address_id:
+    type: integer
+    format: int32
+    nullable: true
+  delivery_method_id:
+    type: integer
+    format: int32
+    nullable: true
+  coupons:
+    type: array
+    nullable: true
+    items:
+      type: string
+  pickup_full_name:
+    type: string
+    nullable: true

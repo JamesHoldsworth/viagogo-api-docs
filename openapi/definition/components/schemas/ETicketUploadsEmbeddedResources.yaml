@@ -1,0 +1,8 @@
+title: ETicketUploadsEmbeddedResources
+type: object
+properties:
+  items:
+    type: array
+    nullable: true
+    items:
+      $ref: ./ETicketUpload.yaml

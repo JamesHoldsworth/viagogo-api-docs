@@ -1,0 +1,12 @@
+type: object
+description: An electronic ticket that has been uploaded for a listing or a sale.
+additionalProperties: false
+properties:
+  id:
+    type: integer
+    description: The identifier of the E-Ticket.
+    format: int32
+  _links:
+    nullable: true
+    oneOf:
+      - $ref: ./ETicketLinks.yaml

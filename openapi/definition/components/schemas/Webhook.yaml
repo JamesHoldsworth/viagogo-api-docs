@@ -1,0 +1,40 @@
+type: object
+description: |-
+  A webhook is a subscription from a server application to certain topics
+  on the viagogo platform. When an occurrence of a topic is triggered,
+  we’ll POST a payload to the webhook’s configured url.
+additionalProperties: false
+properties:
+  id:
+    type: integer
+    description: The webhook identifier.
+    format: int32
+    nullable: true
+  name:
+    type: string
+    description: The name of the webhook.
+    nullable: true
+  created_at:
+    type: string
+    description: The date when the webhook was created.
+    format: date-time
+  topics:
+    type: array
+    description: An array of the topics the webhook is trigger for.
+    nullable: true
+    items:
+      type: string
+  url:
+    type: string
+    description: The server endpoint that will receive the webhook payload.
+    nullable: true
+  authorization_header:
+    type: string
+    description: >-
+      The Authorization header value that should be included in requests to the
+      webhook.
+    nullable: true
+  _links:
+    nullable: true
+    oneOf:
+      - $ref: ./WebhookLinks.yaml

@@ -1,0 +1,23 @@
+title: SaleEmbeddedResources
+type: object
+properties:
+  delivery_method:
+    description: The delivery method for the ticket(s).
+    nullable: true
+    oneOf:
+      - $ref: ./EmbeddedDeliveryMethod.yaml
+  event:
+    description: The event for this sale.
+    nullable: true
+    oneOf:
+      - $ref: ./EmbeddedEvent.yaml
+  ticket_type:
+    description: The type of ticket(s) that was sold.
+    nullable: true
+    oneOf:
+      - $ref: ./TicketType.yaml
+  venue:
+    description: The venue where the event is taking place.
+    nullable: true
+    oneOf:
+      - $ref: ./EmbeddedVenue.yaml

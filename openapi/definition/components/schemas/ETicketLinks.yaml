@@ -1,0 +1,22 @@
+title: ETicketLinks
+type: object
+properties:
+  self:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'eticket:delete':
+    description: Delete this E-Ticket.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'eticket:document':
+    description: A PDF file containing the E-Ticket.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'eticket:thumbnail':
+    description: An image file containing a thumbnail of the E-Ticket.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml

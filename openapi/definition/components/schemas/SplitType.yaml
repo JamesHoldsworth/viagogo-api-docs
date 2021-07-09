@@ -1,0 +1,20 @@
+type: object
+description: The way that the ticket(s) in a listing are allowed to be split up when sold.
+additionalProperties: false
+properties:
+  type:
+    type: string
+    description: 'The type of split. Can be Any, None, AvoidOne, AvoidOneAndThree, or Pairs.'
+    nullable: true
+  name:
+    type: string
+    description: The localised name of the type of split.
+    nullable: true
+  description:
+    type: string
+    description: The localised description of the split.
+    nullable: true
+  _links:
+    nullable: true
+    oneOf:
+      - $ref: ./SplitTypeLinks.yaml

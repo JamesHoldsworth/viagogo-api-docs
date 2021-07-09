@@ -1,0 +1,8 @@
+title: SalesEmbeddedResources
+type: object
+properties:
+  items:
+    type: array
+    nullable: true
+    items:
+      $ref: ./Sale.yaml

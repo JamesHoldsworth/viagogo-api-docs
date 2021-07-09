@@ -1,0 +1,28 @@
+get:
+  tags:
+    - Payments
+  summary: List payments
+  description: Lists payments for the authenticated user.
+  operationId: Payments_GetPayments
+  responses:
+    '200':
+      description: ''
+      content:
+        application/hal+json:
+          schema:
+            nullable: true
+            oneOf:
+              - $ref: ../components/schemas/Payments.yaml
+    '401':
+      $ref: ../components/responses/requires_authentication.yaml
+      description: null
+    '403':
+      $ref: ../components/responses/forbidden.yaml
+      description: null
+    '500':
+      $ref: ../components/responses/internal_server_error.yaml
+      description: null
+  security:
+    - OAuth2:
+        - 'read:user'
+        - 'read:payment'

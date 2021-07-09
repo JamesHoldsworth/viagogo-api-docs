@@ -1,0 +1,27 @@
+title: PaymentMethodLinks
+type: object
+properties:
+  self:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'paymentmethod:delete':
+    description: Delete the current user’s payment method.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'paymentmethod:updatecreditcard':
+    description: Update the current user’s credit card details.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'paymentmethod:updatedefaults':
+    description: Update the default payment methods for the current user.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'paymentmethod:updatepaypal':
+    description: Update the current user’s PayPal details.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml

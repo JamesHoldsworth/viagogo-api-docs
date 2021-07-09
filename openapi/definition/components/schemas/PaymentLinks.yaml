@@ -1,0 +1,7 @@
+title: PaymentLinks
+type: object
+properties:
+  self:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml

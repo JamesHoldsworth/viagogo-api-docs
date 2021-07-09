@@ -1,0 +1,52 @@
+type: object
+description: >-
+  A payment on the viagogo marketplace that belongs to the currently
+  authenticated user.
+additionalProperties: false
+properties:
+  id:
+    type: integer
+    description: The payment identifier
+    format: int32
+    nullable: true
+  created_at:
+    type: string
+    description: Date when the payment was created.
+    format: date-time
+    nullable: true
+  number_of_sales:
+    type: integer
+    description: Total number of sales associated to the payment.
+    format: int32
+  payment_amount:
+    description: Net amount the user will receive in this payment.
+    nullable: true
+    oneOf:
+      - $ref: ./Money.yaml
+  credits:
+    description: >-
+      Non-proceeds credits applied to the user's account, paid out in this
+      payment.
+    nullable: true
+    oneOf:
+      - $ref: ./Money.yaml
+  charges:
+    description: 'Charges applied to the user''s account, settled in this payment.'
+    nullable: true
+    oneOf:
+      - $ref: ./Money.yaml
+  proceeds:
+    description: >-
+      Money owed to the user from sale(s) of a ticket(s), paid out in this
+      payment.
+    nullable: true
+    oneOf:
+      - $ref: ./Money.yaml
+  _links:
+    nullable: true
+    oneOf:
+      - $ref: ./PaymentLinks.yaml
+  _embedded:
+    nullable: true
+    oneOf:
+      - $ref: ./PaymentEmbeddedResources.yaml
