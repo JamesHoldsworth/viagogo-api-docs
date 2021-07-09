@@ -5,7 +5,8 @@
     "description": "viagogo's v2 REST API",
     "version": "2.249.0.0",
     "x-logo": {
-      "url": "https://img.vggcdn.net/img/assets/logo/viagogo_logo_apidocs.png"
+      "url": "https://img.vggcdn.net/img/assets/logo/viagogo_logo_apidocs.png",
+      "backgroundColor": "#222222"
     }
   },
   "servers": [
