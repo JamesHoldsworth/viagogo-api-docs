@@ -93,8 +93,47 @@ components:
   securitySchemes:
     OAuth2:
       type: oauth2
+      bearerFormat: JWT
       flows:
         implicit:
+          authorizationUrl: 'https://account.viagogo.com/authorize'
+          tokenUrl: 'https://account.viagogo.com/oauth2/token'
+          refreshUrl: 'https://account.viagogo.com/oauth2/token'
+          scopes:
+            (no scope): >-
+              Grants read-only access to public information like events,
+              listings.
+            'read:user': >-
+              Grants read-only access to the user's account information,
+              addresses, payment methods, purchases and sales.
+            'write:user': >-
+              Grants write access to the user’s account information, addresses,
+              payment methods and sales.
+            'write:purchases': >-
+              Grants write access to the user’s purchases. This allows users to
+              use your application to purchase listings.
+            'read:sellerlistings': Grants read access to the user’s listings.
+            'write:sellerlistings': >-
+              Grants write access to the user’s listings. This allows users to
+              use your application to create and update listings.
+            'read:webhooks': Grants read access to the user’s webhooks.
+            'write:webhooks': Grants write access to the user’s webhooks.
+            'write:requestedevents': >-
+              Grants write access to the user’s requested events. This allows
+              users to use your application to request an event to be added to
+              the viagogo platform.
+            'read:payment': Grants read-only access to the user's payments
+            'read:sales': Grants read-only access to the user's sales.
+            'write:sales': >-
+              Grants write access to the user's sales. This allows users to use
+              your application to confirm and fulfill sales.
+        clientCredentials:
+          tokenUrl: 'https://account.viagogo.com/oauth2/token'
+          scopes: {}
+        authorizationCode:
+          authorizationUrl: 'https://account.viagogo.com/authorize'
+          tokenUrl: 'https://account.viagogo.com/oauth2/token'
+          refreshUrl: 'https://account.viagogo.com/oauth2/token'
           scopes:
             (no scope): >-
               Grants read-only access to public information like events,

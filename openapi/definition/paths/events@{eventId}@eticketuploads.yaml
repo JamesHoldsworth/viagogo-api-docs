@@ -10,6 +10,12 @@ post:
       schema:
         type: integer
         format: int32
+    - name: page
+      in: query
+      description: Specifies which page of data to retrieve.
+    - name: page_size
+      in: query
+      description: Set custom page sizes on response.
   responses:
     '200':
       description: ''
