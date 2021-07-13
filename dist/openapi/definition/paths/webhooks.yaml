@@ -4,6 +4,18 @@ get:
   summary: List webhooks
   description: List webhooks for the authenticated user.
   operationId: Webhooks_Get
+  parameters:
+    - name: page
+      in: query
+      description: Specifies which page of data to retrieve.
+    - name: page_size
+      in: query
+      description: Set custom page sizes on response.
+    - name: sort
+      in: query
+      description: >-
+        Determines the ordering of items. A comma-separated string containing
+        `created_at`.
   responses:
     '200':
       description: ''

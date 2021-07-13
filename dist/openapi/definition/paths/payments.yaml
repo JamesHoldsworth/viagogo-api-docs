@@ -4,6 +4,18 @@ get:
   summary: List payments
   description: Lists payments for the authenticated user.
   operationId: Payments_GetPayments
+  parameters:
+    - name: page
+      in: query
+      description: Specifies which page of data to retrieve.
+    - name: page_size
+      in: query
+      description: Set custom page sizes on response.
+    - name: sort
+      in: query
+      description: >-
+        Determines the ordering of items. A comma-separated string containing
+        `created_at`, or`id`.
   responses:
     '200':
       description: ''

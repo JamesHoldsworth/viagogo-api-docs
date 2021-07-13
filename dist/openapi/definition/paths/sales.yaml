@@ -4,6 +4,19 @@ get:
   summary: List sales
   description: List sales for the authenticated user.
   operationId: Sales_GetSales
+  parameters:
+    - name: page
+      in: query
+      description: Specifies which page of data to retrieve.
+    - name: page_size
+      in: query
+      description: Set custom page sizes on response.
+    - name: sort
+      in: query
+      description: >-
+        Determines the ordering of items. A comma-separated string containing
+        `created_at`, `event_date`, `inhand_at`, `payment_amount`, `quantity`,
+        or`resource_version`.
   responses:
     '200':
       description: ''

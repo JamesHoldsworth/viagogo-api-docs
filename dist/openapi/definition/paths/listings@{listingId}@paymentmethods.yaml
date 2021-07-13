@@ -10,6 +10,12 @@ put:
       schema:
         type: integer
         format: int64
+    - name: page
+      in: query
+      description: Specifies which page of data to retrieve.
+    - name: page_size
+      in: query
+      description: Set custom page sizes on response.
   requestBody:
     x-name: body
     content:
