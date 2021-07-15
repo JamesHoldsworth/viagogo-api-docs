@@ -1,0 +1,28 @@
+title: SearchResultEmbeddedResources
+type: object
+properties:
+  category:
+    description: The category that a search result represents.
+    nullable: true
+    oneOf:
+      - $ref: ./EmbeddedCategory.yaml
+  event:
+    description: The event that a search result represents.
+    nullable: true
+    oneOf:
+      - $ref: ./EmbeddedEvent.yaml
+  genre:
+    description: The genre of the category that a search result represents.
+    nullable: true
+    oneOf:
+      - $ref: ./EmbeddedCategory.yaml
+  metro_area:
+    description: The metro area that a search result represents.
+    nullable: true
+    oneOf:
+      - $ref: ./MetroArea.yaml
+  venue:
+    description: The venue that a search result represents.
+    nullable: true
+    oneOf:
+      - $ref: ./EmbeddedVenue.yaml

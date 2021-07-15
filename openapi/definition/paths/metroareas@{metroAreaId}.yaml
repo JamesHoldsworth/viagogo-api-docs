@@ -1,0 +1,28 @@
+get:
+  tags:
+    - MetroAreas
+  summary: Get a metro area
+  operationId: MetroAreas_GetMetroArea
+  parameters:
+    - name: metroAreaId
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: int32
+  responses:
+    '200':
+      description: ''
+      content:
+        application/hal+json:
+          schema:
+            $ref: ../components/schemas/MetroArea.yaml
+    '401':
+      $ref: ../components/responses/requires_authentication.yaml
+      description: null
+    '404':
+      $ref: ../components/responses/not_found.yaml
+      description: null
+    '500':
+      $ref: ../components/responses/internal_server_error.yaml
+      description: null

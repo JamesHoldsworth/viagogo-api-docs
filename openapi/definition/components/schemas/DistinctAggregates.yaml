@@ -1,0 +1,17 @@
+type: object
+additionalProperties: false
+properties:
+  categories:
+    type: array
+    nullable: true
+    items:
+      $ref: ./DistinctAggregate.yaml
+  venues:
+    type: array
+    nullable: true
+    items:
+      $ref: ./DistinctAggregate.yaml
+  _links:
+    nullable: true
+    oneOf:
+      - $ref: ./DistinctAggregatesLinks.yaml

@@ -1,0 +1,27 @@
+title: SearchResultLinks
+type: object
+properties:
+  self:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'searchresult:category':
+    description: The category that a search result represents.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'searchresult:event':
+    description: The event that a search result represents.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'searchresult:metroarea':
+    description: The metro area that a search result represents.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'searchresult:venue':
+    description: The venue that a search result represents.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml

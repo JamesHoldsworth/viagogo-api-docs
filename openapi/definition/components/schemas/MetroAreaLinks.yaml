@@ -1,0 +1,17 @@
+title: MetroAreaLinks
+type: object
+properties:
+  self:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'metroarea:events':
+    description: The events taking place in a metro area.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'metroarea:venues':
+    description: The venues located in a metro area.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml

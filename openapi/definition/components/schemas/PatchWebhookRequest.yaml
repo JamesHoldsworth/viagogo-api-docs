@@ -3,15 +3,21 @@ additionalProperties: false
 properties:
   name:
     type: string
+    description: The name of the webhook.
     nullable: true
   url:
     type: string
+    description: The server endpoint that will receive the webhook payload.
     nullable: true
   authorization_header:
     type: string
+    description: >-
+      The Authorization header value that should be included in requests to the
+      webhook.
     nullable: true
   topics:
     type: array
+    description: An array of the topics the webhook is trigger for.
     nullable: true
     items:
       type: string

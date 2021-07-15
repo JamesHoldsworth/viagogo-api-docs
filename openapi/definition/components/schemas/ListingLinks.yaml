@@ -1,0 +1,29 @@
+title: ListingLinks
+type: object
+properties:
+  self:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'listing:event':
+    description: The event for this listing.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'listing:localwebpage':
+    description: The webpage on the local viagogo website where a listing can be purchased.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'listing:sellerlisting':
+    description: >-
+      The associated SellerListing for the listing, if it belongs to the
+      currently authenticated user.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'listing:webpage':
+    description: The webpage on the viagogo website for this listing.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml

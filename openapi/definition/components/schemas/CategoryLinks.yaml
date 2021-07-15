@@ -1,0 +1,39 @@
+title: CategoryLinks
+type: object
+properties:
+  self:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'category:children':
+    description: The direct descendants of this category.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'category:events':
+    description: The events in this category.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'category:image':
+    description: The image for this category.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'category:parent':
+    description: The parent of this category.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'category:performers':
+    description: >-
+      The leaf descendants this category. These categories will be direct
+      parents of events.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'category:webpage':
+    description: The webpage on the viagogo website for this category.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml

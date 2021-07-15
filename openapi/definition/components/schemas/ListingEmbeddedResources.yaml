@@ -1,0 +1,14 @@
+title: ListingEmbeddedResources
+type: object
+properties:
+  listing_notes:
+    type: array
+    description: The listing notes for this listing.
+    nullable: true
+    items:
+      $ref: ./ListingNote.yaml
+  ticket_type:
+    description: The type of ticket(s) in this listing.
+    nullable: true
+    oneOf:
+      - $ref: ./TicketType.yaml

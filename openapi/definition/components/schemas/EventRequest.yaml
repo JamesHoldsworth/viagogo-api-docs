@@ -3,13 +3,19 @@ additionalProperties: false
 properties:
   name:
     type: string
+    description: The name of the event.
     nullable: true
   start_date:
     type: string
+    description: The date when the event starts.
     nullable: true
   date_confirmed:
     type: boolean
+    description: >-
+      True if the event start and end date have been confirmed; Otherwise,
+      false.
     nullable: true
   note:
     type: string
+    description: Additional notes on the event.
     nullable: true

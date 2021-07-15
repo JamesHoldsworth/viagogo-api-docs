@@ -1,0 +1,42 @@
+title: EventLinks
+type: object
+properties:
+  self:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'event:category':
+    description: The category that contains this event.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'event:createsellerlisting':
+    description: Create a SellerListing for this event.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'event:listingconstraints':
+    description: The listing constraints for this event.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'event:listings':
+    description: The listings for this event.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'event:localwebpage':
+    description: The webpage on the local viagogo website for this event.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'event:sellerlistingpreview':
+    description: Creates a preview of a SellerListing for this event.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'event:webpage':
+    description: The webpage on the viagogo website for this event.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml

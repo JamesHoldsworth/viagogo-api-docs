@@ -1,15 +1,19 @@
 type: object
+description: A requested event.
 additionalProperties: false
 properties:
   event:
+    description: The event information.
     nullable: true
     oneOf:
       - $ref: ./EventRequest.yaml
   venue:
+    description: The venue where the event will take place.
     nullable: true
     oneOf:
       - $ref: ./EmbeddedVenue.yaml
   country:
+    description: The country where the event will take place.
     nullable: true
     oneOf:
       - $ref: ./Country.yaml

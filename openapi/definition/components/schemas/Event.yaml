@@ -1,0 +1,70 @@
+type: object
+description: An event on the viagogo platform.
+additionalProperties: false
+properties:
+  id:
+    type: integer
+    description: The event identifier.
+    format: int32
+    nullable: true
+  name:
+    type: string
+    description: The name of the event.
+    nullable: true
+  start_date:
+    type: string
+    description: The date when the event starts.
+    format: date-time
+    nullable: true
+  end_date:
+    type: string
+    description: The date when the event ends.
+    format: date-time
+    nullable: true
+  on_sale_date:
+    type: string
+    description: The date when tickets for the event will go onsale.
+    format: date-time
+    nullable: true
+  date_confirmed:
+    type: boolean
+    description: >-
+      True if the event start and end date have been confirmed; Otherwise,
+      false.
+    nullable: true
+  min_ticket_price:
+    description: The minimum ticket price of the event.
+    nullable: true
+    oneOf:
+      - $ref: ./Money.yaml
+  number_of_tickets:
+    type: integer
+    description: The number of tickets currently available for this event.
+    format: int32
+    nullable: true
+  notes_html:
+    type: string
+    description: >-
+      Localized string containing HTML markup that describes the notes for the
+      event.
+    nullable: true
+  restrictions_html:
+    type: string
+    description: >-
+      Localized string containing HTML markup that describes the purchase
+      restrictions on the event.
+    nullable: true
+  affiliate_commission_tier:
+    type: string
+    description: >-
+      The tier of commission paid to affiliates that market this event. Can be
+      `Normal` or `Low`.
+    nullable: true
+  _links:
+    nullable: true
+    oneOf:
+      - $ref: ./EventLinks.yaml
+  _embedded:
+    nullable: true
+    oneOf:
+      - $ref: ./EventEmbeddedResources.yaml

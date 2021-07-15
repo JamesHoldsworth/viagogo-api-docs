@@ -1,0 +1,48 @@
+get:
+  tags:
+    - Categories
+  summary: List category children
+  description: List categories that are direct-descendants of a category.
+  operationId: Categories_GetChildren
+  parameters:
+    - name: categoryId
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: int32
+    - name: page
+      in: query
+      description: Specifies which page of data to retrieve.
+      schema:
+        type: integer
+        format: int32
+    - name: page_size
+      in: query
+      description: Set custom page sizes on response.
+      schema:
+        type: integer
+        format: int32
+    - name: sort
+      in: query
+      description: >-
+        Determines the ordering of items. A comma-separated string containing
+        `resource_version`.
+      schema:
+        type: string
+  responses:
+    '200':
+      description: ''
+      content:
+        application/hal+json:
+          schema:
+            $ref: ../components/schemas/Categories.yaml
+    '401':
+      $ref: ../components/responses/requires_authentication.yaml
+      description: null
+    '404':
+      $ref: ../components/responses/not_found.yaml
+      description: null
+    '500':
+      $ref: ../components/responses/internal_server_error.yaml
+      description: null

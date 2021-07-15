@@ -1,0 +1,26 @@
+type: object
+description: A SearchResult resource represents a single result of a search.
+additionalProperties: false
+properties:
+  title:
+    type: string
+    description: The localized name of the search result.
+    nullable: true
+  type:
+    type: string
+    description: >-
+      The type of the search result. Can be `Event`, `Category`, `Venue` or
+      `MetroArea`.
+    nullable: true
+  type_description:
+    type: string
+    description: The localized text describing the type of the search result.
+    nullable: true
+  _links:
+    nullable: true
+    oneOf:
+      - $ref: ./SearchResultLinks.yaml
+  _embedded:
+    nullable: true
+    oneOf:
+      - $ref: ./SearchResultEmbeddedResources.yaml

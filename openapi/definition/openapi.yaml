@@ -13,6 +13,34 @@ servers:
   - url: 'https://sandbox.api.viagogo.net/v2'
     description: Sandbox
 paths:
+  '/currencies/{currencyCode}':
+    $ref: 'paths/currencies@{currencyCode}.yaml'
+  /currencies:
+    $ref: paths/currencies.yaml
+  '/categories/{categoryId}':
+    $ref: 'paths/categories@{categoryId}.yaml'
+  '/categories/{categoryId}/children':
+    $ref: 'paths/categories@{categoryId}@children.yaml'
+  '/events/{eventId}':
+    $ref: 'paths/events@{eventId}.yaml'
+  '/categories/{categoryId}/events':
+    $ref: 'paths/categories@{categoryId}@events.yaml'
+  '/venues/{venueId}':
+    $ref: 'paths/venues@{venueId}.yaml'
+  /venues:
+    $ref: paths/venues.yaml
+  '/metroareas/{metroAreaId}':
+    $ref: 'paths/metroareas@{metroAreaId}.yaml'
+  /metroareas:
+    $ref: paths/metroareas.yaml
+  '/events/{eventId}/listings':
+    $ref: 'paths/events@{eventId}@listings.yaml'
+  '/listings/{listingId}':
+    $ref: 'paths/listings@{listingId}.yaml'
+  /search:
+    $ref: paths/search.yaml
+  '':
+    $ref: paths.yaml
   '/sellerlistings/{listingId}':
     $ref: 'paths/sellerlistings@{listingId}.yaml'
   /sellerlistings:
@@ -35,6 +63,10 @@ paths:
     $ref: 'paths/sellerlistings@{listingId}@constraints.yaml'
   /listingconstraints:
     $ref: paths/listingconstraints.yaml
+  /sellerevents:
+    $ref: paths/sellerevents.yaml
+  '/sellerevents/{eventIdOrRequestedEventId}':
+    $ref: 'paths/sellerevents@{eventIdOrRequestedEventId}.yaml'
   '/sales/{saleId}/shipments/{shipmentId}/label':
     $ref: 'paths/sales@{saleId}@shipments@{shipmentId}@label.yaml'
   '/sales/{saleId}/shipments':
@@ -73,6 +105,17 @@ paths:
     $ref: 'paths/payments@{paymentId}.yaml'
   /payments/next:
     $ref: paths/payments@next.yaml
+  /salesaggregates:
+    $ref: paths/salesaggregates.yaml
+  '/etickets/{eticketId}/thumbnail':
+    $ref: 'paths/etickets@{eticketId}@thumbnail.yaml'
+  '/eticketuploads/{eticketUploadId}/document':
+    $ref: 'paths/eticketuploads@{eticketUploadId}@document.yaml'
+  '/etickets/{eticketId}/document':
+    $ref: 'paths/etickets@{eticketId}@document.yaml'
+  '/sellerlistings/{listingId}/markedbacketickets/{markedBackETicketId}/document':
+    $ref: >-
+      paths/sellerlistings@{listingId}@markedbacketickets@{markedBackETicketId}@document.yaml
   /webhooks:
     $ref: paths/webhooks.yaml
   '/webhooks/{webhookId}':
@@ -89,6 +132,8 @@ paths:
     $ref: 'paths/paymentmethods@{paymentMethodId}.yaml'
   '/listings/{listingId}/paymentmethods':
     $ref: 'paths/listings@{listingId}@paymentmethods.yaml'
+  /user:
+    $ref: paths/user.yaml
 components:
   securitySchemes:
     OAuth2:
@@ -164,23 +209,45 @@ components:
               your application to confirm and fulfill sales.
 tags:
   - name: Addresses
+  - name: Categories
+  - name: Currencies
   - name: E-Tickets (Inventory)
   - name: E-Tickets (Sales)
+  - name: Events
   - name: ListingConstraints
+  - name: Listings
+  - name: MetroAreas
   - name: PaymentMethods
   - name: Payments
+  - name: Root
   - name: Sales
     description: View your sales details and fulfill your sales.
+  - name: SalesAggregates
+  - name: Search
+  - name: SellerEvents
   - name: SellerListings
     description: 'List tickets, update your listings and search your inventory.'
   - name: Shipments (Inventory)
   - name: Shipments (Sales)
+  - name: User
+  - name: Venues
   - name: Webhooks
 x-tagGroups:
+  - name: Discover
+    tags:
+      - Categories
+      - Currencies
+      - Events
+      - Listings
+      - MetroAreas
+      - Root
+      - Search
+      - Venues
   - name: Manage Inventory
     tags:
       - E-Tickets (Inventory)
       - ListingConstraints
+      - SellerEvents
       - SellerListings
       - Shipments (Inventory)
   - name: Manage Sales
@@ -188,6 +255,7 @@ x-tagGroups:
       - E-Tickets (Sales)
       - Payments
       - Sales
+      - SalesAggregates
       - Shipments (Sales)
   - name: React To Changes
     tags:
@@ -196,3 +264,4 @@ x-tagGroups:
     tags:
       - Addresses
       - PaymentMethods
+      - User

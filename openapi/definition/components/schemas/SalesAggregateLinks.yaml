@@ -1,0 +1,12 @@
+title: SalesAggregateLinks
+type: object
+properties:
+  self:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'salesaggregate:sales':
+    description: The sales aggregated in this resource.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml

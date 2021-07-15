@@ -1,0 +1,8 @@
+title: ListingsEmbeddedResources
+type: object
+properties:
+  items:
+    type: array
+    nullable: true
+    items:
+      $ref: ./Listing.yaml

@@ -20,9 +20,15 @@ get:
     - name: page
       in: query
       description: Specifies which page of data to retrieve.
+      schema:
+        type: integer
+        format: int32
     - name: page_size
       in: query
       description: Set custom page sizes on response.
+      schema:
+        type: integer
+        format: int32
     - name: sort
       in: query
       description: >-
@@ -30,6 +36,8 @@ get:
         `available_tickets`, `created_at`, `event_date`, `event_name`,
         `expiration_date`, `price`, `resource_version`,
         or`ticket_availability_date`.
+      schema:
+        type: string
   responses:
     '200':
       description: ''

@@ -1,0 +1,59 @@
+get:
+  tags:
+    - Events
+  summary: List events for a category
+  operationId: Events_GetCategoryEvents
+  parameters:
+    - name: categoryId
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: int32
+    - name: key
+      in: query
+      schema:
+        type: string
+        nullable: true
+    - name: tagTypeId
+      in: query
+      schema:
+        type: integer
+        format: byte
+        default: 1
+    - name: page
+      in: query
+      description: Specifies which page of data to retrieve.
+      schema:
+        type: integer
+        format: int32
+    - name: page_size
+      in: query
+      description: Set custom page sizes on response.
+      schema:
+        type: integer
+        format: int32
+    - name: sort
+      in: query
+      description: >-
+        Determines the ordering of items. A comma-separated string containing
+        `distance`, `id`, `min_ticket_price`, `name`, `number_of_tickets`,
+        `on_sale_date`, `only_with_tickets`, `resource_version`, or`start_date`.
+      schema:
+        type: string
+  responses:
+    '200':
+      description: ''
+      content:
+        application/hal+json:
+          schema:
+            $ref: ../components/schemas/Events.yaml
+    '401':
+      $ref: ../components/responses/requires_authentication.yaml
+      description: null
+    '404':
+      $ref: ../components/responses/not_found.yaml
+      description: null
+    '500':
+      $ref: ../components/responses/internal_server_error.yaml
+      description: null

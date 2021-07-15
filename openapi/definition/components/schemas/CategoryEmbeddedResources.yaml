@@ -1,0 +1,20 @@
+title: CategoryEmbeddedResources
+type: object
+properties:
+  top_children:
+    description: A preview of the categories that are direct children of this category.
+    nullable: true
+    oneOf:
+      - $ref: ./EmbeddedCategorys.yaml
+  top_events:
+    description: The most popular events in this category.
+    nullable: true
+    oneOf:
+      - $ref: ./EmbeddedEvents.yaml
+  top_performers:
+    description: >-
+      The most popular performers (leaf categories) that are children of this
+      category.
+    nullable: true
+    oneOf:
+      - $ref: ./EmbeddedCategorys.yaml
