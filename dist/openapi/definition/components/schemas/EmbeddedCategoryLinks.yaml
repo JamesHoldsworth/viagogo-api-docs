@@ -1,0 +1,12 @@
+title: EmbeddedCategoryLinks
+type: object
+properties:
+  self:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'category:image':
+    description: The image for this category.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml

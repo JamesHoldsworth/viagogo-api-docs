@@ -1,0 +1,33 @@
+get:
+  tags:
+    - Categories
+  summary: Get a category
+  operationId: Categories_GetCategory
+  parameters:
+    - name: categoryId
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: int32
+    - name: key
+      in: query
+      schema:
+        type: string
+        nullable: true
+  responses:
+    '200':
+      description: ''
+      content:
+        application/hal+json:
+          schema:
+            $ref: ../components/schemas/Category.yaml
+    '401':
+      $ref: ../components/responses/requires_authentication.yaml
+      description: null
+    '404':
+      $ref: ../components/responses/not_found.yaml
+      description: null
+    '500':
+      $ref: ../components/responses/internal_server_error.yaml
+      description: null

@@ -1,0 +1,8 @@
+title: EmbeddedEventsEmbeddedResources
+type: object
+properties:
+  items:
+    type: array
+    nullable: true
+    items:
+      $ref: ./EmbeddedEvent.yaml

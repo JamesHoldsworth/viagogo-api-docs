@@ -1,0 +1,57 @@
+title: ApiRootLinks
+type: object
+properties:
+  self:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'viagogo:countries':
+    description: The available countries.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'viagogo:createsellerlisting':
+    description: Create a seller listing for an event.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'viagogo:currencies':
+    description: The available currencies.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'viagogo:genres':
+    description: The top-level categories that group all other categories and events.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'viagogo:languages':
+    description: The available languages.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'viagogo:listingconstraints':
+    description: The listing constraints for a requested event.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'viagogo:metroareas':
+    description: The available metro areas.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'viagogo:search':
+    description: 'Search for events, categories, venues and metro areas.'
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'viagogo:user':
+    description: The currently authenticated user.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'viagogo:venues':
+    description: The available venues.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml

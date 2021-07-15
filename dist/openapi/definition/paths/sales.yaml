@@ -8,15 +8,23 @@ get:
     - name: page
       in: query
       description: Specifies which page of data to retrieve.
+      schema:
+        type: integer
+        format: int32
     - name: page_size
       in: query
       description: Set custom page sizes on response.
+      schema:
+        type: integer
+        format: int32
     - name: sort
       in: query
       description: >-
         Determines the ordering of items. A comma-separated string containing
         `created_at`, `event_date`, `inhand_at`, `payment_amount`, `quantity`,
         or`resource_version`.
+      schema:
+        type: string
   responses:
     '200':
       description: ''

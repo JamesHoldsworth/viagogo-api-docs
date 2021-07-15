@@ -1,0 +1,72 @@
+get:
+  tags:
+    - Listings
+  summary: List listings for an event
+  operationId: Listings_GetEventListings
+  parameters:
+    - name: eventId
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: int32
+    - name: number_of_tickets
+      in: query
+      schema:
+        type: integer
+        format: int32
+        nullable: true
+    - name: sections
+      in: query
+      style: form
+      explode: true
+      schema:
+        type: array
+        nullable: true
+        items:
+          type: string
+    - name: ticket_classes
+      in: query
+      style: form
+      explode: true
+      schema:
+        type: array
+        nullable: true
+        items:
+          type: string
+    - name: page
+      in: query
+      description: Specifies which page of data to retrieve.
+      schema:
+        type: integer
+        format: int32
+    - name: page_size
+      in: query
+      description: Set custom page sizes on response.
+      schema:
+        type: integer
+        format: int32
+    - name: sort
+      in: query
+      description: >-
+        Determines the ordering of items. A comma-separated string containing
+        `estimated_ticket_price`, `id`, `number_of_tickets`, `seating.section`,
+        or`ticket_price`.
+      schema:
+        type: string
+  responses:
+    '200':
+      description: ''
+      content:
+        application/hal+json:
+          schema:
+            $ref: ../components/schemas/Listings.yaml
+    '401':
+      $ref: ../components/responses/requires_authentication.yaml
+      description: null
+    '404':
+      $ref: ../components/responses/not_found.yaml
+      description: null
+    '500':
+      $ref: ../components/responses/internal_server_error.yaml
+      description: null

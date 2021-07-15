@@ -1,0 +1,14 @@
+title: SellerEventEmbeddedResources
+type: object
+properties:
+  sales_aggregates:
+    type: array
+    description: The currently authenticated user's aggregated sales data for this event.
+    nullable: true
+    items:
+      $ref: ./SalesAggregate.yaml
+  venue:
+    description: Event venue.
+    nullable: true
+    oneOf:
+      - $ref: ./EmbeddedVenue.yaml

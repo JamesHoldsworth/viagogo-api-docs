@@ -1,0 +1,8 @@
+title: SalesAggregatesEmbeddedResources
+type: object
+properties:
+  items:
+    type: array
+    nullable: true
+    items:
+      $ref: ./SalesAggregate.yaml

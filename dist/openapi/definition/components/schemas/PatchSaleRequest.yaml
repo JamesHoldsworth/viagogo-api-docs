@@ -1,17 +1,23 @@
 type: object
+description: >-
+  A sale on the viagogo marketplace that belongs to the currently authenticated
+  user.
 additionalProperties: false
 properties:
   confirmed:
     type: boolean
+    description: 'True when the sale should be confirmed; Otherwise, false.'
     nullable: true
   eticket_ids:
     type: array
+    description: A array of the identifiers of the E-Tickets to be assigned to the sale.
     nullable: true
     items:
       type: integer
       format: int32
   transfer_confirmation_number:
     type: string
+    description: Transfer confirmation number.
     nullable: true
   eticket_urls:
     type: array
@@ -20,15 +26,21 @@ properties:
       $ref: ./ETicketUrlRequest.yaml
   change_paper_ticket_to_eticket:
     type: boolean
+    description: >-
+      True when the ticket(s) should be changed from paper to E-ticket;
+      Otherwise, false.
     nullable: true
   confirm_same_day_shipment:
     type: boolean
+    description: 'True when same-day shipment is confirmed; Otherwise, false'
     nullable: true
   eticket_type:
     type: string
+    description: The type of ticket(s) that was sold.
     nullable: true
   tracking_number:
     type: string
+    description: Tacking number of the ticket shipment.
     nullable: true
   reservation:
     nullable: true
@@ -36,6 +48,7 @@ properties:
       - $ref: ./Reservation.yaml
   barcodes:
     type: array
+    description: The barcode(s) for the ticket(s).
     nullable: true
     items:
       $ref: ./BarcodeInformation.yaml

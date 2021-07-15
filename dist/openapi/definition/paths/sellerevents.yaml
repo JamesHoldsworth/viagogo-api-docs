@@ -1,0 +1,84 @@
+get:
+  tags:
+    - SellerEvents
+  summary: List seller events
+  description: List events with listings that belong to the authenticated user.
+  operationId: SellerEvents_GetSellerEvents
+  parameters:
+    - name: page
+      in: query
+      description: Specifies which page of data to retrieve.
+      schema:
+        type: integer
+        format: int32
+    - name: page_size
+      in: query
+      description: Set custom page sizes on response.
+      schema:
+        type: integer
+        format: int32
+    - name: sort
+      in: query
+      description: >-
+        Determines the ordering of items. A comma-separated string containing
+        `number_of_tickets`, `resource_version`, or`start_date`.
+      schema:
+        type: string
+  responses:
+    '200':
+      description: ''
+      content:
+        application/hal+json:
+          schema:
+            nullable: true
+            oneOf:
+              - $ref: ../components/schemas/SellerEvents.yaml
+    '401':
+      $ref: ../components/responses/requires_authentication.yaml
+      description: null
+    '403':
+      $ref: ../components/responses/forbidden.yaml
+      description: null
+    '500':
+      $ref: ../components/responses/internal_server_error.yaml
+      description: null
+  security:
+    - OAuth2:
+        - internal
+        - 'read:sellerlistings'
+put:
+  tags:
+    - SellerEvents
+  summary: Create a requested event
+  description: Request for an event to be created on the viagogo marketplace.
+  operationId: SellerEvents_PutSellerRequestedEvent
+  requestBody:
+    x-name: body
+    content:
+      application/json:
+        schema:
+          nullable: true
+          oneOf:
+            - $ref: ../components/schemas/PutRequestedEventRequest.yaml
+  responses:
+    '200':
+      description: ''
+      content:
+        application/hal+json:
+          schema:
+            $ref: ../components/schemas/SellerEvent.yaml
+    '400':
+      $ref: ../components/responses/validation_failed.yaml
+      description: null
+    '401':
+      $ref: ../components/responses/requires_authentication.yaml
+      description: null
+    '403':
+      $ref: ../components/responses/forbidden.yaml
+      description: null
+    '500':
+      $ref: ../components/responses/internal_server_error.yaml
+      description: null
+  security:
+    - OAuth2:
+        - 'write:requestedevents'

@@ -1,0 +1,42 @@
+title: UserLinks
+type: object
+properties:
+  self:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'user:addresses':
+    description: The collection of Addresses associated with this user.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'user:paymentmethods':
+    description: The collection of PaymentMethods associated with this user.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'user:sales':
+    description: The collection of Sales associated with this user.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'user:salesaggregates':
+    description: The aggregated sales data associated with this user.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'user:sellerlistings':
+    description: The collection of SellerListings associated with this user.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'user:update':
+    description: Update the settings for this user.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'user:webhooks':
+    description: The collection of Webhooks associated with this user.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml

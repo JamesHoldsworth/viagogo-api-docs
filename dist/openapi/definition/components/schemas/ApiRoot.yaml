@@ -1,0 +1,14 @@
+type: object
+description: >-
+  The root of the viagogo API service. Applications can use the links provided
+  by this resource to find all other resources in the API.
+additionalProperties: false
+properties:
+  _links:
+    nullable: true
+    oneOf:
+      - $ref: ./ApiRootLinks.yaml
+  _embedded:
+    nullable: true
+    oneOf:
+      - $ref: ./ApiRootEmbeddedResources.yaml

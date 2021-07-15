@@ -1,0 +1,84 @@
+type: object
+description: A set of tickets for sale on the viagogo marketplace.
+additionalProperties: false
+properties:
+  id:
+    type: integer
+    description: The lisitng indentifier.
+    format: int64
+    nullable: true
+  number_of_tickets:
+    type: integer
+    description: The number of tickets available for purchase.
+    format: int32
+    nullable: true
+  seating:
+    description: The seating information for the ticket(s) in this listing.
+    nullable: true
+    oneOf:
+      - $ref: ./Seating.yaml
+  pickup_available:
+    type: boolean
+    description: 'True if the tickets can be picked up at the event; otherwise , false.'
+    nullable: true
+  download_available:
+    type: boolean
+    description: 'True if the listing has a pre-uploaded E-Ticket; otherwise, false.'
+    nullable: true
+  ticket_price:
+    description: >-
+      The price of each ticket in the listing in the currency that they were
+      listed in.
+    nullable: true
+    oneOf:
+      - $ref: ./Money.yaml
+  estimated_ticket_price:
+    description: >-
+      The estimated price of each ticket in the currency requested by the
+      client.
+    nullable: true
+    oneOf:
+      - $ref: ./Money.yaml
+  estimated_total_ticket_price:
+    description: >-
+      The estimated total price for all tickets in the currency requested by the
+      client.
+    nullable: true
+    oneOf:
+      - $ref: ./Money.yaml
+  estimated_booking_fee:
+    description: >-
+      The estimated booking fee applied when the tickets are purchased, in the
+      currency requested by the client.
+    nullable: true
+    oneOf:
+      - $ref: ./Money.yaml
+  estimated_shipping:
+    description: >-
+      The estimated shipping charge applied when the tickets are purchased, in
+      the currency requested by the client.
+    nullable: true
+    oneOf:
+      - $ref: ./Money.yaml
+  estimated_vat:
+    description: >-
+      The estimated VAT charge applied when the tickets are purchased, in the
+      currency requested by the client.
+    nullable: true
+    oneOf:
+      - $ref: ./Money.yaml
+  estimated_total_charge:
+    description: >-
+      The estimated total charge applied when the tickets are purchased, in the
+      currency requested by the client.
+    nullable: true
+    oneOf:
+      - $ref: ./Money.yaml
+  _links:
+    nullable: true
+    oneOf:
+      - $ref: ./ListingLinks.yaml
+  _embedded:
+    nullable: true
+    oneOf:
+      - $ref: ./ListingEmbeddedResources.yaml

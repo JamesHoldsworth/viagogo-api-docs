@@ -1,0 +1,24 @@
+title: EventEmbeddedResources
+type: object
+properties:
+  categories:
+    type: array
+    description: The categories for this event.
+    nullable: true
+    items:
+      $ref: ./EmbeddedCategory.yaml
+  category:
+    description: The category for this event.
+    nullable: true
+    oneOf:
+      - $ref: ./EmbeddedCategory.yaml
+  genre:
+    description: The genre for this event.
+    nullable: true
+    oneOf:
+      - $ref: ./EmbeddedCategory.yaml
+  venue:
+    description: The venue where the event is taking place.
+    nullable: true
+    oneOf:
+      - $ref: ./EmbeddedVenue.yaml

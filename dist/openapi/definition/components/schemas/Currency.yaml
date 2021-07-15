@@ -3,15 +3,19 @@ additionalProperties: false
 properties:
   code:
     type: string
+    description: The ISO 4217 currency code that identifies the currency.
     nullable: true
   name:
     type: string
+    description: The name of the currency.
     nullable: true
   symbol:
     type: string
+    description: The symbol that identifies the currency.
     nullable: true
   decimal_places:
     type: integer
+    description: The number of decimal places used to represent amounts in the currency.
     format: int32
     nullable: true
   _links:

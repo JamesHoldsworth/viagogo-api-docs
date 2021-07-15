@@ -1,0 +1,49 @@
+type: object
+additionalProperties: false
+properties:
+  password:
+    type: string
+    nullable: true
+  email:
+    type: string
+    nullable: true
+  primary_phone:
+    type: string
+    nullable: true
+  full_name:
+    type: string
+    description: The full name of the user.
+    nullable: true
+  email_optin:
+    type: boolean
+    description: >-
+      True if the user is signed up for the viagogo email newsletter; otherwise,
+      false.
+    nullable: true
+  address_line_1:
+    type: string
+    nullable: true
+  address_line_2:
+    type: string
+    nullable: true
+  address_line_3:
+    type: string
+    nullable: true
+  city:
+    type: string
+    nullable: true
+  country_code:
+    type: string
+    nullable: true
+  post_code:
+    type: string
+    nullable: true
+  state_province:
+    type: string
+    nullable: true
+  broker_name:
+    type: string
+    nullable: true
+  client_application_id:
+    type: integer
+    format: int32

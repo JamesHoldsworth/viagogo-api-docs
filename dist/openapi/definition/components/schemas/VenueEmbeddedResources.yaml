@@ -1,0 +1,8 @@
+title: VenueEmbeddedResources
+type: object
+properties:
+  country:
+    description: The Country where the venue is located.
+    nullable: true
+    oneOf:
+      - $ref: ./Country.yaml

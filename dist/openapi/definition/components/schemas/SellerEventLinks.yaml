@@ -1,0 +1,17 @@
+title: SellerEventLinks
+type: object
+properties:
+  self:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sellerevent:createsellerlisting':
+    description: Create listing for the currently authenticated user.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'sellerevent:sellerlistings':
+    description: Event listings that belong to the currently authenticated user.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml

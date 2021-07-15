@@ -1,0 +1,35 @@
+get:
+  tags:
+    - SellerEvents
+  summary: Get a seller event
+  description: Get an event with listings belonging to the current user
+  operationId: SellerEvents_GetSellerEvent
+  parameters:
+    - name: eventIdOrRequestedEventId
+      in: path
+      required: true
+      schema:
+        type: string
+        nullable: true
+  responses:
+    '200':
+      description: ''
+      content:
+        application/hal+json:
+          schema:
+            $ref: ../components/schemas/SellerEvent.yaml
+    '401':
+      $ref: ../components/responses/requires_authentication.yaml
+      description: null
+    '403':
+      $ref: ../components/responses/forbidden.yaml
+      description: null
+    '404':
+      $ref: ../components/responses/not_found.yaml
+      description: null
+    '500':
+      $ref: ../components/responses/internal_server_error.yaml
+      description: null
+  security:
+    - OAuth2:
+        - 'read:sellerlistings'

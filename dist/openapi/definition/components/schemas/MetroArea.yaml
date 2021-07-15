@@ -1,0 +1,18 @@
+type: object
+description: >-
+  A MetroArea is a metropolitan region that contains venues where events are
+  taking place.
+additionalProperties: false
+properties:
+  id:
+    type: integer
+    description: The metro area identifier.
+    format: int32
+  name:
+    type: string
+    description: The name of the metro area.
+    nullable: true
+  _links:
+    nullable: true
+    oneOf:
+      - $ref: ./MetroAreaLinks.yaml

@@ -1,0 +1,22 @@
+type: object
+additionalProperties: false
+properties:
+  full_name:
+    type: string
+    description: The full name of the user.
+    nullable: true
+  email_optin:
+    type: boolean
+    description: >-
+      True if the user is signed up for the viagogo email newsletter; otherwise,
+      false.
+    nullable: true
+  password:
+    type: string
+    nullable: true
+  email:
+    type: string
+    nullable: true
+  primary_phone:
+    type: string
+    nullable: true

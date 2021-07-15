@@ -1,0 +1,36 @@
+get:
+  tags:
+    - E-Tickets (Sales)
+  summary: Get e-ticket upload file
+  description: Download the original file that was uploaded.
+  operationId: ETicketDocument_GetETicketUploadDocument
+  parameters:
+    - name: eticketUploadId
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: int32
+  responses:
+    '200':
+      description: ''
+      content:
+        application/octet-stream:
+          schema:
+            type: string
+            format: binary
+    '401':
+      $ref: ../components/responses/requires_authentication.yaml
+      description: null
+    '403':
+      $ref: ../components/responses/forbidden.yaml
+      description: null
+    '404':
+      $ref: ../components/responses/not_found.yaml
+      description: null
+    '500':
+      $ref: ../components/responses/internal_server_error.yaml
+      description: null
+  security:
+    - OAuth2:
+        - 'read:user'

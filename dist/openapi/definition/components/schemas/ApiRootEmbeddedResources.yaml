@@ -1,0 +1,8 @@
+title: ApiRootEmbeddedResources
+type: object
+properties:
+  user:
+    description: The currently authenticated user.
+    nullable: true
+    oneOf:
+      - $ref: ./User.yaml

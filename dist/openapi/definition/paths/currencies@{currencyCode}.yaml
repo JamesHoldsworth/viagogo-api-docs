@@ -1,0 +1,28 @@
+get:
+  tags:
+    - Currencies
+  summary: Get a currency
+  operationId: Currencies_GetCurrency
+  parameters:
+    - name: currencyCode
+      in: path
+      required: true
+      schema:
+        type: string
+        nullable: true
+  responses:
+    '200':
+      description: ''
+      content:
+        application/hal+json:
+          schema:
+            $ref: ../components/schemas/Currency.yaml
+    '401':
+      $ref: ../components/responses/requires_authentication.yaml
+      description: null
+    '404':
+      $ref: ../components/responses/not_found.yaml
+      description: null
+    '500':
+      $ref: ../components/responses/internal_server_error.yaml
+      description: null

@@ -20,6 +20,842 @@
     }
   ],
   "paths": {
+    "/currencies/{currencyCode}": {
+      "get": {
+        "tags": [
+          "Currencies"
+        ],
+        "summary": "Get a currency",
+        "operationId": "Currencies_GetCurrency",
+        "parameters": [
+          {
+            "name": "currencyCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Currency"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/not_found",
+            "description": null
+          },
+          "401": {
+            "$ref": "#/components/responses/requires_authentication",
+            "description": null
+          },
+          "500": {
+            "$ref": "#/components/responses/internal_server_error",
+            "description": null
+          }
+        }
+      }
+    },
+    "/currencies": {
+      "get": {
+        "tags": [
+          "Currencies"
+        ],
+        "summary": "List currencies",
+        "operationId": "Currencies_GetCurrencies",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Specifies which page of data to retrieve.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "Set custom page sizes on response.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Determines the ordering of items. A comma-separated string containing `code`, or`name`.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "nullable": true,
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/Currencys"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/requires_authentication",
+            "description": null
+          },
+          "500": {
+            "$ref": "#/components/responses/internal_server_error",
+            "description": null
+          }
+        }
+      }
+    },
+    "/categories/{categoryId}": {
+      "get": {
+        "tags": [
+          "Categories"
+        ],
+        "summary": "Get a category",
+        "operationId": "Categories_GetCategory",
+        "parameters": [
+          {
+            "name": "categoryId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "key",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Category"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/not_found",
+            "description": null
+          },
+          "401": {
+            "$ref": "#/components/responses/requires_authentication",
+            "description": null
+          },
+          "500": {
+            "$ref": "#/components/responses/internal_server_error",
+            "description": null
+          }
+        }
+      }
+    },
+    "/categories/{categoryId}/children": {
+      "get": {
+        "tags": [
+          "Categories"
+        ],
+        "summary": "List category children",
+        "description": "List categories that are direct-descendants of a category.",
+        "operationId": "Categories_GetChildren",
+        "parameters": [
+          {
+            "name": "categoryId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Specifies which page of data to retrieve.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "Set custom page sizes on response.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Determines the ordering of items. A comma-separated string containing `resource_version`.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Categories"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/not_found",
+            "description": null
+          },
+          "401": {
+            "$ref": "#/components/responses/requires_authentication",
+            "description": null
+          },
+          "500": {
+            "$ref": "#/components/responses/internal_server_error",
+            "description": null
+          }
+        }
+      }
+    },
+    "/events/{eventId}": {
+      "get": {
+        "tags": [
+          "Events"
+        ],
+        "summary": "Get an event",
+        "operationId": "Events_Get",
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Event"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/not_found",
+            "description": null
+          },
+          "401": {
+            "$ref": "#/components/responses/requires_authentication",
+            "description": null
+          },
+          "500": {
+            "$ref": "#/components/responses/internal_server_error",
+            "description": null
+          }
+        }
+      }
+    },
+    "/categories/{categoryId}/events": {
+      "get": {
+        "tags": [
+          "Events"
+        ],
+        "summary": "List events for a category",
+        "operationId": "Events_GetCategoryEvents",
+        "parameters": [
+          {
+            "name": "categoryId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "key",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "tagTypeId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "byte",
+              "default": 1
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Specifies which page of data to retrieve.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "Set custom page sizes on response.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Determines the ordering of items. A comma-separated string containing `distance`, `id`, `min_ticket_price`, `name`, `number_of_tickets`, `on_sale_date`, `only_with_tickets`, `resource_version`, or`start_date`.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Events"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/not_found",
+            "description": null
+          },
+          "401": {
+            "$ref": "#/components/responses/requires_authentication",
+            "description": null
+          },
+          "500": {
+            "$ref": "#/components/responses/internal_server_error",
+            "description": null
+          }
+        }
+      }
+    },
+    "/venues/{venueId}": {
+      "get": {
+        "tags": [
+          "Venues"
+        ],
+        "summary": "Get a venue",
+        "operationId": "Venues_GetVenue",
+        "parameters": [
+          {
+            "name": "venueId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Venue"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/not_found",
+            "description": null
+          },
+          "401": {
+            "$ref": "#/components/responses/requires_authentication",
+            "description": null
+          },
+          "500": {
+            "$ref": "#/components/responses/internal_server_error",
+            "description": null
+          }
+        }
+      }
+    },
+    "/venues": {
+      "get": {
+        "tags": [
+          "Venues"
+        ],
+        "summary": "List venues",
+        "operationId": "Venues_GetVenues",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Specifies which page of data to retrieve.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "Set custom page sizes on response.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Determines the ordering of items. A comma-separated string containing `country_code`.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "nullable": true,
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/Venues"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/requires_authentication",
+            "description": null
+          },
+          "500": {
+            "$ref": "#/components/responses/internal_server_error",
+            "description": null
+          }
+        }
+      }
+    },
+    "/metroareas/{metroAreaId}": {
+      "get": {
+        "tags": [
+          "MetroAreas"
+        ],
+        "summary": "Get a metro area",
+        "operationId": "MetroAreas_GetMetroArea",
+        "parameters": [
+          {
+            "name": "metroAreaId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MetroArea"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/not_found",
+            "description": null
+          },
+          "401": {
+            "$ref": "#/components/responses/requires_authentication",
+            "description": null
+          },
+          "500": {
+            "$ref": "#/components/responses/internal_server_error",
+            "description": null
+          }
+        }
+      }
+    },
+    "/metroareas": {
+      "get": {
+        "tags": [
+          "MetroAreas"
+        ],
+        "summary": "List metro areas",
+        "operationId": "MetroAreas_GetMetroAreas",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Specifies which page of data to retrieve.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "Set custom page sizes on response.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Determines the ordering of items. A comma-separated string containing `id`, or`name`.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "nullable": true,
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/MetroAreas"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/requires_authentication",
+            "description": null
+          },
+          "500": {
+            "$ref": "#/components/responses/internal_server_error",
+            "description": null
+          }
+        }
+      }
+    },
+    "/events/{eventId}/listings": {
+      "get": {
+        "tags": [
+          "Listings"
+        ],
+        "summary": "List listings for an event",
+        "operationId": "Listings_GetEventListings",
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "number_of_tickets",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "nullable": true
+            }
+          },
+          {
+            "name": "sections",
+            "in": "query",
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "array",
+              "nullable": true,
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "ticket_classes",
+            "in": "query",
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "array",
+              "nullable": true,
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Specifies which page of data to retrieve.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "Set custom page sizes on response.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Determines the ordering of items. A comma-separated string containing `estimated_ticket_price`, `id`, `number_of_tickets`, `seating.section`, or`ticket_price`.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Listings"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/not_found",
+            "description": null
+          },
+          "401": {
+            "$ref": "#/components/responses/requires_authentication",
+            "description": null
+          },
+          "500": {
+            "$ref": "#/components/responses/internal_server_error",
+            "description": null
+          }
+        }
+      }
+    },
+    "/listings/{listingId}": {
+      "get": {
+        "tags": [
+          "Listings"
+        ],
+        "summary": "Get a listing",
+        "operationId": "Listings_GetListing",
+        "parameters": [
+          {
+            "name": "listingId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Listing"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/not_found",
+            "description": null
+          },
+          "401": {
+            "$ref": "#/components/responses/requires_authentication",
+            "description": null
+          },
+          "500": {
+            "$ref": "#/components/responses/internal_server_error",
+            "description": null
+          }
+        }
+      }
+    },
+    "/search": {
+      "get": {
+        "tags": [
+          "Search"
+        ],
+        "summary": "Search for entities",
+        "description": "Search for entities that match a given query",
+        "operationId": "Search_Get",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "description": "The query text to be used to match entities.",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "A comma-separated string of the different types of entities to return. Can be `event`, `category`, `metro_area` or `venue`. Note: If type is not specified then all types of entities will be returned.",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Specifies which page of data to retrieve.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "Set custom page sizes on response.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Determines the ordering of items. A comma-separated string containing `order`.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "nullable": true,
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/SearchResults"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/requires_authentication",
+            "description": null
+          },
+          "500": {
+            "$ref": "#/components/responses/internal_server_error",
+            "description": null
+          }
+        }
+      }
+    },
+    "": {
+      "get": {
+        "tags": [
+          "Root"
+        ],
+        "summary": "Get the root API resource",
+        "operationId": "ApiRoot_Get",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "nullable": true,
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ApiRoot"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/requires_authentication",
+            "description": null
+          },
+          "500": {
+            "$ref": "#/components/responses/internal_server_error",
+            "description": null
+          }
+        }
+      }
+    },
     "/sellerlistings/{listingId}": {
       "patch": {
         "tags": [
@@ -215,17 +1051,28 @@
           {
             "name": "page",
             "in": "query",
-            "description": "Specifies which page of data to retrieve."
+            "description": "Specifies which page of data to retrieve.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           },
           {
             "name": "page_size",
             "in": "query",
-            "description": "Set custom page sizes on response."
+            "description": "Set custom page sizes on response.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           },
           {
             "name": "sort",
             "in": "query",
-            "description": "Determines the ordering of items. A comma-separated string containing `available_tickets`, `created_at`, `event_date`, `event_name`, `expiration_date`, `price`, `resource_version`, or`ticket_availability_date`."
+            "description": "Determines the ordering of items. A comma-separated string containing `available_tickets`, `created_at`, `event_date`, `event_name`, `expiration_date`, `price`, `resource_version`, or`ticket_availability_date`.",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -927,6 +1774,195 @@
         ]
       }
     },
+    "/sellerevents": {
+      "get": {
+        "tags": [
+          "SellerEvents"
+        ],
+        "summary": "List seller events",
+        "description": "List events with listings that belong to the authenticated user.",
+        "operationId": "SellerEvents_GetSellerEvents",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Specifies which page of data to retrieve.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "Set custom page sizes on response.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Determines the ordering of items. A comma-separated string containing `number_of_tickets`, `resource_version`, or`start_date`.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "nullable": true,
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/SellerEvents"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "$ref": "#/components/responses/forbidden",
+            "description": null
+          },
+          "401": {
+            "$ref": "#/components/responses/requires_authentication",
+            "description": null
+          },
+          "500": {
+            "$ref": "#/components/responses/internal_server_error",
+            "description": null
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "internal",
+              "read:sellerlistings"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "SellerEvents"
+        ],
+        "summary": "Create a requested event",
+        "description": "Request for an event to be created on the viagogo marketplace.",
+        "operationId": "SellerEvents_PutSellerRequestedEvent",
+        "requestBody": {
+          "x-name": "body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/PutRequestedEventRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SellerEvent"
+                }
+              }
+            }
+          },
+          "403": {
+            "$ref": "#/components/responses/forbidden",
+            "description": null
+          },
+          "400": {
+            "$ref": "#/components/responses/validation_failed",
+            "description": null
+          },
+          "401": {
+            "$ref": "#/components/responses/requires_authentication",
+            "description": null
+          },
+          "500": {
+            "$ref": "#/components/responses/internal_server_error",
+            "description": null
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "write:requestedevents"
+            ]
+          }
+        ]
+      }
+    },
+    "/sellerevents/{eventIdOrRequestedEventId}": {
+      "get": {
+        "tags": [
+          "SellerEvents"
+        ],
+        "summary": "Get a seller event",
+        "description": "Get an event with listings belonging to the current user",
+        "operationId": "SellerEvents_GetSellerEvent",
+        "parameters": [
+          {
+            "name": "eventIdOrRequestedEventId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SellerEvent"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/not_found",
+            "description": null
+          },
+          "403": {
+            "$ref": "#/components/responses/forbidden",
+            "description": null
+          },
+          "401": {
+            "$ref": "#/components/responses/requires_authentication",
+            "description": null
+          },
+          "500": {
+            "$ref": "#/components/responses/internal_server_error",
+            "description": null
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "read:sellerlistings"
+            ]
+          }
+        ]
+      }
+    },
     "/sales/{saleId}/shipments/{shipmentId}/label": {
       "get": {
         "tags": [
@@ -1013,12 +2049,20 @@
           {
             "name": "page",
             "in": "query",
-            "description": "Specifies which page of data to retrieve."
+            "description": "Specifies which page of data to retrieve.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           },
           {
             "name": "page_size",
             "in": "query",
-            "description": "Set custom page sizes on response."
+            "description": "Set custom page sizes on response.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           }
         ],
         "responses": {
@@ -1279,12 +2323,20 @@
           {
             "name": "page",
             "in": "query",
-            "description": "Specifies which page of data to retrieve."
+            "description": "Specifies which page of data to retrieve.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           },
           {
             "name": "page_size",
             "in": "query",
-            "description": "Set custom page sizes on response."
+            "description": "Set custom page sizes on response.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           }
         ],
         "responses": {
@@ -1479,12 +2531,20 @@
           {
             "name": "page",
             "in": "query",
-            "description": "Specifies which page of data to retrieve."
+            "description": "Specifies which page of data to retrieve.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           },
           {
             "name": "page_size",
             "in": "query",
-            "description": "Set custom page sizes on response."
+            "description": "Set custom page sizes on response.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           }
         ],
         "responses": {
@@ -1543,12 +2603,20 @@
           {
             "name": "page",
             "in": "query",
-            "description": "Specifies which page of data to retrieve."
+            "description": "Specifies which page of data to retrieve.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           },
           {
             "name": "page_size",
             "in": "query",
-            "description": "Set custom page sizes on response."
+            "description": "Set custom page sizes on response.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           }
         ],
         "responses": {
@@ -1609,12 +2677,20 @@
           {
             "name": "page",
             "in": "query",
-            "description": "Specifies which page of data to retrieve."
+            "description": "Specifies which page of data to retrieve.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           },
           {
             "name": "page_size",
             "in": "query",
-            "description": "Set custom page sizes on response."
+            "description": "Set custom page sizes on response.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           }
         ],
         "responses": {
@@ -1675,12 +2751,20 @@
           {
             "name": "page",
             "in": "query",
-            "description": "Specifies which page of data to retrieve."
+            "description": "Specifies which page of data to retrieve.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           },
           {
             "name": "page_size",
             "in": "query",
-            "description": "Set custom page sizes on response."
+            "description": "Set custom page sizes on response.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           }
         ],
         "responses": {
@@ -1738,12 +2822,20 @@
           {
             "name": "page",
             "in": "query",
-            "description": "Specifies which page of data to retrieve."
+            "description": "Specifies which page of data to retrieve.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           },
           {
             "name": "page_size",
             "in": "query",
-            "description": "Set custom page sizes on response."
+            "description": "Set custom page sizes on response.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           }
         ],
         "responses": {
@@ -1803,12 +2895,20 @@
           {
             "name": "page",
             "in": "query",
-            "description": "Specifies which page of data to retrieve."
+            "description": "Specifies which page of data to retrieve.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           },
           {
             "name": "page_size",
             "in": "query",
-            "description": "Set custom page sizes on response."
+            "description": "Set custom page sizes on response.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           }
         ],
         "responses": {
@@ -1921,12 +3021,20 @@
           {
             "name": "page",
             "in": "query",
-            "description": "Specifies which page of data to retrieve."
+            "description": "Specifies which page of data to retrieve.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           },
           {
             "name": "page_size",
             "in": "query",
-            "description": "Set custom page sizes on response."
+            "description": "Set custom page sizes on response.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           }
         ],
         "responses": {
@@ -1985,12 +3093,20 @@
           {
             "name": "page",
             "in": "query",
-            "description": "Specifies which page of data to retrieve."
+            "description": "Specifies which page of data to retrieve.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           },
           {
             "name": "page_size",
             "in": "query",
-            "description": "Set custom page sizes on response."
+            "description": "Set custom page sizes on response.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           }
         ],
         "requestBody": {
@@ -2217,17 +3333,28 @@
           {
             "name": "page",
             "in": "query",
-            "description": "Specifies which page of data to retrieve."
+            "description": "Specifies which page of data to retrieve.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           },
           {
             "name": "page_size",
             "in": "query",
-            "description": "Set custom page sizes on response."
+            "description": "Set custom page sizes on response.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           },
           {
             "name": "sort",
             "in": "query",
-            "description": "Determines the ordering of items. A comma-separated string containing `created_at`, `event_date`, `inhand_at`, `payment_amount`, `quantity`, or`resource_version`."
+            "description": "Determines the ordering of items. A comma-separated string containing `created_at`, `event_date`, `inhand_at`, `payment_amount`, `quantity`, or`resource_version`.",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -2450,17 +3577,28 @@
           {
             "name": "page",
             "in": "query",
-            "description": "Specifies which page of data to retrieve."
+            "description": "Specifies which page of data to retrieve.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           },
           {
             "name": "page_size",
             "in": "query",
-            "description": "Set custom page sizes on response."
+            "description": "Set custom page sizes on response.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           },
           {
             "name": "sort",
             "in": "query",
-            "description": "Determines the ordering of items. A comma-separated string containing `created_at`, or`id`."
+            "description": "Determines the ordering of items. A comma-separated string containing `created_at`, or`id`.",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -2604,6 +3742,317 @@
         ]
       }
     },
+    "/salesaggregates": {
+      "get": {
+        "tags": [
+          "SalesAggregates"
+        ],
+        "summary": "List sales aggregates",
+        "description": "List aggregated sales data for the authenticated user.",
+        "operationId": "SalesAggregates_GetSalesAggregates",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Specifies which page of data to retrieve.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "Set custom page sizes on response.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Determines the ordering of items. A comma-separated string containing `sort_order`.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "nullable": true,
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/SalesAggregates"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "$ref": "#/components/responses/forbidden",
+            "description": null
+          },
+          "401": {
+            "$ref": "#/components/responses/requires_authentication",
+            "description": null
+          },
+          "500": {
+            "$ref": "#/components/responses/internal_server_error",
+            "description": null
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "read:user",
+              "read:sales"
+            ]
+          }
+        ]
+      }
+    },
+    "/etickets/{eticketId}/thumbnail": {
+      "get": {
+        "tags": [
+          "E-Tickets (Sales)"
+        ],
+        "summary": "Get e-ticket thumbnail file",
+        "description": "Download an image file containing a thumbnail of an E-Ticket",
+        "operationId": "ETicketDocument_GetETicketThumbnail",
+        "parameters": [
+          {
+            "name": "eticketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/not_found",
+            "description": null
+          },
+          "403": {
+            "$ref": "#/components/responses/forbidden",
+            "description": null
+          },
+          "401": {
+            "$ref": "#/components/responses/requires_authentication",
+            "description": null
+          },
+          "500": {
+            "$ref": "#/components/responses/internal_server_error",
+            "description": null
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "read:user"
+            ]
+          }
+        ]
+      }
+    },
+    "/eticketuploads/{eticketUploadId}/document": {
+      "get": {
+        "tags": [
+          "E-Tickets (Sales)"
+        ],
+        "summary": "Get e-ticket upload file",
+        "description": "Download the original file that was uploaded.",
+        "operationId": "ETicketDocument_GetETicketUploadDocument",
+        "parameters": [
+          {
+            "name": "eticketUploadId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/not_found",
+            "description": null
+          },
+          "403": {
+            "$ref": "#/components/responses/forbidden",
+            "description": null
+          },
+          "401": {
+            "$ref": "#/components/responses/requires_authentication",
+            "description": null
+          },
+          "500": {
+            "$ref": "#/components/responses/internal_server_error",
+            "description": null
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "read:user"
+            ]
+          }
+        ]
+      }
+    },
+    "/etickets/{eticketId}/document": {
+      "get": {
+        "tags": [
+          "E-Tickets (Sales)"
+        ],
+        "summary": "Get e-ticket file",
+        "description": "Download a PDF file containing an E-Ticket.",
+        "operationId": "ETicketDocument_GetETicketDocument",
+        "parameters": [
+          {
+            "name": "eticketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/not_found",
+            "description": null
+          },
+          "403": {
+            "$ref": "#/components/responses/forbidden",
+            "description": null
+          },
+          "401": {
+            "$ref": "#/components/responses/requires_authentication",
+            "description": null
+          },
+          "500": {
+            "$ref": "#/components/responses/internal_server_error",
+            "description": null
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "read:user"
+            ]
+          }
+        ]
+      }
+    },
+    "/sellerlistings/{listingId}/markedbacketickets/{markedBackETicketId}/document": {
+      "get": {
+        "tags": [
+          "E-Tickets (Inventory)"
+        ],
+        "summary": "Get marked back e-ticket file for seller listing",
+        "operationId": "ETicketDocument_GetMarkedBackETicketDocument",
+        "parameters": [
+          {
+            "name": "listingId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "markedBackETicketId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/not_found",
+            "description": null
+          },
+          "403": {
+            "$ref": "#/components/responses/forbidden",
+            "description": null
+          },
+          "401": {
+            "$ref": "#/components/responses/requires_authentication",
+            "description": null
+          },
+          "500": {
+            "$ref": "#/components/responses/internal_server_error",
+            "description": null
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "read:sellerlistings"
+            ]
+          }
+        ]
+      }
+    },
     "/webhooks": {
       "get": {
         "tags": [
@@ -2616,17 +4065,28 @@
           {
             "name": "page",
             "in": "query",
-            "description": "Specifies which page of data to retrieve."
+            "description": "Specifies which page of data to retrieve.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           },
           {
             "name": "page_size",
             "in": "query",
-            "description": "Set custom page sizes on response."
+            "description": "Set custom page sizes on response.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           },
           {
             "name": "sort",
             "in": "query",
-            "description": "Determines the ordering of items. A comma-separated string containing `created_at`."
+            "description": "Determines the ordering of items. A comma-separated string containing `created_at`.",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -2957,17 +4417,28 @@
           {
             "name": "page",
             "in": "query",
-            "description": "Specifies which page of data to retrieve."
+            "description": "Specifies which page of data to retrieve.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           },
           {
             "name": "page_size",
             "in": "query",
-            "description": "Set custom page sizes on response."
+            "description": "Set custom page sizes on response.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           },
           {
             "name": "sort",
             "in": "query",
-            "description": "Determines the ordering of items. A comma-separated string containing `default`, or`id`."
+            "description": "Determines the ordering of items. A comma-separated string containing `default`, or`id`.",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -3258,12 +4729,20 @@
           {
             "name": "page",
             "in": "query",
-            "description": "Specifies which page of data to retrieve."
+            "description": "Specifies which page of data to retrieve.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           },
           {
             "name": "page_size",
             "in": "query",
-            "description": "Set custom page sizes on response."
+            "description": "Set custom page sizes on response.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           }
         ],
         "responses": {
@@ -3379,12 +4858,20 @@
           {
             "name": "page",
             "in": "query",
-            "description": "Specifies which page of data to retrieve."
+            "description": "Specifies which page of data to retrieve.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           },
           {
             "name": "page_size",
             "in": "query",
-            "description": "Set custom page sizes on response."
+            "description": "Set custom page sizes on response.",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
           }
         ],
         "requestBody": {
@@ -3438,10 +4925,2566 @@
           }
         ]
       }
+    },
+    "/user": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get the authenticated user",
+        "operationId": "User_Get",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "nullable": true,
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/User"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "$ref": "#/components/responses/forbidden",
+            "description": null
+          },
+          "401": {
+            "$ref": "#/components/responses/requires_authentication",
+            "description": null
+          },
+          "500": {
+            "$ref": "#/components/responses/internal_server_error",
+            "description": null
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "read:user"
+            ]
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Update the authenticated user",
+        "operationId": "User_Patch",
+        "requestBody": {
+          "x-name": "body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "nullable": true,
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/PatchUserRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "403": {
+            "$ref": "#/components/responses/forbidden",
+            "description": null
+          },
+          "400": {
+            "$ref": "#/components/responses/validation_failed",
+            "description": null
+          },
+          "401": {
+            "$ref": "#/components/responses/requires_authentication",
+            "description": null
+          },
+          "500": {
+            "$ref": "#/components/responses/internal_server_error",
+            "description": null
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "write:user"
+            ]
+          }
+        ]
+      }
     }
   },
   "components": {
     "schemas": {
+      "Currency": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "The ISO 4217 currency code that identifies the currency.",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the currency.",
+            "nullable": true
+          },
+          "symbol": {
+            "type": "string",
+            "description": "The symbol that identifies the currency.",
+            "nullable": true
+          },
+          "decimal_places": {
+            "type": "integer",
+            "description": "The number of decimal places used to represent amounts in the currency.",
+            "format": "int32",
+            "nullable": true
+          },
+          "_links": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/CurrencyLinks"
+              }
+            ]
+          }
+        }
+      },
+      "CurrencyLinks": {
+        "title": "CurrencyLinks",
+        "type": "object",
+        "properties": {
+          "self": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          }
+        }
+      },
+      "Link": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "href": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "templated": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "errors": {
+            "type": "object",
+            "nullable": true,
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "Currencys": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "total_items": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "page": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "page_size": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "_links": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/CurrencysLinks"
+              }
+            ]
+          },
+          "_embedded": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/CurrencysEmbeddedResources"
+              }
+            ]
+          }
+        }
+      },
+      "CurrencysLinks": {
+        "title": "CurrencysLinks",
+        "type": "object",
+        "properties": {
+          "self": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "first": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "last": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "next": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "prev": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          }
+        }
+      },
+      "CurrencysEmbeddedResources": {
+        "title": "CurrencysEmbeddedResources",
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/Currency"
+            }
+          }
+        }
+      },
+      "Category": {
+        "type": "object",
+        "description": "A Category represents a grouping of events or other categories. Examples are “Concerts”, “Rock and Pop” and “Lady Gaga”.",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The category identifier.",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the category.",
+            "nullable": true
+          },
+          "description_html": {
+            "type": "string",
+            "description": "The localized string containing HTML markup that describes the category.",
+            "nullable": true
+          },
+          "min_ticket_price": {
+            "description": "The minimum ticket price of the events in this category.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Money"
+              }
+            ]
+          },
+          "min_event_date": {
+            "type": "string",
+            "description": "The earliest start date of the events in this category.",
+            "format": "date-time",
+            "nullable": true
+          },
+          "max_event_date": {
+            "type": "string",
+            "description": "The latest start date of the events in this category.",
+            "format": "date-time",
+            "nullable": true
+          },
+          "_links": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/CategoryLinks"
+              }
+            ]
+          },
+          "_embedded": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/CategoryEmbeddedResources"
+              }
+            ]
+          }
+        }
+      },
+      "Money": {
+        "type": "object",
+        "description": "Returned for monetary values, such as ticket prices, fees charged and tax amounts.",
+        "additionalProperties": false,
+        "properties": {
+          "amount": {
+            "type": "number",
+            "description": "The decimal amount of the money.",
+            "format": "decimal",
+            "nullable": true
+          },
+          "currency_code": {
+            "type": "string",
+            "description": "The ISO 4217 currency code that the monetary value is represented in.",
+            "nullable": true
+          },
+          "display": {
+            "type": "string",
+            "description": "A user-friendly string representing the monetary value.",
+            "nullable": true
+          }
+        }
+      },
+      "CategoryLinks": {
+        "title": "CategoryLinks",
+        "type": "object",
+        "properties": {
+          "self": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "category:children": {
+            "description": "The direct descendants of this category.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "category:events": {
+            "description": "The events in this category.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "category:image": {
+            "description": "The image for this category.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "category:parent": {
+            "description": "The parent of this category.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "category:performers": {
+            "description": "The leaf descendants this category. These categories will be direct parents of events.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "category:webpage": {
+            "description": "The webpage on the viagogo website for this category.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          }
+        }
+      },
+      "CategoryEmbeddedResources": {
+        "title": "CategoryEmbeddedResources",
+        "type": "object",
+        "properties": {
+          "top_children": {
+            "description": "A preview of the categories that are direct children of this category.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/EmbeddedCategorys"
+              }
+            ]
+          },
+          "top_events": {
+            "description": "The most popular events in this category.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/EmbeddedEvents"
+              }
+            ]
+          },
+          "top_performers": {
+            "description": "The most popular performers (leaf categories) that are children of this category.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/EmbeddedCategorys"
+              }
+            ]
+          }
+        }
+      },
+      "EmbeddedCategorys": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "total_items": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "page": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "page_size": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "_links": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/EmbeddedCategorysLinks"
+              }
+            ]
+          },
+          "_embedded": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/EmbeddedCategorysEmbeddedResources"
+              }
+            ]
+          }
+        }
+      },
+      "EmbeddedCategorysLinks": {
+        "title": "EmbeddedCategorysLinks",
+        "type": "object",
+        "properties": {
+          "self": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "first": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "last": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "next": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "prev": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          }
+        }
+      },
+      "EmbeddedCategorysEmbeddedResources": {
+        "title": "EmbeddedCategorysEmbeddedResources",
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/EmbeddedCategory"
+            }
+          }
+        }
+      },
+      "EmbeddedCategory": {
+        "type": "object",
+        "description": "A Category represents a grouping of events or other categories. Examples are “Concerts”, “Rock and Pop” and “Lady Gaga”.",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The category identifier.",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the category.",
+            "nullable": true
+          },
+          "_links": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/EmbeddedCategoryLinks"
+              }
+            ]
+          }
+        }
+      },
+      "EmbeddedCategoryLinks": {
+        "title": "EmbeddedCategoryLinks",
+        "type": "object",
+        "properties": {
+          "self": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "category:image": {
+            "description": "The image for this category.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          }
+        }
+      },
+      "EmbeddedEvents": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "total_items": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "page": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "page_size": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "_links": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/EmbeddedEventsLinks"
+              }
+            ]
+          },
+          "_embedded": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/EmbeddedEventsEmbeddedResources"
+              }
+            ]
+          }
+        }
+      },
+      "EmbeddedEventsLinks": {
+        "title": "EmbeddedEventsLinks",
+        "type": "object",
+        "properties": {
+          "self": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "first": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "last": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "next": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "prev": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          }
+        }
+      },
+      "EmbeddedEventsEmbeddedResources": {
+        "title": "EmbeddedEventsEmbeddedResources",
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/EmbeddedEvent"
+            }
+          }
+        }
+      },
+      "EmbeddedEvent": {
+        "type": "object",
+        "description": "An event on the viagogo platform.",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The event identifier.",
+            "format": "int32",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the event.",
+            "nullable": true
+          },
+          "start_date": {
+            "type": "string",
+            "description": "The date when the event starts.",
+            "format": "date-time",
+            "nullable": true
+          },
+          "end_date": {
+            "type": "string",
+            "description": "The date when the event ends.",
+            "format": "date-time",
+            "nullable": true
+          },
+          "on_sale_date": {
+            "type": "string",
+            "description": "The date when tickets for the event will go onsale.",
+            "format": "date-time",
+            "nullable": true
+          },
+          "date_confirmed": {
+            "type": "boolean",
+            "description": "True if the event start and end date have been confirmed; Otherwise, false.",
+            "nullable": true
+          },
+          "_links": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/EmbeddedEventLinks"
+              }
+            ]
+          }
+        }
+      },
+      "EmbeddedEventLinks": {
+        "title": "EmbeddedEventLinks",
+        "type": "object",
+        "properties": {
+          "self": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          }
+        }
+      },
+      "Categories": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "total_items": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "page": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "page_size": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "_links": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/CategoriesLinks"
+              }
+            ]
+          },
+          "_embedded": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/CategoriesEmbeddedResources"
+              }
+            ]
+          }
+        }
+      },
+      "CategoriesLinks": {
+        "title": "CategoriesLinks",
+        "type": "object",
+        "properties": {
+          "self": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "first": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "last": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "next": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "prev": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          }
+        }
+      },
+      "CategoriesEmbeddedResources": {
+        "title": "CategoriesEmbeddedResources",
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/Category"
+            }
+          }
+        }
+      },
+      "Event": {
+        "type": "object",
+        "description": "An event on the viagogo platform.",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The event identifier.",
+            "format": "int32",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the event.",
+            "nullable": true
+          },
+          "start_date": {
+            "type": "string",
+            "description": "The date when the event starts.",
+            "format": "date-time",
+            "nullable": true
+          },
+          "end_date": {
+            "type": "string",
+            "description": "The date when the event ends.",
+            "format": "date-time",
+            "nullable": true
+          },
+          "on_sale_date": {
+            "type": "string",
+            "description": "The date when tickets for the event will go onsale.",
+            "format": "date-time",
+            "nullable": true
+          },
+          "date_confirmed": {
+            "type": "boolean",
+            "description": "True if the event start and end date have been confirmed; Otherwise, false.",
+            "nullable": true
+          },
+          "min_ticket_price": {
+            "description": "The minimum ticket price of the event.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Money"
+              }
+            ]
+          },
+          "number_of_tickets": {
+            "type": "integer",
+            "description": "The number of tickets currently available for this event.",
+            "format": "int32",
+            "nullable": true
+          },
+          "notes_html": {
+            "type": "string",
+            "description": "Localized string containing HTML markup that describes the notes for the event.",
+            "nullable": true
+          },
+          "restrictions_html": {
+            "type": "string",
+            "description": "Localized string containing HTML markup that describes the purchase restrictions on the event.",
+            "nullable": true
+          },
+          "affiliate_commission_tier": {
+            "type": "string",
+            "description": "The tier of commission paid to affiliates that market this event. Can be `Normal` or `Low`.",
+            "nullable": true
+          },
+          "_links": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/EventLinks"
+              }
+            ]
+          },
+          "_embedded": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/EventEmbeddedResources"
+              }
+            ]
+          }
+        }
+      },
+      "EventLinks": {
+        "title": "EventLinks",
+        "type": "object",
+        "properties": {
+          "self": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "event:category": {
+            "description": "The category that contains this event.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "event:createsellerlisting": {
+            "description": "Create a SellerListing for this event.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "event:listingconstraints": {
+            "description": "The listing constraints for this event.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "event:listings": {
+            "description": "The listings for this event.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "event:localwebpage": {
+            "description": "The webpage on the local viagogo website for this event.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "event:sellerlistingpreview": {
+            "description": "Creates a preview of a SellerListing for this event.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "event:webpage": {
+            "description": "The webpage on the viagogo website for this event.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          }
+        }
+      },
+      "EventEmbeddedResources": {
+        "title": "EventEmbeddedResources",
+        "type": "object",
+        "properties": {
+          "categories": {
+            "type": "array",
+            "description": "The categories for this event.",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/EmbeddedCategory"
+            }
+          },
+          "category": {
+            "description": "The category for this event.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/EmbeddedCategory"
+              }
+            ]
+          },
+          "genre": {
+            "description": "The genre for this event.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/EmbeddedCategory"
+              }
+            ]
+          },
+          "venue": {
+            "description": "The venue where the event is taking place.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/EmbeddedVenue"
+              }
+            ]
+          }
+        }
+      },
+      "EmbeddedVenue": {
+        "type": "object",
+        "description": "A venue is a location where an event takes place.",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The venue identifier.",
+            "format": "int32",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the venue.",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "description": "The name of the city where the venue is located.",
+            "nullable": true
+          },
+          "state_province": {
+            "type": "string",
+            "description": "The name of the State or Province where the venue is located.",
+            "nullable": true
+          },
+          "latitude": {
+            "type": "number",
+            "description": "The latitude for the venue.",
+            "format": "double",
+            "nullable": true
+          },
+          "longitude": {
+            "type": "number",
+            "description": "The longitude for the venue.",
+            "format": "double",
+            "nullable": true
+          },
+          "_links": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/EmbeddedVenueLinks"
+              }
+            ]
+          },
+          "_embedded": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/EmbeddedVenueEmbeddedResources"
+              }
+            ]
+          }
+        }
+      },
+      "EmbeddedVenueLinks": {
+        "title": "EmbeddedVenueLinks",
+        "type": "object",
+        "properties": {
+          "self": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          }
+        }
+      },
+      "EmbeddedVenueEmbeddedResources": {
+        "title": "EmbeddedVenueEmbeddedResources",
+        "type": "object",
+        "properties": {
+          "country": {
+            "description": "The Country where the venue is located.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Country"
+              }
+            ]
+          }
+        }
+      },
+      "Country": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "The two-letter ISO 3166 code for the country.",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the country.",
+            "nullable": true
+          },
+          "_links": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/CountryLinks"
+              }
+            ]
+          }
+        }
+      },
+      "CountryLinks": {
+        "title": "CountryLinks",
+        "type": "object",
+        "properties": {
+          "self": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "country:events": {
+            "description": "The events taking place in a country.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "country:localwebpage": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          }
+        }
+      },
+      "Events": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "total_items": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "page": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "page_size": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "_links": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/EventsLinks"
+              }
+            ]
+          },
+          "_embedded": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/EventsEmbeddedResources"
+              }
+            ]
+          }
+        }
+      },
+      "EventsLinks": {
+        "title": "EventsLinks",
+        "type": "object",
+        "properties": {
+          "self": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "first": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "last": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "next": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "prev": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          }
+        }
+      },
+      "EventsEmbeddedResources": {
+        "title": "EventsEmbeddedResources",
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/Event"
+            }
+          }
+        }
+      },
+      "Venue": {
+        "type": "object",
+        "description": "A venue is a location where an event takes place.",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The venue identifier.",
+            "format": "int32",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the venue.",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "description": "The name of the city where the venue is located.",
+            "nullable": true
+          },
+          "state_province": {
+            "type": "string",
+            "description": "The name of the State or Province where the venue is located.",
+            "nullable": true
+          },
+          "latitude": {
+            "type": "number",
+            "description": "The latitude for the venue.",
+            "format": "double",
+            "nullable": true
+          },
+          "longitude": {
+            "type": "number",
+            "description": "The longitude for the venue.",
+            "format": "double",
+            "nullable": true
+          },
+          "address_1": {
+            "type": "string",
+            "description": "The first line of the address for the venue.",
+            "nullable": true
+          },
+          "address_2": {
+            "type": "string",
+            "description": "The second line of the address for the venue.",
+            "nullable": true
+          },
+          "postal_code": {
+            "type": "string",
+            "description": "The postal code for the venue.",
+            "nullable": true
+          },
+          "_links": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/VenueLinks"
+              }
+            ]
+          },
+          "_embedded": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/VenueEmbeddedResources"
+              }
+            ]
+          }
+        }
+      },
+      "VenueLinks": {
+        "title": "VenueLinks",
+        "type": "object",
+        "properties": {
+          "self": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "venue:events": {
+            "description": "The events taking place in a venue.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "venue:metroarea": {
+            "description": "The metro area where a venue is located.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          }
+        }
+      },
+      "VenueEmbeddedResources": {
+        "title": "VenueEmbeddedResources",
+        "type": "object",
+        "properties": {
+          "country": {
+            "description": "The Country where the venue is located.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Country"
+              }
+            ]
+          }
+        }
+      },
+      "Venues": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "total_items": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "page": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "page_size": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "_links": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/VenuesLinks"
+              }
+            ]
+          },
+          "_embedded": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/VenuesEmbeddedResources"
+              }
+            ]
+          }
+        }
+      },
+      "VenuesLinks": {
+        "title": "VenuesLinks",
+        "type": "object",
+        "properties": {
+          "self": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "first": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "last": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "next": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "prev": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          }
+        }
+      },
+      "VenuesEmbeddedResources": {
+        "title": "VenuesEmbeddedResources",
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/Venue"
+            }
+          }
+        }
+      },
+      "MetroArea": {
+        "type": "object",
+        "description": "A MetroArea is a metropolitan region that contains venues where events are taking place.",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The metro area identifier.",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the metro area.",
+            "nullable": true
+          },
+          "_links": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/MetroAreaLinks"
+              }
+            ]
+          }
+        }
+      },
+      "MetroAreaLinks": {
+        "title": "MetroAreaLinks",
+        "type": "object",
+        "properties": {
+          "self": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "metroarea:events": {
+            "description": "The events taking place in a metro area.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "metroarea:venues": {
+            "description": "The venues located in a metro area.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          }
+        }
+      },
+      "MetroAreas": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "total_items": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "page": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "page_size": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "_links": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/MetroAreasLinks"
+              }
+            ]
+          },
+          "_embedded": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/MetroAreasEmbeddedResources"
+              }
+            ]
+          }
+        }
+      },
+      "MetroAreasLinks": {
+        "title": "MetroAreasLinks",
+        "type": "object",
+        "properties": {
+          "self": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "first": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "last": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "next": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "prev": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          }
+        }
+      },
+      "MetroAreasEmbeddedResources": {
+        "title": "MetroAreasEmbeddedResources",
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/MetroArea"
+            }
+          }
+        }
+      },
+      "Listings": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "total_items": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "page": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "page_size": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "_links": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ListingsLinks"
+              }
+            ]
+          },
+          "_embedded": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ListingsEmbeddedResources"
+              }
+            ]
+          }
+        }
+      },
+      "ListingsLinks": {
+        "title": "ListingsLinks",
+        "type": "object",
+        "properties": {
+          "self": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "first": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "last": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "next": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "prev": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          }
+        }
+      },
+      "ListingsEmbeddedResources": {
+        "title": "ListingsEmbeddedResources",
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/Listing"
+            }
+          }
+        }
+      },
+      "Listing": {
+        "type": "object",
+        "description": "A set of tickets for sale on the viagogo marketplace.",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The lisitng indentifier.",
+            "format": "int64",
+            "nullable": true
+          },
+          "number_of_tickets": {
+            "type": "integer",
+            "description": "The number of tickets available for purchase.",
+            "format": "int32",
+            "nullable": true
+          },
+          "seating": {
+            "description": "The seating information for the ticket(s) in this listing.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Seating"
+              }
+            ]
+          },
+          "pickup_available": {
+            "type": "boolean",
+            "description": "True if the tickets can be picked up at the event; otherwise , false.",
+            "nullable": true
+          },
+          "download_available": {
+            "type": "boolean",
+            "description": "True if the listing has a pre-uploaded E-Ticket; otherwise, false.",
+            "nullable": true
+          },
+          "ticket_price": {
+            "description": "The price of each ticket in the listing in the currency that they were listed in.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Money"
+              }
+            ]
+          },
+          "estimated_ticket_price": {
+            "description": "The estimated price of each ticket in the currency requested by the client.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Money"
+              }
+            ]
+          },
+          "estimated_total_ticket_price": {
+            "description": "The estimated total price for all tickets in the currency requested by the client.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Money"
+              }
+            ]
+          },
+          "estimated_booking_fee": {
+            "description": "The estimated booking fee applied when the tickets are purchased, in the currency requested by the client.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Money"
+              }
+            ]
+          },
+          "estimated_shipping": {
+            "description": "The estimated shipping charge applied when the tickets are purchased, in the currency requested by the client.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Money"
+              }
+            ]
+          },
+          "estimated_vat": {
+            "description": "The estimated VAT charge applied when the tickets are purchased, in the currency requested by the client.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Money"
+              }
+            ]
+          },
+          "estimated_total_charge": {
+            "description": "The estimated total charge applied when the tickets are purchased, in the currency requested by the client.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Money"
+              }
+            ]
+          },
+          "_links": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ListingLinks"
+              }
+            ]
+          },
+          "_embedded": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ListingEmbeddedResources"
+              }
+            ]
+          }
+        }
+      },
+      "Seating": {
+        "type": "object",
+        "description": "Represents the seating information for a ticket(s) in a Venue.",
+        "additionalProperties": false,
+        "properties": {
+          "section": {
+            "type": "string",
+            "description": "The section of the ticket(s).",
+            "nullable": true
+          },
+          "row": {
+            "type": "string",
+            "description": "The row of the ticket(s).",
+            "nullable": true
+          },
+          "seat_from": {
+            "type": "string",
+            "description": "The first in a contiguous block of seats to which the tickets have been allocated.",
+            "nullable": true
+          },
+          "seat_to": {
+            "type": "string",
+            "description": "The last in a contiguous block of seats to which the tickets have been allocated.",
+            "nullable": true
+          }
+        }
+      },
+      "ListingLinks": {
+        "title": "ListingLinks",
+        "type": "object",
+        "properties": {
+          "self": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "listing:event": {
+            "description": "The event for this listing.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "listing:localwebpage": {
+            "description": "The webpage on the local viagogo website where a listing can be purchased.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "listing:sellerlisting": {
+            "description": "The associated SellerListing for the listing, if it belongs to the currently authenticated user.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "listing:webpage": {
+            "description": "The webpage on the viagogo website for this listing.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          }
+        }
+      },
+      "ListingEmbeddedResources": {
+        "title": "ListingEmbeddedResources",
+        "type": "object",
+        "properties": {
+          "listing_notes": {
+            "type": "array",
+            "description": "The listing notes for this listing.",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/ListingNote"
+            }
+          },
+          "ticket_type": {
+            "description": "The type of ticket(s) in this listing.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/TicketType"
+              }
+            ]
+          }
+        }
+      },
+      "ListingNote": {
+        "type": "object",
+        "description": "Provides additional notes on a listing",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The listing note identifier.",
+            "format": "int32",
+            "nullable": true
+          },
+          "note": {
+            "type": "string",
+            "description": "The localized note.",
+            "nullable": true
+          },
+          "_links": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ListingNoteLinks"
+              }
+            ]
+          }
+        }
+      },
+      "ListingNoteLinks": {
+        "title": "ListingNoteLinks",
+        "type": "object",
+        "properties": {
+          "self": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          }
+        }
+      },
+      "TicketType": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "_links": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/TicketTypeLinks"
+              }
+            ]
+          }
+        }
+      },
+      "TicketTypeLinks": {
+        "title": "TicketTypeLinks",
+        "type": "object",
+        "properties": {
+          "self": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          }
+        }
+      },
+      "SearchResults": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "total_items": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "page": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "page_size": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "_links": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/SearchResultsLinks"
+              }
+            ]
+          },
+          "_embedded": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/SearchResultsEmbeddedResources"
+              }
+            ]
+          }
+        }
+      },
+      "SearchResultsLinks": {
+        "title": "SearchResultsLinks",
+        "type": "object",
+        "properties": {
+          "self": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "first": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "last": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "next": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "prev": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          }
+        }
+      },
+      "SearchResultsEmbeddedResources": {
+        "title": "SearchResultsEmbeddedResources",
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/SearchResult"
+            }
+          }
+        }
+      },
+      "SearchResult": {
+        "type": "object",
+        "description": "A SearchResult resource represents a single result of a search.",
+        "additionalProperties": false,
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "The localized name of the search result.",
+            "nullable": true
+          },
+          "type": {
+            "type": "string",
+            "description": "The type of the search result. Can be `Event`, `Category`, `Venue` or `MetroArea`.",
+            "nullable": true
+          },
+          "type_description": {
+            "type": "string",
+            "description": "The localized text describing the type of the search result.",
+            "nullable": true
+          },
+          "_links": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/SearchResultLinks"
+              }
+            ]
+          },
+          "_embedded": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/SearchResultEmbeddedResources"
+              }
+            ]
+          }
+        }
+      },
+      "SearchResultLinks": {
+        "title": "SearchResultLinks",
+        "type": "object",
+        "properties": {
+          "self": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "searchresult:category": {
+            "description": "The category that a search result represents.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "searchresult:event": {
+            "description": "The event that a search result represents.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "searchresult:metroarea": {
+            "description": "The metro area that a search result represents.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "searchresult:venue": {
+            "description": "The venue that a search result represents.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          }
+        }
+      },
+      "SearchResultEmbeddedResources": {
+        "title": "SearchResultEmbeddedResources",
+        "type": "object",
+        "properties": {
+          "category": {
+            "description": "The category that a search result represents.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/EmbeddedCategory"
+              }
+            ]
+          },
+          "event": {
+            "description": "The event that a search result represents.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/EmbeddedEvent"
+              }
+            ]
+          },
+          "genre": {
+            "description": "The genre of the category that a search result represents.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/EmbeddedCategory"
+              }
+            ]
+          },
+          "metro_area": {
+            "description": "The metro area that a search result represents.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/MetroArea"
+              }
+            ]
+          },
+          "venue": {
+            "description": "The venue that a search result represents.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/EmbeddedVenue"
+              }
+            ]
+          }
+        }
+      },
+      "ApiRoot": {
+        "type": "object",
+        "description": "The root of the viagogo API service. Applications can use the links provided by this resource to find all other resources in the API.",
+        "additionalProperties": false,
+        "properties": {
+          "_links": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ApiRootLinks"
+              }
+            ]
+          },
+          "_embedded": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ApiRootEmbeddedResources"
+              }
+            ]
+          }
+        }
+      },
+      "ApiRootLinks": {
+        "title": "ApiRootLinks",
+        "type": "object",
+        "properties": {
+          "self": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "viagogo:countries": {
+            "description": "The available countries.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "viagogo:createsellerlisting": {
+            "description": "Create a seller listing for an event.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "viagogo:currencies": {
+            "description": "The available currencies.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "viagogo:genres": {
+            "description": "The top-level categories that group all other categories and events.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "viagogo:languages": {
+            "description": "The available languages.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "viagogo:listingconstraints": {
+            "description": "The listing constraints for a requested event.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "viagogo:metroareas": {
+            "description": "The available metro areas.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "viagogo:search": {
+            "description": "Search for events, categories, venues and metro areas.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "viagogo:user": {
+            "description": "The currently authenticated user.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "viagogo:venues": {
+            "description": "The available venues.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          }
+        }
+      },
+      "ApiRootEmbeddedResources": {
+        "title": "ApiRootEmbeddedResources",
+        "type": "object",
+        "properties": {
+          "user": {
+            "description": "The currently authenticated user.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/User"
+              }
+            ]
+          }
+        }
+      },
+      "User": {
+        "type": "object",
+        "description": "An authenticated user.",
+        "additionalProperties": false,
+        "properties": {
+          "full_name": {
+            "type": "string",
+            "description": "The full name of the user.",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "description": "The email address of the user.",
+            "nullable": true
+          },
+          "primary_phone": {
+            "type": "string",
+            "description": "The primary phone number of the user.",
+            "nullable": true
+          },
+          "email_optin": {
+            "type": "boolean",
+            "description": "True if the user is signed up for the viagogo email newsletter; otherwise, false."
+          },
+          "_links": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/UserLinks"
+              }
+            ]
+          }
+        }
+      },
+      "UserLinks": {
+        "title": "UserLinks",
+        "type": "object",
+        "properties": {
+          "self": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "user:addresses": {
+            "description": "The collection of Addresses associated with this user.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "user:paymentmethods": {
+            "description": "The collection of PaymentMethods associated with this user.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "user:sales": {
+            "description": "The collection of Sales associated with this user.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "user:salesaggregates": {
+            "description": "The aggregated sales data associated with this user.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "user:sellerlistings": {
+            "description": "The collection of SellerListings associated with this user.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "user:update": {
+            "description": "Update the settings for this user.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "user:webhooks": {
+            "description": "The collection of Webhooks associated with this user.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          }
+        }
+      },
       "SellerListing": {
         "type": "object",
         "description": "A set of tickets for sale on the viagogo marketplace that belong to the currently authenticated user.",
@@ -3589,56 +7632,6 @@
                 "$ref": "#/components/schemas/SellerListingEmbeddedResources"
               }
             ]
-          }
-        }
-      },
-      "Seating": {
-        "type": "object",
-        "description": "Represents the seating information for a ticket(s) in a Venue.",
-        "additionalProperties": false,
-        "properties": {
-          "section": {
-            "type": "string",
-            "description": "The section of the ticket(s).",
-            "nullable": true
-          },
-          "row": {
-            "type": "string",
-            "description": "The row of the ticket(s).",
-            "nullable": true
-          },
-          "seat_from": {
-            "type": "string",
-            "description": "The first in a contiguous block of seats to which the tickets have been allocated.",
-            "nullable": true
-          },
-          "seat_to": {
-            "type": "string",
-            "description": "The last in a contiguous block of seats to which the tickets have been allocated.",
-            "nullable": true
-          }
-        }
-      },
-      "Money": {
-        "type": "object",
-        "description": "Returned for monetary values, such as ticket prices, fees charged and tax amounts.",
-        "additionalProperties": false,
-        "properties": {
-          "amount": {
-            "type": "number",
-            "description": "The decimal amount of the money.",
-            "format": "decimal",
-            "nullable": true
-          },
-          "currency_code": {
-            "type": "string",
-            "description": "The ISO 4217 currency code that the monetary value is represented in.",
-            "nullable": true
-          },
-          "display": {
-            "type": "string",
-            "description": "A user-friendly string representing the monetary value.",
-            "nullable": true
           }
         }
       },
@@ -3946,23 +7939,6 @@
           }
         }
       },
-      "Link": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "href": {
-            "type": "string",
-            "nullable": true
-          },
-          "title": {
-            "type": "string",
-            "nullable": true
-          },
-          "templated": {
-            "type": "boolean"
-          }
-        }
-      },
       "SellerListingEmbeddedResources": {
         "title": "SellerListingEmbeddedResources",
         "type": "object",
@@ -4205,91 +8181,6 @@
           }
         }
       },
-      "ListingNote": {
-        "type": "object",
-        "description": "Provides additional notes on a listing",
-        "additionalProperties": false,
-        "properties": {
-          "id": {
-            "type": "integer",
-            "description": "The listing note identifier.",
-            "format": "int32",
-            "nullable": true
-          },
-          "note": {
-            "type": "string",
-            "description": "The localized note.",
-            "nullable": true
-          },
-          "_links": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/ListingNoteLinks"
-              }
-            ]
-          }
-        }
-      },
-      "ListingNoteLinks": {
-        "title": "ListingNoteLinks",
-        "type": "object",
-        "properties": {
-          "self": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/Link"
-              }
-            ]
-          }
-        }
-      },
-      "Currency": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "code": {
-            "type": "string",
-            "nullable": true
-          },
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "symbol": {
-            "type": "string",
-            "nullable": true
-          },
-          "decimal_places": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "_links": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/CurrencyLinks"
-              }
-            ]
-          }
-        }
-      },
-      "CurrencyLinks": {
-        "title": "CurrencyLinks",
-        "type": "object",
-        "properties": {
-          "self": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/Link"
-              }
-            ]
-          }
-        }
-      },
       "SplitType": {
         "type": "object",
         "description": "The way that the ticket(s) in a listing are allowed to be split up when sold.",
@@ -4325,245 +8216,6 @@
         "type": "object",
         "properties": {
           "self": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/Link"
-              }
-            ]
-          }
-        }
-      },
-      "TicketType": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "type": {
-            "type": "string",
-            "nullable": true
-          },
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "_links": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/TicketTypeLinks"
-              }
-            ]
-          }
-        }
-      },
-      "TicketTypeLinks": {
-        "title": "TicketTypeLinks",
-        "type": "object",
-        "properties": {
-          "self": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/Link"
-              }
-            ]
-          }
-        }
-      },
-      "EmbeddedEvent": {
-        "type": "object",
-        "description": "An event on the viagogo platform.",
-        "additionalProperties": false,
-        "properties": {
-          "id": {
-            "type": "integer",
-            "description": "The event identifier.",
-            "format": "int32",
-            "nullable": true
-          },
-          "name": {
-            "type": "string",
-            "description": "The name of the event.",
-            "nullable": true
-          },
-          "start_date": {
-            "type": "string",
-            "description": "The date when the event starts.",
-            "format": "date-time",
-            "nullable": true
-          },
-          "end_date": {
-            "type": "string",
-            "description": "The date when the event ends.",
-            "format": "date-time",
-            "nullable": true
-          },
-          "on_sale_date": {
-            "type": "string",
-            "description": "The date when tickets for the event will go onsale.",
-            "format": "date-time",
-            "nullable": true
-          },
-          "date_confirmed": {
-            "type": "boolean",
-            "description": "True if the event start and end date have been confirmed; Otherwise, false.",
-            "nullable": true
-          },
-          "_links": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/EmbeddedEventLinks"
-              }
-            ]
-          }
-        }
-      },
-      "EmbeddedEventLinks": {
-        "title": "EmbeddedEventLinks",
-        "type": "object",
-        "properties": {
-          "self": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/Link"
-              }
-            ]
-          }
-        }
-      },
-      "EmbeddedVenue": {
-        "type": "object",
-        "description": "A venue is a location where an event takes place.",
-        "additionalProperties": false,
-        "properties": {
-          "id": {
-            "type": "integer",
-            "description": "The venue identifier.",
-            "format": "int32",
-            "nullable": true
-          },
-          "name": {
-            "type": "string",
-            "description": "The name of the venue.",
-            "nullable": true
-          },
-          "city": {
-            "type": "string",
-            "description": "The name of the city where the venue is located.",
-            "nullable": true
-          },
-          "state_province": {
-            "type": "string",
-            "description": "The name of the State or Province where the venue is located.",
-            "nullable": true
-          },
-          "latitude": {
-            "type": "number",
-            "description": "The latitude for the venue.",
-            "format": "double",
-            "nullable": true
-          },
-          "longitude": {
-            "type": "number",
-            "description": "The longitude for the venue.",
-            "format": "double",
-            "nullable": true
-          },
-          "_links": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/EmbeddedVenueLinks"
-              }
-            ]
-          },
-          "_embedded": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/EmbeddedVenueEmbeddedResources"
-              }
-            ]
-          }
-        }
-      },
-      "EmbeddedVenueLinks": {
-        "title": "EmbeddedVenueLinks",
-        "type": "object",
-        "properties": {
-          "self": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/Link"
-              }
-            ]
-          }
-        }
-      },
-      "EmbeddedVenueEmbeddedResources": {
-        "title": "EmbeddedVenueEmbeddedResources",
-        "type": "object",
-        "properties": {
-          "country": {
-            "description": "The Country where the venue is located.",
-            "nullable": true,
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/Country"
-              }
-            ]
-          }
-        }
-      },
-      "Country": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "code": {
-            "type": "string",
-            "description": "The two-letter ISO 3166 code for the country.",
-            "nullable": true
-          },
-          "name": {
-            "type": "string",
-            "description": "The name of the country.",
-            "nullable": true
-          },
-          "_links": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/CountryLinks"
-              }
-            ]
-          }
-        }
-      },
-      "CountryLinks": {
-        "title": "CountryLinks",
-        "type": "object",
-        "properties": {
-          "self": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/Link"
-              }
-            ]
-          },
-          "country:events": {
-            "description": "The events taking place in a country.",
-            "nullable": true,
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/Link"
-              }
-            ]
-          },
-          "country:localwebpage": {
             "nullable": true,
             "oneOf": [
               {
@@ -4906,30 +8558,6 @@
           }
         }
       },
-      "Error": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "code": {
-            "type": "string",
-            "nullable": true
-          },
-          "message": {
-            "type": "string",
-            "nullable": true
-          },
-          "errors": {
-            "type": "object",
-            "nullable": true,
-            "additionalProperties": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            }
-          }
-        }
-      },
       "SellerListings": {
         "type": "object",
         "additionalProperties": false,
@@ -5222,6 +8850,7 @@
         "additionalProperties": false,
         "properties": {
           "event": {
+            "description": "The event information.",
             "nullable": true,
             "oneOf": [
               {
@@ -5230,6 +8859,7 @@
             ]
           },
           "venue": {
+            "description": "The venue where the event will take place.",
             "nullable": true,
             "oneOf": [
               {
@@ -5238,6 +8868,7 @@
             ]
           },
           "country": {
+            "description": "The country where the event will take place.",
             "nullable": true,
             "oneOf": [
               {
@@ -5438,18 +9069,22 @@
         "properties": {
           "name": {
             "type": "string",
+            "description": "The name of the event.",
             "nullable": true
           },
           "start_date": {
             "type": "string",
+            "description": "The date when the event starts.",
             "nullable": true
           },
           "date_confirmed": {
             "type": "boolean",
+            "description": "True if the event start and end date have been confirmed; Otherwise, false.",
             "nullable": true
           },
           "note": {
             "type": "string",
+            "description": "Additional notes on the event.",
             "nullable": true
           }
         }
@@ -5644,6 +9279,7 @@
             }
           },
           "event": {
+            "description": "The event information.",
             "nullable": true,
             "oneOf": [
               {
@@ -5652,6 +9288,7 @@
             ]
           },
           "venue": {
+            "description": "The venue where the event will take place.",
             "nullable": true,
             "oneOf": [
               {
@@ -5660,6 +9297,7 @@
             ]
           },
           "country": {
+            "description": "The country where the event will take place.",
             "nullable": true,
             "oneOf": [
               {
@@ -5863,9 +9501,11 @@
       },
       "PutRequestedEventRequest": {
         "type": "object",
+        "description": "A requested event.",
         "additionalProperties": false,
         "properties": {
           "event": {
+            "description": "The event information.",
             "nullable": true,
             "oneOf": [
               {
@@ -5874,6 +9514,7 @@
             ]
           },
           "venue": {
+            "description": "The venue where the event will take place.",
             "nullable": true,
             "oneOf": [
               {
@@ -5882,6 +9523,7 @@
             ]
           },
           "country": {
+            "description": "The country where the event will take place.",
             "nullable": true,
             "oneOf": [
               {
@@ -5893,6 +9535,349 @@
             "type": "object",
             "nullable": true,
             "additionalProperties": {}
+          }
+        }
+      },
+      "SellerEvents": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "total_items": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "page": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "page_size": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "_links": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/SellerEventsLinks"
+              }
+            ]
+          },
+          "_embedded": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/SellerEventsEmbeddedResources"
+              }
+            ]
+          }
+        }
+      },
+      "SellerEventsLinks": {
+        "title": "SellerEventsLinks",
+        "type": "object",
+        "properties": {
+          "self": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "first": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "last": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "next": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "prev": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          }
+        }
+      },
+      "SellerEventsEmbeddedResources": {
+        "title": "SellerEventsEmbeddedResources",
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/SellerEvent"
+            }
+          }
+        }
+      },
+      "SellerEvent": {
+        "type": "object",
+        "description": "An event on the viagogo marketplace with listings that belong to the currently authenticated user.",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The event identifier.",
+            "format": "int32",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the event.",
+            "nullable": true
+          },
+          "start_date": {
+            "type": "string",
+            "description": "The date when the event starts.",
+            "format": "date-time",
+            "nullable": true
+          },
+          "end_date": {
+            "type": "string",
+            "description": "The date when the event ends.",
+            "format": "date-time",
+            "nullable": true
+          },
+          "on_sale_date": {
+            "type": "string",
+            "description": "The date when tickets for the event will go onsale.",
+            "format": "date-time",
+            "nullable": true
+          },
+          "date_confirmed": {
+            "type": "boolean",
+            "description": "True if the event start and end date have been confirmed; Otherwise, false.",
+            "nullable": true
+          },
+          "lms": {
+            "type": "boolean",
+            "description": "True if the event is a last minute sale event; otherwise, false.",
+            "nullable": true
+          },
+          "_links": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/SellerEventLinks"
+              }
+            ]
+          },
+          "_embedded": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/SellerEventEmbeddedResources"
+              }
+            ]
+          }
+        }
+      },
+      "SellerEventLinks": {
+        "title": "SellerEventLinks",
+        "type": "object",
+        "properties": {
+          "self": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "sellerevent:createsellerlisting": {
+            "description": "Create listing for the currently authenticated user.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "sellerevent:sellerlistings": {
+            "description": "Event listings that belong to the currently authenticated user.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          }
+        }
+      },
+      "SellerEventEmbeddedResources": {
+        "title": "SellerEventEmbeddedResources",
+        "type": "object",
+        "properties": {
+          "sales_aggregates": {
+            "type": "array",
+            "description": "The currently authenticated user's aggregated sales data for this event.",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/SalesAggregate"
+            }
+          },
+          "venue": {
+            "description": "Event venue.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/EmbeddedVenue"
+              }
+            ]
+          }
+        }
+      },
+      "SalesAggregate": {
+        "type": "object",
+        "description": "Aggregated sales data for the currently authenticated user.",
+        "additionalProperties": false,
+        "properties": {
+          "number_of_sales": {
+            "type": "integer",
+            "description": "The total number of sales aggregated in this resource.",
+            "format": "int32"
+          },
+          "proceeds": {
+            "description": "The total amount that the seller will receive for the sale.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Money"
+              }
+            ]
+          },
+          "number_of_tickets": {
+            "type": "integer",
+            "description": "The total number of tickets for the sales aggregated in this resource.",
+            "format": "int32"
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "description": "A short localised string describing the current status of the aggregated sales.",
+            "nullable": true
+          },
+          "distinct_aggregates": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/DistinctAggregates"
+              }
+            ]
+          },
+          "_links": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/SalesAggregateLinks"
+              }
+            ]
+          }
+        }
+      },
+      "DistinctAggregates": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "categories": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/DistinctAggregate"
+            }
+          },
+          "venues": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/DistinctAggregate"
+            }
+          },
+          "_links": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/DistinctAggregatesLinks"
+              }
+            ]
+          }
+        }
+      },
+      "DistinctAggregate": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "DistinctAggregatesLinks": {
+        "title": "DistinctAggregatesLinks",
+        "type": "object",
+        "properties": {
+          "self": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          }
+        }
+      },
+      "SalesAggregateLinks": {
+        "title": "SalesAggregateLinks",
+        "type": "object",
+        "properties": {
+          "self": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "salesaggregate:sales": {
+            "description": "The sales aggregated in this resource.",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
           }
         }
       },
@@ -6526,6 +10511,7 @@
         "properties": {
           "tracking_number": {
             "type": "string",
+            "description": "The identifier used to track the shipment of the ticket(s).",
             "nullable": true
           }
         }
@@ -7326,14 +11312,17 @@
       },
       "PatchSaleRequest": {
         "type": "object",
+        "description": "A sale on the viagogo marketplace that belongs to the currently authenticated user.",
         "additionalProperties": false,
         "properties": {
           "confirmed": {
             "type": "boolean",
+            "description": "True when the sale should be confirmed; Otherwise, false.",
             "nullable": true
           },
           "eticket_ids": {
             "type": "array",
+            "description": "A array of the identifiers of the E-Tickets to be assigned to the sale.",
             "nullable": true,
             "items": {
               "type": "integer",
@@ -7342,6 +11331,7 @@
           },
           "transfer_confirmation_number": {
             "type": "string",
+            "description": "Transfer confirmation number.",
             "nullable": true
           },
           "eticket_urls": {
@@ -7353,18 +11343,22 @@
           },
           "change_paper_ticket_to_eticket": {
             "type": "boolean",
+            "description": "True when the ticket(s) should be changed from paper to E-ticket; Otherwise, false.",
             "nullable": true
           },
           "confirm_same_day_shipment": {
             "type": "boolean",
+            "description": "True when same-day shipment is confirmed; Otherwise, false",
             "nullable": true
           },
           "eticket_type": {
             "type": "string",
+            "description": "The type of ticket(s) that was sold.",
             "nullable": true
           },
           "tracking_number": {
             "type": "string",
+            "description": "Tacking number of the ticket shipment.",
             "nullable": true
           },
           "reservation": {
@@ -7377,6 +11371,7 @@
           },
           "barcodes": {
             "type": "array",
+            "description": "The barcode(s) for the ticket(s).",
             "nullable": true,
             "items": {
               "$ref": "#/components/schemas/BarcodeInformation"
@@ -7394,14 +11389,17 @@
       },
       "ETicketUrlRequest": {
         "type": "object",
+        "description": "URL of E-Ticket.",
         "additionalProperties": false,
         "properties": {
           "url": {
             "type": "string",
+            "description": "URL of E-Ticket.",
             "nullable": true
           },
           "index": {
             "type": "integer",
+            "description": "Index of E-Ticket.",
             "format": "int32",
             "nullable": true
           }
@@ -7894,6 +11892,102 @@
           }
         }
       },
+      "SalesAggregates": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "total_items": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "page": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "page_size": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "_links": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/SalesAggregatesLinks"
+              }
+            ]
+          },
+          "_embedded": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/SalesAggregatesEmbeddedResources"
+              }
+            ]
+          }
+        }
+      },
+      "SalesAggregatesLinks": {
+        "title": "SalesAggregatesLinks",
+        "type": "object",
+        "properties": {
+          "self": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "first": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "last": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "next": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          },
+          "prev": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Link"
+              }
+            ]
+          }
+        }
+      },
+      "SalesAggregatesEmbeddedResources": {
+        "title": "SalesAggregatesEmbeddedResources",
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/SalesAggregate"
+            }
+          }
+        }
+      },
       "Webhooks": {
         "type": "object",
         "additionalProperties": false,
@@ -8094,18 +12188,22 @@
         "properties": {
           "name": {
             "type": "string",
+            "description": "The name of the webhook.",
             "nullable": true
           },
           "url": {
             "type": "string",
+            "description": "The server endpoint that will receive the webhook payload.",
             "nullable": true
           },
           "authorization_header": {
             "type": "string",
+            "description": "The Authorization header value that should be included in requests to the webhook.",
             "nullable": true
           },
           "topics": {
             "type": "array",
+            "description": "An array of the topics the webhook is trigger for.",
             "nullable": true,
             "items": {
               "type": "string"
@@ -8119,18 +12217,22 @@
         "properties": {
           "name": {
             "type": "string",
+            "description": "The name of the webhook.",
             "nullable": true
           },
           "url": {
             "type": "string",
+            "description": "The server endpoint that will receive the webhook payload.",
             "nullable": true
           },
           "authorization_header": {
             "type": "string",
+            "description": "The Authorization header value that should be included in requests to the webhook.",
             "nullable": true
           },
           "topics": {
             "type": "array",
+            "description": "An array of the topics the webhook is trigger for.",
             "nullable": true,
             "items": {
               "type": "string"
@@ -8698,6 +12800,125 @@
             "nullable": true
           }
         }
+      },
+      "PatchUserRequest": {
+        "type": "object",
+        "description": "An authenticated user.",
+        "additionalProperties": false,
+        "properties": {
+          "full_name": {
+            "type": "string",
+            "description": "The full name of the user.",
+            "nullable": true
+          },
+          "email_optin": {
+            "type": "boolean",
+            "description": "True if the user is signed up for the viagogo email newsletter; otherwise, false.",
+            "nullable": true
+          }
+        }
+      },
+      "PostUserRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "full_name": {
+            "type": "string",
+            "description": "The full name of the user.",
+            "nullable": true
+          },
+          "email_optin": {
+            "type": "boolean",
+            "description": "True if the user is signed up for the viagogo email newsletter; otherwise, false.",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "primary_phone": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "PostBrokerageRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "password": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "primary_phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "full_name": {
+            "type": "string",
+            "description": "The full name of the user.",
+            "nullable": true
+          },
+          "email_optin": {
+            "type": "boolean",
+            "description": "True if the user is signed up for the viagogo email newsletter; otherwise, false.",
+            "nullable": true
+          },
+          "address_line_1": {
+            "type": "string",
+            "nullable": true
+          },
+          "address_line_2": {
+            "type": "string",
+            "nullable": true
+          },
+          "address_line_3": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "country_code": {
+            "type": "string",
+            "nullable": true
+          },
+          "post_code": {
+            "type": "string",
+            "nullable": true
+          },
+          "state_province": {
+            "type": "string",
+            "nullable": true
+          },
+          "broker_name": {
+            "type": "string",
+            "nullable": true
+          },
+          "client_application_id": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "PostPasswordRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "email": {
+            "type": "string",
+            "nullable": true
+          }
+        }
       }
     },
     "responses": {
@@ -8857,13 +13078,28 @@
       "name": "Addresses"
     },
     {
+      "name": "Categories"
+    },
+    {
+      "name": "Currencies"
+    },
+    {
       "name": "E-Tickets (Inventory)"
     },
     {
       "name": "E-Tickets (Sales)"
     },
     {
+      "name": "Events"
+    },
+    {
       "name": "ListingConstraints"
+    },
+    {
+      "name": "Listings"
+    },
+    {
+      "name": "MetroAreas"
     },
     {
       "name": "PaymentMethods"
@@ -8872,8 +13108,20 @@
       "name": "Payments"
     },
     {
+      "name": "Root"
+    },
+    {
       "name": "Sales",
       "description": "View your sales details and fulfill your sales."
+    },
+    {
+      "name": "SalesAggregates"
+    },
+    {
+      "name": "Search"
+    },
+    {
+      "name": "SellerEvents"
     },
     {
       "name": "SellerListings",
@@ -8886,15 +13134,35 @@
       "name": "Shipments (Sales)"
     },
     {
+      "name": "User"
+    },
+    {
+      "name": "Venues"
+    },
+    {
       "name": "Webhooks"
     }
   ],
   "x-tagGroups": [
     {
+      "name": "Discover",
+      "tags": [
+        "Categories",
+        "Currencies",
+        "Events",
+        "Listings",
+        "MetroAreas",
+        "Root",
+        "Search",
+        "Venues"
+      ]
+    },
+    {
       "name": "Manage Inventory",
       "tags": [
         "E-Tickets (Inventory)",
         "ListingConstraints",
+        "SellerEvents",
         "SellerListings",
         "Shipments (Inventory)"
       ]
@@ -8905,6 +13173,7 @@
         "E-Tickets (Sales)",
         "Payments",
         "Sales",
+        "SalesAggregates",
         "Shipments (Sales)"
       ]
     },
@@ -8918,7 +13187,8 @@
       "name": "Manage Account",
       "tags": [
         "Addresses",
-        "PaymentMethods"
+        "PaymentMethods",
+        "User"
       ]
     }
   ]

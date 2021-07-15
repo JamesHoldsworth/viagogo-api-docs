@@ -1,0 +1,17 @@
+title: VenueLinks
+type: object
+properties:
+  self:
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'venue:events':
+    description: The events taking place in a venue.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml
+  'venue:metroarea':
+    description: The metro area where a venue is located.
+    nullable: true
+    oneOf:
+      - $ref: ./Link.yaml

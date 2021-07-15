@@ -1,0 +1,56 @@
+get:
+  tags:
+    - Search
+  summary: Search for entities
+  description: Search for entities that match a given query
+  operationId: Search_Get
+  parameters:
+    - name: query
+      in: query
+      description: The query text to be used to match entities.
+      schema:
+        type: string
+        nullable: true
+    - name: type
+      in: query
+      description: >-
+        A comma-separated string of the different types of entities to return.
+        Can be `event`, `category`, `metro_area` or `venue`. Note: If type is
+        not specified then all types of entities will be returned.
+      schema:
+        type: string
+        nullable: true
+    - name: page
+      in: query
+      description: Specifies which page of data to retrieve.
+      schema:
+        type: integer
+        format: int32
+    - name: page_size
+      in: query
+      description: Set custom page sizes on response.
+      schema:
+        type: integer
+        format: int32
+    - name: sort
+      in: query
+      description: >-
+        Determines the ordering of items. A comma-separated string containing
+        `order`.
+      schema:
+        type: string
+  responses:
+    '200':
+      description: ''
+      content:
+        application/hal+json:
+          schema:
+            nullable: true
+            oneOf:
+              - $ref: ../components/schemas/SearchResults.yaml
+    '401':
+      $ref: ../components/responses/requires_authentication.yaml
+      description: null
+    '500':
+      $ref: ../components/responses/internal_server_error.yaml
+      description: null
