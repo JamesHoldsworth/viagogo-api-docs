@@ -23,11 +23,20 @@ get:
       schema:
         type: integer
         format: int32
+    - name: updated_since
+      in: query
+      description: >-
+        Filters the response to only return items that have been updated since
+        the given timestamp
+      schema:
+        type: string
+        format: date-time
     - name: sort
       in: query
       description: >-
         Determines the ordering of items. A comma-separated string containing
-        `resource_version`.
+        `id`, `max_event_date`, `min_event_date`, `min_ticket_price`, `name`,
+        `only_with_events`, `only_with_tickets`, `rating`, or`resource_version`.
       schema:
         type: string
   responses:
