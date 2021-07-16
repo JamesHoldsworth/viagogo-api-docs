@@ -33,6 +33,14 @@ get:
       schema:
         type: integer
         format: int32
+    - name: updated_since
+      in: query
+      description: >-
+        Filters the response to only return items that have been updated since
+        the given timestamp
+      schema:
+        type: string
+        format: date-time
     - name: sort
       in: query
       description: >-
