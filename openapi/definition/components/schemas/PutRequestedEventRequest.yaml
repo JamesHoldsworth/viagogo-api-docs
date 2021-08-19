@@ -17,7 +17,3 @@ properties:
     nullable: true
     oneOf:
       - $ref: ./Country.yaml
-  external_details:
-    type: object
-    nullable: true
-    additionalProperties: {}

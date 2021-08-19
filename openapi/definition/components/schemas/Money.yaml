@@ -3,6 +3,9 @@ description: >-
   Returned for monetary values, such as ticket prices, fees charged and tax
   amounts.
 additionalProperties: false
+required:
+  - amount
+  - currency_code
 properties:
   amount:
     type: number

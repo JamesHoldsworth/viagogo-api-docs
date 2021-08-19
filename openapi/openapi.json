@@ -5326,6 +5326,10 @@
         "type": "object",
         "description": "Returned for monetary values, such as ticket prices, fees charged and tax amounts.",
         "additionalProperties": false,
+        "required": [
+          "amount",
+          "currency_code"
+        ],
         "properties": {
           "amount": {
             "type": "number",
@@ -6870,6 +6874,9 @@
         "type": "object",
         "description": "Represents the seating information for a ticket(s) in a Venue.",
         "additionalProperties": false,
+        "required": [
+          "section"
+        ],
         "properties": {
           "section": {
             "type": "string",
@@ -8333,12 +8340,6 @@
             "format": "int32",
             "nullable": true
           },
-          "guarantee_payment_method_id": {
-            "type": "integer",
-            "description": "The identifier of the credit card that should be used to guarantee your tickets.",
-            "format": "int32",
-            "nullable": true
-          },
           "ticket_location_address_id": {
             "type": "integer",
             "description": "The identifier of the address where the ticket(s) are located.",
@@ -8363,10 +8364,6 @@
           "external_id": {
             "type": "string",
             "description": "An identifier that has been assigned to the listing in an external inventory management system.",
-            "nullable": true
-          },
-          "external_information": {
-            "type": "string",
             "nullable": true
           },
           "notes": {
@@ -8396,30 +8393,6 @@
               "type": "integer",
               "format": "int32"
             }
-          },
-          "relist_tranasction_id": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "reservation_details": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/Reservation"
-              }
-            ]
-          },
-          "is_post_upload_reservation": {
-            "type": "boolean"
-          },
-          "additional_information": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/SellerListingAdditionalInfo"
-              }
-            ]
           },
           "external_event_information": {
             "type": "array",
@@ -8702,6 +8675,12 @@
       "PostSellerListingPreviewRequest": {
         "type": "object",
         "additionalProperties": false,
+        "required": [
+          "seating",
+          "ticket_type",
+          "split_type",
+          "number_of_tickets"
+        ],
         "properties": {
           "ticket_price": {
             "description": "The price of each ticket in the listing.",
@@ -8761,12 +8740,6 @@
             "format": "int32",
             "nullable": true
           },
-          "guarantee_payment_method_id": {
-            "type": "integer",
-            "description": "The identifier of the credit card that should be used to guarantee your tickets.",
-            "format": "int32",
-            "nullable": true
-          },
           "ticket_location_address_id": {
             "type": "integer",
             "description": "The identifier of the address where the ticket(s) are located.",
@@ -8791,10 +8764,6 @@
           "external_id": {
             "type": "string",
             "description": "An identifier that has been assigned to the listing in an external inventory management system.",
-            "nullable": true
-          },
-          "external_information": {
-            "type": "string",
             "nullable": true
           },
           "notes": {
@@ -8824,30 +8793,6 @@
               "type": "integer",
               "format": "int32"
             }
-          },
-          "relist_tranasction_id": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "reservation_details": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/Reservation"
-              }
-            ]
-          },
-          "is_post_upload_reservation": {
-            "type": "boolean"
-          },
-          "additional_information": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/SellerListingAdditionalInfo"
-              }
-            ]
           },
           "external_event_information": {
             "type": "array",
@@ -8893,6 +8838,12 @@
       "PostRequestedEventSellerListingPreviewRequest": {
         "type": "object",
         "additionalProperties": false,
+        "required": [
+          "seating",
+          "ticket_type",
+          "split_type",
+          "number_of_tickets"
+        ],
         "properties": {
           "event": {
             "description": "The event information.",
@@ -8979,12 +8930,6 @@
             "format": "int32",
             "nullable": true
           },
-          "guarantee_payment_method_id": {
-            "type": "integer",
-            "description": "The identifier of the credit card that should be used to guarantee your tickets.",
-            "format": "int32",
-            "nullable": true
-          },
           "ticket_location_address_id": {
             "type": "integer",
             "description": "The identifier of the address where the ticket(s) are located.",
@@ -9009,10 +8954,6 @@
           "external_id": {
             "type": "string",
             "description": "An identifier that has been assigned to the listing in an external inventory management system.",
-            "nullable": true
-          },
-          "external_information": {
-            "type": "string",
             "nullable": true
           },
           "notes": {
@@ -9042,30 +8983,6 @@
               "type": "integer",
               "format": "int32"
             }
-          },
-          "relist_tranasction_id": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "reservation_details": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/Reservation"
-              }
-            ]
-          },
-          "is_post_upload_reservation": {
-            "type": "boolean"
-          },
-          "additional_information": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/SellerListingAdditionalInfo"
-              }
-            ]
           },
           "external_event_information": {
             "type": "array",
@@ -9137,6 +9054,12 @@
       "PostRequestedEventSellerListingRequest": {
         "type": "object",
         "additionalProperties": false,
+        "required": [
+          "seating",
+          "ticket_type",
+          "split_type",
+          "number_of_tickets"
+        ],
         "properties": {
           "ticket_price": {
             "description": "The price of each ticket in the listing.",
@@ -9196,12 +9119,6 @@
             "format": "int32",
             "nullable": true
           },
-          "guarantee_payment_method_id": {
-            "type": "integer",
-            "description": "The identifier of the credit card that should be used to guarantee your tickets.",
-            "format": "int32",
-            "nullable": true
-          },
           "ticket_location_address_id": {
             "type": "integer",
             "description": "The identifier of the address where the ticket(s) are located.",
@@ -9226,10 +9143,6 @@
           "external_id": {
             "type": "string",
             "description": "An identifier that has been assigned to the listing in an external inventory management system.",
-            "nullable": true
-          },
-          "external_information": {
-            "type": "string",
             "nullable": true
           },
           "notes": {
@@ -9259,30 +9172,6 @@
               "type": "integer",
               "format": "int32"
             }
-          },
-          "relist_tranasction_id": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "reservation_details": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/Reservation"
-              }
-            ]
-          },
-          "is_post_upload_reservation": {
-            "type": "boolean"
-          },
-          "additional_information": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/SellerListingAdditionalInfo"
-              }
-            ]
           },
           "external_event_information": {
             "type": "array",
@@ -9356,6 +9245,12 @@
         "type": "object",
         "description": "A set of tickets for sale on the viagogo marketplace that belong to the currently authenticated user.",
         "additionalProperties": false,
+        "required": [
+          "seating",
+          "ticket_type",
+          "split_type",
+          "number_of_tickets"
+        ],
         "properties": {
           "ticket_price": {
             "description": "The price of each ticket in the listing.",
@@ -9415,12 +9310,6 @@
             "format": "int32",
             "nullable": true
           },
-          "guarantee_payment_method_id": {
-            "type": "integer",
-            "description": "The identifier of the credit card that should be used to guarantee your tickets.",
-            "format": "int32",
-            "nullable": true
-          },
           "ticket_location_address_id": {
             "type": "integer",
             "description": "The identifier of the address where the ticket(s) are located.",
@@ -9445,10 +9334,6 @@
           "external_id": {
             "type": "string",
             "description": "An identifier that has been assigned to the listing in an external inventory management system.",
-            "nullable": true
-          },
-          "external_information": {
-            "type": "string",
             "nullable": true
           },
           "notes": {
@@ -9478,30 +9363,6 @@
               "type": "integer",
               "format": "int32"
             }
-          },
-          "relist_tranasction_id": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "reservation_details": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/Reservation"
-              }
-            ]
-          },
-          "is_post_upload_reservation": {
-            "type": "boolean"
-          },
-          "additional_information": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/SellerListingAdditionalInfo"
-              }
-            ]
           },
           "external_event_information": {
             "type": "array",
@@ -9575,11 +9436,6 @@
                 "$ref": "#/components/schemas/Country"
               }
             ]
-          },
-          "external_details": {
-            "type": "object",
-            "nullable": true,
-            "additionalProperties": {}
           }
         }
       },
@@ -9820,22 +9676,10 @@
             "description": "The total number of tickets for the sales aggregated in this resource.",
             "format": "int32"
           },
-          "type": {
-            "type": "string",
-            "nullable": true
-          },
           "status": {
             "type": "string",
             "description": "A short localised string describing the current status of the aggregated sales.",
             "nullable": true
-          },
-          "distinct_aggregates": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/DistinctAggregates"
-              }
-            ]
           },
           "_links": {
             "nullable": true,
@@ -10203,19 +10047,6 @@
           "description": {
             "type": "string",
             "description": "The localised description of the delivery method.",
-            "nullable": true
-          },
-          "carrier_id": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "is_international": {
-            "type": "boolean",
-            "nullable": true
-          },
-          "internal_type": {
-            "type": "string",
             "nullable": true
           },
           "_links": {
@@ -11379,13 +11210,6 @@
             "description": "Transfer confirmation number.",
             "nullable": true
           },
-          "eticket_urls": {
-            "type": "array",
-            "nullable": true,
-            "items": {
-              "$ref": "#/components/schemas/ETicketUrlRequest"
-            }
-          },
           "change_paper_ticket_to_eticket": {
             "type": "boolean",
             "description": "True when the ticket(s) should be changed from paper to E-ticket; Otherwise, false.",
@@ -11396,23 +11220,10 @@
             "description": "True when same-day shipment is confirmed; Otherwise, false",
             "nullable": true
           },
-          "eticket_type": {
-            "type": "string",
-            "description": "The type of ticket(s) that was sold.",
-            "nullable": true
-          },
           "tracking_number": {
             "type": "string",
             "description": "Tacking number of the ticket shipment.",
             "nullable": true
-          },
-          "reservation": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/Reservation"
-              }
-            ]
           },
           "barcodes": {
             "type": "array",
@@ -11421,14 +11232,6 @@
             "items": {
               "$ref": "#/components/schemas/BarcodeInformation"
             }
-          },
-          "alternative_offer": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/PostAlternativeOfferRequest"
-              }
-            ]
           }
         }
       },

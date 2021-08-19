@@ -15,19 +15,12 @@ properties:
     type: integer
     description: The total number of tickets for the sales aggregated in this resource.
     format: int32
-  type:
-    type: string
-    nullable: true
   status:
     type: string
     description: >-
       A short localised string describing the current status of the aggregated
       sales.
     nullable: true
-  distinct_aggregates:
-    nullable: true
-    oneOf:
-      - $ref: ./DistinctAggregates.yaml
   _links:
     nullable: true
     oneOf:

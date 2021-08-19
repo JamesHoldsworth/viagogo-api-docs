@@ -17,16 +17,6 @@ properties:
     type: string
     description: The localised description of the delivery method.
     nullable: true
-  carrier_id:
-    type: integer
-    format: int32
-    nullable: true
-  is_international:
-    type: boolean
-    nullable: true
-  internal_type:
-    type: string
-    nullable: true
   _links:
     nullable: true
     oneOf:
