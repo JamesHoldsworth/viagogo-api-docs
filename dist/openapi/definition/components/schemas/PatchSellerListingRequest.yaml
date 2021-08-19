@@ -44,13 +44,6 @@ properties:
       purchase.
     format: int32
     nullable: true
-  guarantee_payment_method_id:
-    type: integer
-    description: >-
-      The identifier of the credit card that should be used to guarantee your
-      tickets.
-    format: int32
-    nullable: true
   ticket_location_address_id:
     type: integer
     description: The identifier of the address where the ticket(s) are located.
@@ -76,9 +69,6 @@ properties:
       An identifier that has been assigned to the listing in an external
       inventory management system.
     nullable: true
-  external_information:
-    type: string
-    nullable: true
   notes:
     type: string
     description: A comma-separated string of additional notes about the listing
@@ -103,20 +93,6 @@ properties:
     items:
       type: integer
       format: int32
-  relist_tranasction_id:
-    type: integer
-    format: int32
-    nullable: true
-  reservation_details:
-    nullable: true
-    oneOf:
-      - $ref: ./Reservation.yaml
-  is_post_upload_reservation:
-    type: boolean
-  additional_information:
-    nullable: true
-    oneOf:
-      - $ref: ./SellerListingAdditionalInfo.yaml
   external_event_information:
     type: array
     description: Information about the listing's event on other platforms.

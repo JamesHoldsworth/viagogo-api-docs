@@ -19,11 +19,6 @@ properties:
     type: string
     description: Transfer confirmation number.
     nullable: true
-  eticket_urls:
-    type: array
-    nullable: true
-    items:
-      $ref: ./ETicketUrlRequest.yaml
   change_paper_ticket_to_eticket:
     type: boolean
     description: >-
@@ -34,25 +29,13 @@ properties:
     type: boolean
     description: 'True when same-day shipment is confirmed; Otherwise, false'
     nullable: true
-  eticket_type:
-    type: string
-    description: The type of ticket(s) that was sold.
-    nullable: true
   tracking_number:
     type: string
     description: Tacking number of the ticket shipment.
     nullable: true
-  reservation:
-    nullable: true
-    oneOf:
-      - $ref: ./Reservation.yaml
   barcodes:
     type: array
     description: The barcode(s) for the ticket(s).
     nullable: true
     items:
       $ref: ./BarcodeInformation.yaml
-  alternative_offer:
-    nullable: true
-    oneOf:
-      - $ref: ./PostAlternativeOfferRequest.yaml
