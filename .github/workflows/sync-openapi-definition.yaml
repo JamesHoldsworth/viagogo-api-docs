@@ -33,4 +33,4 @@ jobs:
           title: "Sync latest changes to openapi.json"
           body: "Automated changes by `.github/workflows/sync-openapi-definition.yaml`"
           reviewers: "akilburge"
-          branch: "sync-openapi-definition/patch-$GITHUB_RUN_ID"
+          branch: "sync-openapi-definition/patch"
