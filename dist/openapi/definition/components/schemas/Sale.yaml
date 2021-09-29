@@ -64,6 +64,13 @@ properties:
     nullable: true
     items:
       $ref: ./BarcodeInformation.yaml
+  in_hand_at:
+    type: string
+    description: >-
+      The date and time that the seller has the tickets 'in hand' to deliver to
+      the buyer.
+    format: date-time
+    nullable: true
   _links:
     nullable: true
     oneOf:

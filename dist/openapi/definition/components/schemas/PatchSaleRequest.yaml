@@ -29,6 +29,13 @@ properties:
     type: boolean
     description: 'True when same-day shipment is confirmed; Otherwise, false'
     nullable: true
+  in_hand_at:
+    type: string
+    description: >-
+      The date and time that the seller has the tickets 'in hand' to deliver to
+      the buyer.
+    format: date-time
+    nullable: true
   tracking_number:
     type: string
     description: Tacking number of the ticket shipment.

@@ -1,0 +1,15 @@
+type: object
+additionalProperties: false
+properties:
+  id:
+    type: integer
+    format: int32
+  name:
+    type: string
+    nullable: true
+  title:
+    type: string
+    nullable: true
+  description:
+    type: string
+    nullable: true

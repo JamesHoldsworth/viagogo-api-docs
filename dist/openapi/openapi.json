@@ -10019,6 +10019,15 @@
             "items": {
               "$ref": "#/components/schemas/Pickup"
             }
+          },
+          "shipment_state": {
+            "description": "The shipment state",
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/StateInformation"
+              }
+            ]
           }
         }
       },
@@ -10378,6 +10387,28 @@
                 "$ref": "#/components/schemas/Link"
               }
             ]
+          }
+        }
+      },
+      "StateInformation": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
           }
         }
       },
@@ -10959,6 +10990,12 @@
               "$ref": "#/components/schemas/BarcodeInformation"
             }
           },
+          "in_hand_at": {
+            "type": "string",
+            "description": "The date and time that the seller has the tickets 'in hand' to deliver to the buyer.",
+            "format": "date-time",
+            "nullable": true
+          },
           "_links": {
             "nullable": true,
             "oneOf": [
@@ -11218,6 +11255,12 @@
           "confirm_same_day_shipment": {
             "type": "boolean",
             "description": "True when same-day shipment is confirmed; Otherwise, false",
+            "nullable": true
+          },
+          "in_hand_at": {
+            "type": "string",
+            "description": "The date and time that the seller has the tickets 'in hand' to deliver to the buyer.",
+            "format": "date-time",
             "nullable": true
           },
           "tracking_number": {
